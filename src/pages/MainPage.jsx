@@ -1,17 +1,30 @@
 // src/pages/MainPage.jsx
 
 import React from 'react';
-import Menubar from '../components/Menubar';
+import Header from '../components/Header';
+import './MainPage.css';
 
 const MainPage = () => {
   return (
-    <div>
-      <Menubar />
-      {/* 여기에 메인 페이지의 콘텐츠를 추가하세요 */}
-      <main style={{ padding: '20px' }}>
-        <h2>메인 페이지입니다.</h2>
-        <p>이곳에 서비스의 주요 내용을 담을 수 있습니다.</p>
-      </main>
+    <div className="main-content-wrapper">
+      <Header />
+
+      {/* Hero 섹션 */}
+      <section className="main-page-hero">
+        <div className="main-text-container">
+          <h1>“이음, 나의 체질과 하루를 잇다”</h1>
+          <p>당신의 체질을 분석해 건강한 하루를 설계합니다.</p>
+          <button className="test-button">
+            테스트하기 <span className="arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      {/* 이후의 메인 페이지 콘텐츠는 여기에 추가됩니다. */}
+      {/* <main style={{ padding: '20px' }}>
+        <h2>서비스 소개</h2>
+        <p>더 많은 정보가 여기에 올 예정입니다.</p>
+      </main> */}
     </div>
   );
 };

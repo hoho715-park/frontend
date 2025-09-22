@@ -1,0 +1,161 @@
+/* src/pages/SignUp.css */
+
+.signup-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.signup-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  box-sizing: border-box;
+}
+
+.logo-container {
+  margin-bottom: 30px;
+}
+
+.ieum-logo {
+  width: 150px;
+}
+
+.form-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* 입력 필드와 정보 텍스트, 체크 아이콘을 감싸는 컨테이너 */
+.field-container, .phone-field-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+  gap: 10px; /* 요소들 사이의 간격 */
+}
+
+/* 추가 정보 (영문, 숫자만 사용)와 체크 아이콘을 감싸는 컨테이너 */
+.additional-info {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 텍스트와 체크 아이콘 사이 간격 */
+  flex-shrink: 0; /* 크기가 줄어들지 않도록 설정 */
+}
+
+.input-group {
+  position: relative;
+  flex-grow: 1; /* 남은 공간을 채우도록 설정 */
+}
+
+.info-text {
+  color: #888;
+  font-size: 0.9rem;
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 */
+}
+
+.password-info {
+    white-space: normal; /* 비밀번호 정보는 줄바꿈 허용 */
+    max-width: 150px; /* 특정 너비 이상으로 늘어나지 않도록 */
+}
+
+
+.check-icon {
+  color: #6a5acd;
+  font-size: 1.1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #6a5acd;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.gender-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* 추가 */
+}
+
+.gender-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: 40px;
+}
+
+.gender-button {
+  padding: 10px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.gender-button.selected {
+  background-color: #f0f2f5;
+  border-color: #6a5acd;
+}
+
+.phone-field-container .cert-button {
+  padding: 10px 15px;
+  border: 1px solid #6a5acd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #6a5acd;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+  flex-shrink: 0; /* 인증하기 버튼이 줄어들지 않도록 */
+}
+
+.phone-field-container .cert-button:hover {
+  background-color: #6a5acd;
+  color: #fff;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #8a7acd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+}
+
+.signup-button:hover {
+  background-color: #7a6ac0;
+}

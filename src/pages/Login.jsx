@@ -40,7 +40,7 @@ const Login = () => {
         </div>
         <div className="register-group">
           <span>아직 회원이 아니신가요?</span>
-          <Link to="/register" className="register-link">회원가입</Link>
+          <Link to="/signup" className="register-link">회원가입</Link> {/* 경로 수정 */}
         </div>
         <div className="social-login-section">
           <button className="social-button google">

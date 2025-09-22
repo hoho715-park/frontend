@@ -1,6 +1,6 @@
 // src/components/Header.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -14,8 +14,18 @@ const navItems = [
 
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
-  const handleMouseEnter = (menuName) => setActiveMenu(menuName);
-  const handleMouseLeave = () => setActiveMenu(null);
+  const timeoutRef = useRef(null);
+
+  const handleMouseEnter = (menuName) => {
+    clearTimeout(timeoutRef.current);
+    setActiveMenu(menuName);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 200); // 200ms (0.2초) 지연 후 메뉴를 닫습니다.
+  };
 
   return (
     <nav className="menubar-container">

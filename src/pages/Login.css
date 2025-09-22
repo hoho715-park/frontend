@@ -1,0 +1,192 @@
+/* src/pages/Login.css */
+
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 380px; /* 로그인 박스 전체 너비 고정 */
+  box-sizing: border-box;
+}
+
+.logo-container {
+  margin-bottom: 30px;
+}
+
+.ieum-logo {
+  width: 120px;
+}
+
+/* 입력 필드 그룹 */
+.input-group {
+  position: relative;
+  width: 100%; /* 부모 컨테이너(login-box)에 맞춰 너비 100% 설정 */
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  width: 100%; /* 입력 필드 너비를 부모 컨테이너에 맞춰 100%로 설정 */
+  padding: 12px 15px 12px 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #6a5acd;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.password-group .password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* 로그인 버튼 */
+.login-button {
+  width: 100%; /* 부모 컨테이너에 맞춰 너비 100% 설정 */
+  padding: 15px;
+  background-color: #8a7acd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #7a6ac0;
+}
+
+/* 링크 그룹 (아이디/비밀번호 찾기) */
+.link-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  color: #888;
+}
+
+.link-group .find-link {
+  color: #888;
+  text-decoration: none;
+}
+
+.link-group .find-link:hover {
+  text-decoration: underline;
+  color: #6a5acd;
+}
+
+.link-group .divider {
+  color: #ccc;
+}
+
+/* 회원가입 그룹 */
+.register-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    color: #888;
+}
+
+.register-group .register-link {
+    color: #6a5acd;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-group .register-link:hover {
+    text-decoration: underline;
+}
+
+/* 소셜 로그인 섹션 */
+.social-login-section {
+  width: 100%; /* 부모 컨테이너에 맞춰 너비 100% 설정 */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-button {
+  width: 100%; /* 부모 컨테이너에 맞춰 너비 100% 설정 */
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  font-weight: bold;
+}
+
+.social-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.social-button.google {
+  background-color: #fff;
+  border-color: #e0e0e0;
+  color: #555;
+}
+.social-button.google:hover {
+    background-color: #f8f8f8;
+    border-color: #c0c0c0;
+}
+
+.social-button.kakao {
+  background-color: #fee500;
+  border-color: #fee500;
+  color: #3c1e1e;
+}
+.social-button.kakao:hover {
+    background-color: #f7dd00;
+    border-color: #f7dd00;
+}
+
+.social-button.naver {
+  background-color: #03c75a;
+  border-color: #03c75a;
+  color: #fff;
+}
+.social-button.naver:hover {
+    background-color: #02b050;
+    border-color: #02b050;
+}

@@ -42,14 +42,18 @@
 }
 
 /* src/App.css */
+/* src/App.css */
+/* src/App.css */
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
+  background-color: transparent; /* 배경색을 투명으로 설정 */
 }
 
 .main-content-wrapper {
   padding-top: 80px; /* Header의 높이만큼 여백 추가 */
   min-width: 100vw; /* 뷰포트 너비 100%로 최소 너비 설정 */
 }
+

@@ -16,11 +16,9 @@
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .menubar-logo img {
   height: 50px;
 }
-
 .menubar-nav {
   display: flex;
   list-style: none;
@@ -28,13 +26,11 @@
   padding: 0;
   gap: 100px;
 }
-
 .nav-item {
   position: relative;
   cursor: pointer;
   padding: 0.5rem 0;
 }
-
 .nav-link {
   font-size: 1.2rem;
   font-weight: 500;
@@ -43,11 +39,9 @@
   transition: color 0.3s;
   white-space: nowrap;
 }
-
 .nav-link:hover {
   color: #000;
 }
-
 .menubar-login a {
   font-size: 1.2rem;
   font-weight: 600;
@@ -59,12 +53,10 @@
   transition: background-color 0.3s, color 0.3s;
   white-space: nowrap;
 }
-
 .menubar-login a:hover {
   background-color: #333;
   color: #fff;
 }
-
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -80,11 +72,9 @@
   display: none;
   z-index: 100;
 }
-
 .dropdown-menu.visible {
   display: block;
 }
-
 .dropdown-item a {
   display: block;
   padding: 10px 20px;
@@ -94,11 +84,9 @@
   white-space: nowrap;
   transition: background-color 0.2s;
 }
-
 .dropdown-item a:hover {
   background-color: #f4f4f4;
 }
-
 .underline {
   position: absolute;
   bottom: 0;

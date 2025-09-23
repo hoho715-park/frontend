@@ -27,9 +27,12 @@ const IntroIeum = () => {
           <div className="text-content">
             <span className="section-title">Why<br/>IEUM?</span>
             <p>
-              <b>I</b> - Insight (통찰) : 오장육부 데이터와 QSCC 설문을 분석해 깊은 통찰을 얻습니다.<br/>
-              <b>E</b> - Experience (경험) : 시각화와 웹 서비스를 통해 누구나 쉽게 체질을 체험할 수 있게 합니다.<br/>
-              <b>U</b> - Unity (연결) : 환자와 전문가, 전통의학과 최신기술을 연결합니다.<br/>
+              <b>I</b> - Insight (통찰) : 오장육부 데이터와 QSCC 설문을 분석해 깊은 통찰을 얻습니다.
+              <br/>
+              <b>E</b> - Experience (경험) : 시각화와 웹 서비스를 통해 누구나 쉽게 체질을 체험할 수 있게 합니다.
+              <br/>
+              <b>U</b> - Unity (연결) : 환자와 전문가, 전통의학과 최신기술을 연결합니다.
+              <br/>
               <b>M</b> - Medicine (치유) : 맞춤형 건강 관리와 예방법으로 삶의 질 향상을 돕습니다.
             </p>
           </div>
@@ -39,11 +42,22 @@ const IntroIeum = () => {
         </div>
       </section>
 
-      {/* 세 번째 섹션 (추후 구현) */}
+      {/* 세 번째 섹션 (하얀색 배경) */}
       <section className="intro-section third-section">
         <div className="section-content">
-          <h2 style={{ color: '#fff' }}>세 번째 섹션</h2>
-          <p style={{ color: '#fff' }}>이곳에 내용을 채워 넣을 예정입니다.</p>
+            <div className="text-content">
+                <span className="section-title">Why<br/>Start?</span>
+                <p>
+                  건강 정보를 찾아도 나에게 맞는지 모르겠죠?<br/>
+                  이음은 손바닥 5포인트 측정과 설문을 결합해<br/>
+                  내 체질을 수치로 보여주고,<br/>
+                  그에 맞춘 식사법과 예방 팁을 제시합니다.<br/>
+                  오늘부터 나만의 생활 루틴을 시작해 보세요.
+                </p>
+            </div>
+            <div className="image-content">
+                <img src="/introieum_start.png" alt="건강정보 이미지" className="section-image" />
+            </div>
         </div>
       </section>
     </div>

@@ -17,11 +17,11 @@
 
 .section-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  gap: 100px; /* 로고와 텍스트 사이 간격 */
+  gap: 100px;
 }
 
 /* 첫 번째 섹션 (하얀색 배경) */
@@ -30,79 +30,107 @@
 }
 
 .first-section .section-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px; /* 로고와 텍스트 간의 세로 간격 조정 */
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
 }
 
 .first-section .section-logo-img {
-    height: 120px;
-    margin-bottom: 0; /* 기존 마진 제거 */
+  height: 120px;
 }
 
 .first-section .section-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .first-section p {
-    font-size: 1.2rem;
-    color: #555;
+  font-size: 1.2rem;
+  color: #555;
 }
 
 /* 두 번째 섹션 (연보라색 배경) */
 .second-section {
-  background-color: #DEE4FF; /* 연보라색 배경색 재확인 */
+  background-color: #DEE4FF; /* 연보라색 배경색 */
 }
 
 .second-section .section-content {
-    justify-content: center;
-    gap: 100px;
-    text-align: left;
+  justify-content: center;
+  gap: 100px;
+  text-align: left;
 }
 
 .second-section .text-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 400px;
 }
 
 .second-section .logo-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .second-section .section-logo-img {
-    width: auto;
-    height: 200px;
+  width: auto;
+  height: 200px;
 }
 
 .second-section .section-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.second-section p {
-    font-size: 1.2rem;
-    color: #555;
-}
-
-.third-section {
-  background-color: #000;
-}
-
-.section-title {
   font-size: 3rem;
   font-weight: bold;
   color: #333;
 }
 
-p {
+.second-section p {
   font-size: 1.2rem;
   color: #555;
+}
+
+/* 세 번째 섹션 (하얀색 배경) */
+.third-section {
+  background-color: #fff;
+}
+
+.third-section .section-content {
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.third-section .text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.third-section .text-content .section-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.third-section .text-content p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.third-section .image-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.third-section .section-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

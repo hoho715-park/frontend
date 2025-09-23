@@ -1,4 +1,4 @@
-/* src/pages/InputMeasure.css */
+/* src/pages/InputMeasure.css (전체 코드) */
 
 .input-measure-page-container {
   display: flex;
@@ -21,6 +21,7 @@
 }
 
 .organ-nav-item {
+  position: relative;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 20px;
@@ -28,6 +29,9 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s;
+  display: flex; /* 아이콘과 텍스트를 나란히 배치 */
+  align-items: center;
+  gap: 8px; /* 텍스트와 아이콘 사이 간격 */
 }
 
 .organ-nav-item:hover {
@@ -39,6 +43,17 @@
   color: #fff;
   border-color: #6a5acd;
 }
+
+/* 메뉴 체크 아이콘 스타일 */
+.check-icon-menu {
+  color: #4CAF50;
+  font-size: 1.2rem;
+}
+
+.organ-nav-item.active .check-icon-menu {
+  color: #fff;
+}
+
 
 /* 입력 컨테이너 스타일 */
 .organ-input-container {
@@ -83,7 +98,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #4CAF50; /* 연두색 체크 아이콘 */
+  color: #4CAF50;
   font-size: 3rem;
   z-index: 10;
 }
@@ -122,6 +137,16 @@
   font-size: 1rem;
   text-align: center;
   width: 150px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-with-button input:hover {
+  border-color: #6a5acd;
+}
+
+.input-with-button input:focus {
+  border-color: #6a5acd;
+  box-shadow: 0 0 5px rgba(106, 90, 205, 0.5);
 }
 
 .submit-button {

@@ -7,6 +7,13 @@
   min-height: 100vh;
   padding-top: 80px;
   background-color: #f0f2f5;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* 페이지 전환 애니메이션 */
+.input-measure-page-container.page-transition {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 /* 네비게이션 메뉴 스타일 */
@@ -29,9 +36,9 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s;
-  display: flex; /* 아이콘과 텍스트를 나란히 배치 */
+  display: flex;
   align-items: center;
-  gap: 8px; /* 텍스트와 아이콘 사이 간격 */
+  gap: 8px;
 }
 
 .organ-nav-item:hover {

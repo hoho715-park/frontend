@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import { FaCheckCircle } from 'react-icons/fa';
-import { FaCheck } from 'react-icons/fa'; // 체크 아이콘 import
+import { FaCheckCircle, FaCheck } from 'react-icons/fa'; // 체크 아이콘 import
 import './InputMeasure.css';
 
 const organs = [
@@ -26,14 +25,17 @@ const InputMeasure = () => {
   const [isRightCompleted, setIsRightCompleted] = useState(false);
   const [isLeftHandShaking, setIsLeftHandShaking] = useState(false);
   const [isRightHandShaking, setIsRightHandShaking] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false); // 페이지 전환 상태 추가
 
   const currentOrgan = organs[currentOrganIndex];
 
   useEffect(() => {
+    // 장기가 바뀔 때마다 입력값과 완료 상태 초기화
     setLeftHandValue('');
     setRightHandValue('');
     setIsLeftCompleted(false);
     setIsRightCompleted(false);
+    setIsTransitioning(false); // 전환이 끝나면 상태 초기화
   }, [currentOrganIndex]);
 
   const handleValueChange = (e, hand) => {
@@ -75,7 +77,11 @@ const InputMeasure = () => {
 
       if (isLeftCompleted) {
         if (currentOrganIndex < organs.length - 1) {
-          setCurrentOrganIndex(prevIndex => prevIndex + 1);
+          setIsTransitioning(true); // 애니메이션 시작
+          setTimeout(() => {
+            setCurrentOrganIndex(prevIndex => prevIndex + 1);
+            setIsTransitioning(false);
+          }, 500); // 애니메이션 시간만큼 지연
         } else {
           alert('모든 장기 입력이 완료되었습니다!');
           // navigate('/results', { state: { formData: newFormData } }); // 팝업창 이후에 연결 예정
@@ -89,7 +95,8 @@ const InputMeasure = () => {
   return (
     <>
       <Header />
-      <div className="input-measure-page-container">
+      {/* 페이지 전환 클래스 추가 */}
+      <div className={`input-measure-page-container ${isTransitioning ? 'page-transition' : ''}`}>
         <nav className="organ-nav-menu">
           {organs.map((organ, index) => (
             <button

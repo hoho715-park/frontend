@@ -1,11 +1,13 @@
-/* src/pages/IntroIeum.css */
+/* src/pages/IntroIeum.css (수정) */
 
+/* 전체 페이지 컨테이너 */
 .intro-page-container {
   display: flex;
   flex-direction: column;
   padding-top: 80px;
 }
 
+/* 모든 섹션의 공통 스타일 */
 .intro-section {
   display: flex;
   justify-content: center;
@@ -15,7 +17,8 @@
   box-sizing: border-box;
 }
 
-.section-content {
+/* 섹션 콘텐츠 공통 스타일 */
+.section-content, .section-content-why {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,113 +27,150 @@
   gap: 100px;
 }
 
-/* 첫 번째 섹션 (하얀색 배경) */
-.first-section {
-  background-color: #fff;
-}
+/* 첫 번째 섹션 */
+.first-section { background-color: #fff; }
+.first-section .section-content { flex-direction: column; text-align: center; gap: 20px; }
+.first-section .section-logo-img { height: 120px; }
+.first-section .section-title { font-size: 2.5rem; font-weight: bold; margin-bottom: 10px; }
+.first-section p { font-size: 1.2rem; color: #555; }
 
-.first-section .section-content {
+/* 두 번째 섹션 */
+.second-section { background-color: #DEE4FF; }
+.second-section .section-content-why {
   flex-direction: column;
   text-align: center;
+  gap: 20px; /* 제목과 내용 사이의 세로 간격을 좁힘 */
+}
+.second-section .why-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+.second-section .why-title { font-size: 3rem; font-weight: bold; margin-bottom: 50px; }
+.second-section .why-text-box { text-align: left; }
+.second-section .why-text-box p { font-size: 1.2rem; color: #555; line-height: 1.6; }
+.second-section .why-logo-box .why-logo-img { height: 200px; width: auto; }
+
+/* 세 번째 섹션 */
+.third-section { background-color: #fff; }
+.third-section .section-content { justify-content: space-between; gap: 50px; }
+.third-section .text-content { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.third-section .text-content .section-title { font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 20px; }
+.third-section .text-content p { font-size: 1.2rem; color: #555; line-height: 1.6; }
+.third-section .image-content { flex: 1; display: flex; justify-content: center; align-items: center; }
+.third-section .section-image { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+
+/* 네 번째 섹션 (수정된 디자인) */
+.fourth-section {
+  background-color: #DEE4FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.about-logo-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.logo-description-wrapper {
+  display: grid;
+  grid-template-areas:
+    "tl logo tr"
+    "bl logo br";
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
   gap: 20px;
+  width: 100%;
 }
 
-.first-section .section-logo-img {
-  height: 120px;
-}
-
-.first-section .section-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.first-section p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-/* 두 번째 섹션 (연보라색 배경) */
-.second-section {
-  background-color: #DEE4FF; /* 연보라색 배경색 */
-}
-
-.second-section .section-content {
-  justify-content: center;
-  gap: 100px;
-  text-align: left;
-}
-
-.second-section .text-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 400px;
-}
-
-.second-section .logo-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.second-section .section-logo-img {
-  width: auto;
-  height: 200px;
-}
-
-.second-section .section-title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.second-section p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-/* 세 번째 섹션 (하얀색 배경) */
-.third-section {
-  background-color: #fff;
-}
-
-.third-section .section-content {
-  justify-content: space-between;
-  gap: 50px;
-}
-
-.third-section .text-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.third-section .text-content .section-title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.third-section .text-content p {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-.third-section .image-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.third-section .section-image {
-  max-width: 100%;
+.about-logo-image {
+  grid-area: logo;
+  width: 250px;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-description {
+  text-align: center;
+  padding: 10px;
+}
+
+.logo-description.top-left {
+  grid-area: tl;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.logo-description.top-right {
+  grid-area: tr;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.logo-description.bottom-left {
+  grid-area: bl;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.logo-description.bottom-right {
+  grid-area: br;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.icon-title-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 아이콘을 제목 오른쪽에 배치 */
+    gap: 5px;
+}
+.logo-description.top-right .icon-title-group,
+.logo-description.bottom-right .icon-title-group {
+    justify-content: flex-start; /* 오른쪽 정렬 */
+}
+
+.infinite-icon {
+  width: 30px;
+  height: 30px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+}
+.color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.color-box.violet { background-color: #8a7acd; }
+.color-box.green { background-color: #03c75a; }
+.item-title { font-weight: bold; }
+
+.green_text {
+    color: #3A6F43;
+    font-weight: bold;
+}
+.purple_text {
+    color: #92338d;
+    font-weight: bold;
 }

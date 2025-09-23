@@ -63,20 +63,75 @@
   color: #333;
 }
 
-/* 손 이미지 크기 조정 */
-.hand-input-img {
-  width: 200px; /* 크기를 200px로 키움 */
+/* 손 이미지 컨테이너 */
+.hand-image-wrapper {
+  position: relative;
+  width: 200px;
   height: auto;
   margin: 10px 0;
+  transition: opacity 0.5s;
 }
 
-.input-field-group input {
+/* 완료 상태 시 이미지 흐리게 */
+.hand-image-wrapper.completed .hand-input-img {
+  opacity: 0.5;
+}
+
+/* 체크 아이콘 스타일 */
+.check-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #4CAF50; /* 연두색 체크 아이콘 */
+  font-size: 3rem;
+  z-index: 10;
+}
+
+/* 손 이미지 애니메이션 */
+.hand-input-img {
+  width: 200px;
+  height: auto;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+.hand-input-img.shaking {
+  animation-name: shake;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+.input-with-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-with-button input {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   text-align: center;
   width: 150px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #8a7acd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .organ-display-box {

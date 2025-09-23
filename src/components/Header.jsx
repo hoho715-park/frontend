@@ -38,7 +38,7 @@ const Header = () => {
         {navItems.map((item) => (
           <li key={item.name} className="nav-item" onMouseEnter={() => handleMouseEnter(item.name)} onMouseLeave={handleMouseLeave}>
             <span className="nav-link">{item.name}</span>
-            {item.subItems && (
+            {item.subItems ? (
               <ul className={`dropdown-menu ${activeMenu === item.name ? 'visible' : ''}`}>
                 {item.subItems.map((subItem) => (
                   <li key={subItem.name} className="dropdown-item">
@@ -46,7 +46,7 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
-            )}
+            ) : null}
             {!item.subItems && activeMenu === item.name && (
                 <div className="underline"></div>
             )}

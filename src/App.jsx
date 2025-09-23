@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import MainPage from './pages/MainPage.jsx';
 import Login from './pages/Login.jsx';
-import SignUp from './pages/SignUp.jsx'; // SignUp 컴포넌트 추가
+import IntroIeum from './pages/IntroIeum.jsx'; // IntroIeum 컴포넌트 import
 
 function App() {
   return (
@@ -17,7 +17,12 @@ function App() {
         </>
       } />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} /> {/* SignUp 라우트 추가 */}
+      <Route path="/about/ieum" element={ // 라우트 추가
+        <>
+          <Header />
+          <IntroIeum />
+        </>
+      } />
     </Routes>
   );
 }

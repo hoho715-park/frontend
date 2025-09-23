@@ -1,0 +1,63 @@
+/* src/pages/Input.css */
+
+.input-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 80px; /* 헤더 높이만큼 여백 */
+  background-color: #f0f2f5; /* 배경색 설정 */
+}
+
+.input-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.input-image-box {
+  width: 400px;
+  height: auto;
+}
+
+.input-hand-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.input-text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.input-description {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.input-start-button {
+  padding: 15px 30px;
+  background-color: #8a7acd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-start-button:hover {
+  background-color: #7a6ac0;
+}

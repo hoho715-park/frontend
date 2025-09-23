@@ -7,7 +7,7 @@ import './Header.css';
 const navItems = [
   { name: 'About Us', subItems: [{ name: '이음 소개', path: '/about/ieum' }, { name: '서비스 소개', path: '/about/service' }] },
   { name: 'Test', subItems: [{ name: 'QSCC-II 설문', path: '/test/qsc-survey' }, { name: 'QSCC-II 소개', path: '/test/qsc-intro' }] },
-  { name: 'Input', path: '/input' },
+  { name: 'Input', path: '/input' }, // 경로 수정
   { name: 'AI Chat', path: '/aichat' },
   { name: 'More', subItems: [{ name: '자료실', path: '/more/archive' }, { name: '커뮤니티', path: '/more/community' }, { name: '문의 사항', path: '/more/inquiry' }] },
 ];
@@ -24,7 +24,7 @@ const Header = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-    }, 200); // 200ms (0.2초) 지연 후 메뉴를 닫습니다.
+    }, 200);
   };
 
   return (
@@ -37,8 +37,8 @@ const Header = () => {
       <ul className="menubar-nav">
         {navItems.map((item) => (
           <li key={item.name} className="nav-item" onMouseEnter={() => handleMouseEnter(item.name)} onMouseLeave={handleMouseLeave}>
-            <span className="nav-link">{item.name}</span>
-            {item.subItems ? (
+            <Link to={item.path} className="nav-link">{item.name}</Link>
+            {item.subItems && (
               <ul className={`dropdown-menu ${activeMenu === item.name ? 'visible' : ''}`}>
                 {item.subItems.map((subItem) => (
                   <li key={subItem.name} className="dropdown-item">
@@ -46,7 +46,7 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
-            ) : null}
+            )}
             {!item.subItems && activeMenu === item.name && (
                 <div className="underline"></div>
             )}

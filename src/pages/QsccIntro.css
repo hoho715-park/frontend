@@ -1,4 +1,4 @@
-/* src/pages/QsccIntro.css */
+/* src/pages/QsccIntro.css (전체 코드) */
 
 .qscc-intro-container {
   display: flex;
@@ -115,4 +115,10 @@
   height: 100%;
   background-color: #6a5acd;
   transition: width 0.5s ease-in-out;
+}
+
+/* 형광펜 효과 */
+.highlight {
+    background-color: #f7ff93; /* 형광펜 색상 */
+    padding: 2px;
 }

@@ -1,4 +1,4 @@
-/* src/pages/MainPage.css */
+/* src/pages/MainPage.css (전체 코드) */
 
 .main-page-hero {
   width: 100vw;
@@ -52,11 +52,13 @@
   height: 60px;
   cursor: pointer;
   perspective: 1000px;
-  transition: width 0.3s ease; /* 확장될 때 부드럽게 */
+  transition: width 0.3s ease;
+  z-index: 2;
+  --expanded-button-width: 500px;
 }
 
 .test-button-wrapper:hover {
-  width: 500px; /* 마우스 오버 시 가로 크기 확장 */
+  width: var(--expanded-button-width);
 }
 
 .test-button-main, .test-button-expand {
@@ -107,25 +109,101 @@
 .expand-buttons a {
   flex: 1;
   text-align: center;
-  padding: 15px 30px; /* 패딩 조정 */
+  padding: 15px 30px;
   font-size: 0.9rem;
   font-weight: bold;
   text-decoration: none;
   color: #fff;
   transition: all 0.3s ease;
   white-space: nowrap;
+  position: relative;
 }
 
 .expand-button-1 {
-  background-color: #4CAF50; /* 초록색 버튼 */
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 15px 30px;
   border-radius: 5px 0 0 5px;
 }
 
 .expand-button-2 {
-  background-color: #8A7ACD; /* 보라색 버튼 */
+  background-color: #8A7ACD;
+  color: #fff;
+  padding: 15px 30px;
   border-radius: 0 5px 5px 0;
 }
 
 .expand-buttons a:hover {
-  filter: brightness(1.1); /* 호버 시 약간 밝아지는 효과 */
+  filter: brightness(1.1);
+}
+
+/* 이미지 애니메이션 */
+/* 중요: 이미지가 이제는 .test-button-wrapper 내에서 직접적으로 위치를 잡게 됩니다. */
+.button-icon-survey, .button-icon-hand {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  z-index: 10;
+  top: 50%; /* 버튼 세로 중앙에 위치하도록 */
+  transform: translateY(-50%); /* 정확한 세로 중앙 정렬 */
+}
+
+/* QSCC 설문 이미지 위치 조정 */
+.button-icon-survey {
+  left: -40px; /* QSCC 설문 버튼 왼쪽 외부 (버튼 래퍼의 왼쪽 기준) */
+  animation: popInAndShakeLeft 1s ease-in-out; /* 새로운 애니메이션 적용 */
+}
+
+/* 손바닥 장기 수치 이미지 위치 조정 */
+.button-icon-hand {
+  right: -40px; /* 손바닥 장기 수치 버튼 오른쪽 외부 (버튼 래퍼의 오른쪽 기준) */
+  animation: popInAndShakeRight 1s ease-in-out; /* 새로운 애니메이션 적용 */
+}
+
+/* QSCC 설문 이미지 애니메이션 (왼쪽 흔들림) */
+@keyframes popInAndShakeLeft {
+  0% {
+    transform: translateY(-50%) translateX(-100px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translateX(0) scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  80%, 90% {
+    transform: translateY(-50%) translateX(-10px) scale(1); /* 왼쪽으로 흔들림 */
+  }
+  85%, 95% {
+    transform: translateY(-50%) translateX(10px) scale(1); /* 오른쪽으로 흔들림 */
+  }
+  100% {
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+}
+
+/* 손바닥 장기 수치 이미지 애니메이션 (오른쪽 흔들림) */
+@keyframes popInAndShakeRight {
+  0% {
+    transform: translateY(-50%) translateX(100px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translateX(0) scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  80%, 90% {
+    transform: translateY(-50%) translateX(10px) scale(1); /* 오른쪽으로 흔들림 */
+  }
+  85%, 95% {
+    transform: translateY(-50%) translateX(-10px) scale(1); /* 왼쪽으로 흔들림 */
+  }
+  100% {
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
 }

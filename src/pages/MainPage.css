@@ -8,7 +8,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #333333;
+  
+  /* 배경 이미지 설정 */
+  background-image: url('/main_hero_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
   color: #fff;
   position: relative;
   z-index: 1;
@@ -138,72 +144,48 @@
 }
 
 /* 이미지 애니메이션 */
-/* 중요: 이미지가 이제는 .test-button-wrapper 내에서 직접적으로 위치를 잡게 됩니다. */
 .button-icon-survey, .button-icon-hand {
   position: absolute;
   width: 80px;
   height: auto;
   z-index: 10;
-  top: 50%; /* 버튼 세로 중앙에 위치하도록 */
-  transform: translateY(-50%); /* 정확한 세로 중앙 정렬 */
 }
 
 /* QSCC 설문 이미지 위치 조정 */
 .button-icon-survey {
-  left: -40px; /* QSCC 설문 버튼 왼쪽 외부 (버튼 래퍼의 왼쪽 기준) */
-  animation: popInAndShakeLeft 1s ease-in-out; /* 새로운 애니메이션 적용 */
+  top: -20px;
+  left: 0;
 }
 
 /* 손바닥 장기 수치 이미지 위치 조정 */
 .button-icon-hand {
-  right: -40px; /* 손바닥 장기 수치 버튼 오른쪽 외부 (버튼 래퍼의 오른쪽 기준) */
-  animation: popInAndShakeRight 1s ease-in-out; /* 새로운 애니메이션 적용 */
+  top: -20px;
+  right: 0;
 }
 
-/* QSCC 설문 이미지 애니메이션 (왼쪽 흔들림) */
-@keyframes popInAndShakeLeft {
+.animating {
+  animation: popInAndShake 1s ease-in-out;
+}
+
+@keyframes popInAndShake {
   0% {
-    transform: translateY(-50%) translateX(-100px) scale(0);
+    transform: scale(0);
     opacity: 0;
   }
   50% {
-    transform: translateY(-50%) translateX(0) scale(1.2);
+    transform: scale(1.2);
     opacity: 1;
   }
   75% {
-    transform: translateY(-50%) translateX(0) scale(1);
+    transform: scale(1);
   }
   80%, 90% {
-    transform: translateY(-50%) translateX(-10px) scale(1); /* 왼쪽으로 흔들림 */
+    transform: translateX(-5px) scale(1);
   }
   85%, 95% {
-    transform: translateY(-50%) translateX(10px) scale(1); /* 오른쪽으로 흔들림 */
+    transform: translateX(5px) scale(1);
   }
   100% {
-    transform: translateY(-50%) translateX(0) scale(1);
-  }
-}
-
-/* 손바닥 장기 수치 이미지 애니메이션 (오른쪽 흔들림) */
-@keyframes popInAndShakeRight {
-  0% {
-    transform: translateY(-50%) translateX(100px) scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(-50%) translateX(0) scale(1.2);
-    opacity: 1;
-  }
-  75% {
-    transform: translateY(-50%) translateX(0) scale(1);
-  }
-  80%, 90% {
-    transform: translateY(-50%) translateX(10px) scale(1); /* 오른쪽으로 흔들림 */
-  }
-  85%, 95% {
-    transform: translateY(-50%) translateX(-10px) scale(1); /* 왼쪽으로 흔들림 */
-  }
-  100% {
-    transform: translateY(-50%) translateX(0) scale(1);
+    transform: translateX(0) scale(1);
   }
 }

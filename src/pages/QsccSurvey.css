@@ -1,0 +1,60 @@
+/* src/pages/QsccSurvey.css */
+
+.qsc-survey-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 40px;
+  background-color: #f0f2f5;
+}
+
+.qsc-main-hero {
+  position: relative;
+  width: 987px;
+  height: 554px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.qsc-hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.start-test-button {
+  padding: 15px 120px;
+  background-color: #8a7acd;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.start-test-button:hover {
+  background-color: #7a6ac0;
+}
+
+.intro-link-text {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-top: -15px;
+}
+
+.intro-link-text:hover {
+  color: #6a5acd;
+  text-decoration: underline;
+}

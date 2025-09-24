@@ -7,7 +7,7 @@ import './Header.css';
 const navItems = [
   { name: 'About Us', subItems: [{ name: '이음 소개', path: '/about/ieum' }, { name: '서비스 소개', path: '/about/service' }] },
   { name: 'Test', subItems: [{ name: 'QSCC-II 설문', path: '/test/qsc-survey' }, { name: 'QSCC-II 소개', path: '/test/qsc-intro' }] },
-  { name: 'Input', path: '/input' }, // 경로 수정
+  { name: 'Input', path: '/input' },
   { name: 'AI Chat', path: '/aichat' },
   { name: 'More', subItems: [{ name: '자료실', path: '/more/archive' }, { name: '커뮤니티', path: '/more/community' }, { name: '문의 사항', path: '/more/inquiry' }] },
 ];

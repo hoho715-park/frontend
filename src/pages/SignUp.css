@@ -34,43 +34,18 @@
   margin-bottom: 20px;
 }
 
-/* 입력 필드와 정보 텍스트, 체크 아이콘을 감싸는 컨테이너 */
-.field-container, .phone-field-container {
+.input-field-wrapper {
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  gap: 10px; /* 요소들 사이의 간격 */
-}
-
-/* 추가 정보 (영문, 숫자만 사용)와 체크 아이콘을 감싸는 컨테이너 */
-.additional-info {
-  display: flex;
-  align-items: center;
-  gap: 5px; /* 텍스트와 체크 아이콘 사이 간격 */
-  flex-shrink: 0; /* 크기가 줄어들지 않도록 설정 */
+  margin-bottom: 5px; /* 간격 축소 */
 }
 
 .input-group {
   position: relative;
-  flex-grow: 1; /* 남은 공간을 채우도록 설정 */
-}
-
-.info-text {
-  color: #888;
-  font-size: 0.9rem;
-  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 */
-}
-
-.password-info {
-    white-space: normal; /* 비밀번호 정보는 줄바꿈 허용 */
-    max-width: 150px; /* 특정 너비 이상으로 늘어나지 않도록 */
-}
-
-
-.check-icon {
-  color: #6a5acd;
-  font-size: 1.1rem;
+  width: 100%;
+  margin-bottom: 5px; /* 간격 축소 */
 }
 
 .input-group input {
@@ -88,6 +63,17 @@
   border-color: #6a5acd;
 }
 
+.info-text {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* 체크 아이콘 관련 스타일 제거 */
+.check-icon {
+  display: none;
+}
+
 .input-icon {
   position: absolute;
   left: 15px;
@@ -100,13 +86,14 @@
 .gender-group {
   display: flex;
   align-items: center;
-  margin-bottom: 15px; /* 추가 */
+  margin-bottom: 15px;
+  justify-content: center;
+  gap: 10px;
 }
 
 .gender-buttons {
   display: flex;
   gap: 10px;
-  margin-left: 40px;
 }
 
 .gender-button {
@@ -123,7 +110,18 @@
   border-color: #6a5acd;
 }
 
-.phone-field-container .cert-button {
+.phone-field-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.phone-group {
+  flex-grow: 1;
+}
+
+.cert-button {
   padding: 10px 15px;
   border: 1px solid #6a5acd;
   border-radius: 8px;
@@ -134,10 +132,10 @@
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.2s, color 0.2s;
-  flex-shrink: 0; /* 인증하기 버튼이 줄어들지 않도록 */
+  flex-shrink: 0;
 }
 
-.phone-field-container .cert-button:hover {
+.cert-button:hover {
   background-color: #6a5acd;
   color: #fff;
 }

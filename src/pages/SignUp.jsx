@@ -19,38 +19,27 @@ const SignUp = () => {
         {/* 입력 필드 그룹 */}
         <div className="form-section">
           {/* 아이디 입력 필드 */}
-          <div className="field-container"> {/* 새로운 컨테이너 추가 */}
+          <div className="input-field-wrapper">
             <div className="input-group">
               <FaRegIdBadge className="input-icon" />
               <input type="text" placeholder="아이디" />
             </div>
-            <div className="additional-info">
-                <span className="info-text">영문, 숫자만 사용</span>
-                <span className="check-icon">✓</span>
-            </div>
+            <span className="info-text">영문, 숫자만 사용</span>
           </div>
 
           {/* 비밀번호 입력 필드 */}
-          <div className="field-container"> {/* 새로운 컨테이너 추가 */}
+          <div className="input-field-wrapper">
             <div className="input-group">
               <FaLock className="input-icon" />
               <input type="password" placeholder="비밀번호" />
             </div>
-            <div className="additional-info">
-                <span className="info-text password-info">영문, 숫자, 특수기호 혼합 8자리 이상</span>
-                <span className="check-icon">✓</span>
-            </div>
+            <span className="info-text">영문, 숫자, 특수기호 혼합 8자리 이상</span>
           </div>
 
           {/* 비밀번호 확인 입력 필드 */}
-          <div className="field-container"> {/* 새로운 컨테이너 추가 */}
-            <div className="input-group">
-              <FaLock className="input-icon" />
-              <input type="password" placeholder="비밀번호 확인" />
-            </div>
-            <div className="additional-info">
-                <span className="check-icon">✓</span>
-            </div>
+          <div className="input-group">
+            <FaLock className="input-icon" />
+            <input type="password" placeholder="비밀번호 확인" />
           </div>
 
           {/* 이름 입력 필드 */}
@@ -91,7 +80,7 @@ const SignUp = () => {
           </div>
           
           {/* 휴대전화번호 입력 필드 */}
-          <div className="phone-field-container"> {/* 새로운 컨테이너 추가 */}
+          <div className="phone-field-container">
             <div className="input-group phone-group">
               <FaMobileAlt className="input-icon" />
               <input type="tel" placeholder="휴대전화번호" />

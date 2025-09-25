@@ -14,7 +14,7 @@
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 1100px;
+  width: 1100px; /* 4지 선다형 문제에 맞게 너비 확장 */
   min-height: 600px;
   padding: 40px;
   display: flex;
@@ -42,13 +42,13 @@
 .options-container {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 20px; /* 카드 간격 조정 */
   margin-top: 20px;
   width: 100%;
 }
 
 .option-card {
-  width: 300px;
+  width: 250px; /* 4개 카드가 적절히 배치되도록 조정 */
   background-color: #fff;
   border: 2px solid #ddd;
   border-radius: 15px;
@@ -90,10 +90,23 @@
   margin-bottom: 10px;
 }
 
+/* 구분선 스타일 */
+.option-divider {
+    width: 80%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 10px 0;
+}
+
 .option-description {
   font-size: 0.9rem;
   color: #888;
   line-height: 1.4;
+}
+
+.option-description p {
+    margin: 0;
+    padding: 0;
 }
 
 .navigation-footer {
@@ -104,23 +117,26 @@
   width: 100%;
 }
 
-.nav-arrow {
+.nav-arrow,
+.nav-arrow-placeholder {
   padding: 0;
-  width: 30px;
+  width: 30px; 
   height: 30px;
-  background-color: #f8f8f8;
-  color: #555;
-  border: 1px solid #ddd;
-  border-radius: 50%; /* 원 형태로 */
-  font-size: 1.2rem;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: none; /* hover 효과 제거 */
 }
 
-/* 수정사항 1: hover 효과 제거 (transition: none으로 이미 제거) */
+.nav-arrow {
+  background-color: #f8f8f8;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: none;
+}
+
 .nav-arrow:hover {
   background-color: #f8f8f8;
   color: #555;
@@ -133,10 +149,10 @@
 
 .pager-wrapper {
     display: flex;
-    justify-content: center; /* 페이저를 가운데로 */
+    justify-content: center;
     align-items: center;
-    gap: 10px; /* 화살표와 원 사이의 간격 */
     flex-grow: 1;
+    gap: 10px;
 }
 
 .pager {
@@ -160,16 +176,16 @@
 
 /* 색상 지정 */
 .pager-dot {
-    background-color: #DDDDDD; /* 미완료 */
+    background-color: #DDDDDD; 
 }
 
 .pager-dot.answered {
-    background-color: #59A288; /* 완료 */
+    background-color: #59A288; 
     color: #fff;
 }
 
 .pager-dot.active {
-    background-color: #EDA35A; /* 현재 문제 */
+    background-color: #EDA35A; 
     color: #fff;
 }
 

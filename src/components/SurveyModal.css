@@ -1,0 +1,123 @@
+/* src/components/SurveyModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.modal-content {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 450px;
+  text-align: center;
+}
+
+/* 완료 팝업 스타일 */
+.modal-content.complete {
+    padding: 60px 40px;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modal-title.incomplete {
+    color: #DA5757; /* 미응답 경고 색상 */
+}
+
+.modal-title.complete {
+    color: #4CAF50; /* 완료 색상 */
+}
+
+.modal-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.unanswered-list {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.unanswered-item {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 5px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.unanswered-item:hover {
+  background-color: #ddd;
+}
+
+.modal-close-button {
+  padding: 10px 20px;
+  background-color: #888;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.modal-close-button:hover {
+  background-color: #666;
+}
+
+.modal-close-button.small {
+    background-color: #ccc;
+    color: #333;
+    width: 40%;
+}
+.modal-close-button.small:hover {
+    background-color: #bbb;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.result-button {
+  padding: 12px 30px;
+  background-color: #6a5acd; /* 결과보기 버튼 색상 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  width: 55%;
+}
+
+.result-button:hover {
+  background-color: #5544b3;
+}

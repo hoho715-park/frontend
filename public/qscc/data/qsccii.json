@@ -27,7 +27,7 @@
           "label": "체격이 큰 편이다.",
           "desc": ["나는 어깨가 넓고 뼈대가 굵은 편이에요."],
           "image": {
-            "src": "/qscc/images/10a.jfif",
+            "src": "/qscc/images/2a.png",
             "alt": "체격이 큰 편이다."
           },
           "scores": {}
@@ -37,7 +37,7 @@
           "label": "보통이다.",
           "desc": ["나는 평균적인 체격이에요."],
           "image": {
-            "src": "/qscc/images/1b.jfif",
+            "src": "/qscc/images/2b.png",
             "alt": "보통이다"
           },
           "scores": {}
@@ -47,7 +47,7 @@
           "label": "체격이 작은 편이다.",
           "desc": ["나는 뼈대가 가늘고 전체적으로 슬림한 편이에요."],
           "image": {
-            "src": "/qscc/images/1c.jfif",
+            "src": "/qscc/images/2c.png",
             "alt": "체격이 작은 편이다."
           },
           "scores": {}
@@ -66,7 +66,7 @@
           "label": "뚱뚱한 편이다.",
           "desc": ["나는 살집이 있고 몸 라인이 둥근 편이에요."],
           "image": {
-            "src": "/qscc/images/2aa.png",
+            "src": "/qscc/images/2a.png",
             "alt": "뚱뚱한 편이다."
           },
           "scores": {}
@@ -76,7 +76,7 @@
           "label": "보통이다.",
           "desc": ["나는 평균적인 체형이에요."],
           "image": {
-            "src": "/qscc/images/2bb.png",
+            "src": "/qscc/images/2b.png",
             "alt": "보통이다."
           },
           "scores": {}
@@ -86,7 +86,7 @@
           "label": "마른 편이다.",
           "desc": ["나는 살이 잘 안 붙고 팔다리가 가는 편이에요."],
           "image": {
-            "src": "/qscc/images/2cc.png",
+            "src": "/qscc/images/2c.png",
             "alt": "마른 편이다."
           },
           "scores": {}
@@ -139,7 +139,7 @@
       "options": [
         {
           "id": "A",
-          "label": "  ",
+          "label": "목덜미 부위가 잘 발달하고 허리 부위가 빈약하다.",
           "desc": ["나는 어깨·목덜미가 두툼하고, 허리가 잘록하지 않아요."],
           "image": {
             "src": "/qscc/images/4a.jfif",

@@ -104,19 +104,39 @@
   width: 100%;
 }
 
-.prev-button {
-  padding: 10px 20px;
-  background-color: #ddd;
+.nav-arrow {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #f8f8f8;
   color: #555;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 50%; /* 원 형태로 */
+  font-size: 1.2rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: none; /* hover 효과 제거 */
 }
 
-.prev-button:disabled {
+/* 수정사항 1: hover 효과 제거 (transition: none으로 이미 제거) */
+.nav-arrow:hover {
+  background-color: #f8f8f8;
+  color: #555;
+}
+
+.nav-arrow:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.pager-wrapper {
+    display: flex;
+    justify-content: center; /* 페이저를 가운데로 */
+    align-items: center;
+    gap: 10px; /* 화살표와 원 사이의 간격 */
+    flex-grow: 1;
 }
 
 .pager {
@@ -153,10 +173,19 @@
     color: #fff;
 }
 
+.progress-counter-and-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
 .progress-counter {
   font-size: 1rem;
   font-weight: bold;
   color: #6a5acd;
+  margin-bottom: 10px;
 }
 
 .progress-bar-container {
@@ -165,7 +194,6 @@
   height: 10px;
   background-color: #e0e0e0;
   border-radius: 5px;
-  margin-top: 30px;
   overflow: hidden;
 }
 

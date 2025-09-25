@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* 다른 요소 위에 표시 */
+  z-index: 2000;
 }
 
 .modal-content {
@@ -20,6 +20,27 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   width: 450px;
   text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close-x-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s;
+}
+
+.modal-close-x-button:hover {
+  color: #333;
 }
 
 /* 완료 팝업 스타일 */
@@ -27,18 +48,36 @@
     padding: 60px 40px;
 }
 
+/* 아이콘 Wrapper */
+.icon-wrapper {
+  margin-bottom: 20px;
+}
+
+/* 경고 아이콘 스타일 */
+.warning-icon {
+  color: #DA5757;
+  font-size: 3.5rem;
+}
+
+/* 폭죽 아이콘 스타일 */
+.confetti-icon {
+  font-size: 3.5rem; /* 아이콘 크기 통일 */
+  display: block; /* 텍스트 아이콘이므로 중앙 정렬 */
+}
+
 .modal-title {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .modal-title.incomplete {
-    color: #DA5757; /* 미응답 경고 색상 */
+    color: #333;
 }
 
 .modal-title.complete {
-    color: #4CAF50; /* 완료 색상 */
+    color: #4CAF50;
 }
 
 .modal-subtitle {
@@ -51,7 +90,7 @@
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; 
   gap: 10px;
   max-height: 150px;
   overflow-y: auto;
@@ -61,7 +100,7 @@
 .unanswered-item {
   background-color: #f7f7f7;
   border: 1px solid #ddd;
-  color: #333;
+  color: #DA5757;
   padding: 5px 12px;
   border-radius: 15px;
   cursor: pointer;
@@ -73,49 +112,39 @@
   background-color: #ddd;
 }
 
-.modal-close-button {
-  padding: 10px 20px;
-  background-color: #888;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 10px;
-  transition: background-color 0.2s;
-  width: 100%;
-}
-
-.modal-close-button:hover {
-  background-color: #666;
-}
-
-.modal-close-button.small {
-    background-color: #ccc;
-    color: #333;
-    width: 40%;
-}
-.modal-close-button.small:hover {
-    background-color: #bbb;
-}
-
-.modal-actions {
+/* 버튼들을 감싸는 컨테이너 */
+.modal-actions,
+.modal-actions-single {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
     margin-top: 20px;
+    width: 100%;
+}
+
+.modal-button, .result-button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 60%; /* 버튼 너비 조정 */
+}
+
+.modal-button.primary-button {
+    background-color: #6a5acd; 
+    color: white;
+}
+.modal-button.primary-button:hover {
+    background-color: #5544b3;
 }
 
 .result-button {
-  padding: 12px 30px;
-  background-color: #6a5acd; /* 결과보기 버튼 색상 */
+  background-color: #6a5acd;
   color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: background-color 0.2s;
-  width: 55%;
+  width: 60%;
 }
 
 .result-button:hover {

@@ -1,0 +1,1705 @@
+{
+  "version": "1.0",
+  "title": "QSCC-II",
+  "types": [
+    "태양인",
+    "태음인",
+    "소양인",
+    "소음인"
+  ],
+  "scoring": {
+    "method": "sum",
+    "tieBreaker": [
+      "태양인",
+      "태음인",
+      "소양인",
+      "소음인"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "title": "Q1.",
+      "text": "당신의 체격은 어떻습니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "체격이 큰 편이다.",
+          "desc": ["나는 어깨가 넓고 뼈대가 굵은 편이에요."],
+          "image": {
+            "src": "/qscc/images/10a.jfif",
+            "alt": "체격이 큰 편이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "보통이다.",
+          "desc": ["나는 평균적인 체격이에요."],
+          "image": {
+            "src": "/qscc/images/1b.jfif",
+            "alt": "보통이다"
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "체격이 작은 편이다.",
+          "desc": ["나는 뼈대가 가늘고 전체적으로 슬림한 편이에요."],
+          "image": {
+            "src": "/qscc/images/1c.jfif",
+            "alt": "체격이 작은 편이다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 2,
+      "title": "Q2.",
+
+      "text": "당신의 체형은 어떻습니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "뚱뚱한 편이다.",
+          "desc": ["나는 살집이 있고 몸 라인이 둥근 편이에요."],
+          "image": {
+            "src": "/qscc/images/2aa.png",
+            "alt": "뚱뚱한 편이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "보통이다.",
+          "desc": ["나는 평균적인 체형이에요."],
+          "image": {
+            "src": "/qscc/images/2bb.png",
+            "alt": "보통이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "마른 편이다.",
+          "desc": ["나는 살이 잘 안 붙고 팔다리가 가는 편이에요."],
+          "image": {
+            "src": "/qscc/images/2cc.png",
+            "alt": "마른 편이다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 3,
+      "title": "Q3.",
+      "text": "당신의 체형에서 상하체의 관계는 어떻습니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "상체가 하체에 비하여 발달되어 있다.",
+          "desc": ["나는 어깨가 엉덩이보다 넓고, 티셔츠가 가슴·팔에서 먼저 끼어요."],
+          "image": {
+            "src": "/qscc/images/3a.jfif",
+            "alt": "상체가 하체에 비하여 발달되어 있다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "하체가 상체에 비하여 발달되어 있다.",
+          "desc": ["나는 엉덩이·허벅지가 더 크고, 청바지는 허벅지에서 먼저 끼어요."],
+          "image": {
+            "src": "/qscc/images/3b.jfif",
+            "alt": "하체가 상체에 비하여 발달되어 있다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "상하체가 비슷하다.",
+          "desc": ["나는 어깨와 엉덩이 너비가 비슷하고, 상·하의가 같은 사이즈예요."],
+          "image": {
+            "src": "/qscc/images/3c.jfif",
+            "alt": "상하체가 비슷하다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 4,
+      "title": "Q4.",
+      "text": "다음중 당신의 체형은 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "  ",
+          "desc": ["나는 어깨·목덜미가 두툼하고, 허리가 잘록하지 않아요."],
+          "image": {
+            "src": "/qscc/images/4a.jfif",
+            "alt": "목덜미부위가 잘 발달하고 허리부분이 빈약하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "가슴부위가 잘 발달하고 엉덩이부위가 빈약하다.",
+          "desc": ["나는 가슴이 볼륨 있고, 엉덩이는 납작한 편이에요."],
+          "image": {
+            "src": "/qscc/images/4b.jfif",
+            "alt": "가슴부위가 잘 발달하고 엉덩이부위가 빈약하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "엉덩이부위가 잘 발달하고, 목덜미부위와 허리부위가 빈약하다.",
+          "desc": ["나는 엉덩이가 크고 탄탄한데, 목덜미는 얇고 허리는 잘록하지 않아요."],
+          "image": {
+            "src": "/qscc/images/4c.jfif",
+            "alt": "엉덩이부위가 잘 발달하고, 목덜미부위와 허리부위가 빈약하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "D",
+          "label": "엉덩이부위가 잘 발달하였고 가슴부위가 빈약하다.",
+          "desc": ["나는 엉덩이가 크고, 가슴은 작은 편이에요."],
+          "image": {
+            "src": "/qscc/images/4d.jfif",
+            "alt": "엉덩이부위가 잘 발달하였고 가슴부위가 빈약하다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 5,
+      "title": "Q5.",
+      "text": "전체적인 외모와 골격은 다음중 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "골격이 크고 살이 잘 찐 편이다.",
+          "desc": ["나는 뼈대가 굵고 살이 쉽게 붙어요."],
+          "image": {
+            "src": "/qscc/images/5a.jfif",
+            "alt": "골격이 크고 살이 잘 찐 편이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "골격이 작고 균형이 잘있다.",
+          "desc": ["나는 뼈대가 가늘고 전체 라인이 균형 잡혔어요."],
+          "image": {
+            "src": "/qscc/images/5b.jfif",
+            "alt": "골격이 작고 균형이 잘있다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "보통이며 단단한 체격이다.",
+          "desc": ["나는 평균 뼈대에 근육이 단단한 편이에요."],
+          "image": {
+            "src": "/qscc/images/5c.jfif",
+            "alt": "보통이며 단단한 체격이다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 6,
+      "title": "Q6.",
+      "text": "당신의 가슴은 다음중 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "넓고 잘 발달되어 있다. (비만형)",
+          "desc": ["나는 가슴이 넓고 볼록해요."],
+          "image": {
+            "src": "/qscc/images/6a.jfif",
+            "alt": "넓고 잘 발달되어 있다. (비만형)"
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "빈약하고 구부정하다. (세장형)",
+          "desc": ["나는 가슴이 납작하고 쇄골이 도드라져요."],
+          "image": {
+            "src": "/qscc/images/6b.jfif",
+            "alt": "빈약하고 구부정하다. (세장형)"
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "넓고 튼튼한 편이다. (근육형)",
+          "desc": ["나는 가슴근육이 단단하고 탄탄해요."],
+          "image": {
+            "src": "/qscc/images/6c.jfif",
+            "alt": "넓고 튼튼한 편이다. (근육형)"
+          },
+          "scores": {}
+        },
+        {
+          "id": "D",
+          "label": "가슴이 벌어지고 견실하다.",
+          "desc": ["나는 갈비뼈가 벌어져 흉곽이 넓고 단단해 보여요."],
+          "image": {
+            "src": "/qscc/images/6d.jfif",
+            "alt": "가슴이 벌어지고 견실하다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 7,
+      "title": "Q7.",
+      "text": "당신은 다음중 어떤 음식을 좋아하십니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "뜨거운 음식",
+          "desc": ["나는 김 모락모락 끓는 걸 좋아해요. ex)뚝배기 국밥, 팔팔 끓인 라면" ],
+          "image": {
+            "src": "/qscc/images/7aa.png",
+            "alt": "뜨거운 음식"
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "따뜻한 음식",
+          "desc": ["나는 너무 뜨겁지 않은 따뜻한 걸 좋아해요. ex) 60~70℃ 정도의 차, 따뜻한 국물"],
+          "image": {
+            "src": "/qscc/images/7bb.png",
+            "alt": "따뜻한 음식"
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "시원한 음식",
+          "desc": ["나는 냉장고 온도처럼 시원한 걸 좋아해요. ex) 차가운 음료 , 냉면"],
+          "image": {
+            "src": "/qscc/images/7cc.png",
+            "alt": "시원한 음식"
+          },
+          "scores": {}  
+        },
+        {
+          "id": "D",
+          "label": "차가운 음식",
+          "desc": ["나는 얼음 동동, 아주 차갑게 먹는 걸 좋아해요. ex) 아이스크림, 팥빙수 , 얼음물"],
+          "image": {
+            "src": "/qscc/images/7dd.png",
+            "alt": "차가운 음식"
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 8,
+      "title": "Q8.",
+      "text": "당신은 다음중 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "손, 발이 잘 찬 편이다.",
+          "desc": ["겨울엔 장갑/두꺼운 양말 필수에요."],
+          "image": {
+            "src": "/qscc/images/8a.jfif",
+            "alt": "손, 발이 잘 찬 편이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "평소 손, 발이 따뜻한 편이다.",
+          "desc": ["이불 속에서 발이 더워서 빼놓고 잘 때가 있어요."],
+          "image": {
+            "src": "/qscc/images/8b.jfif",
+            "alt": "평소 손, 발이 따뜻한 편이다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 9,
+      "title": "Q9.",
+      "text": "당신의 걸음걸이는 다음중 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "걸음이 느리고 무게 있게 걷는다.",
+          "desc": ["나는 천천히, 발을 묵직하게 디뎌요."],
+          "image": {
+            "src": "/qscc/images/9a.jfif",
+            "alt": "걸음이 느리고 무게 있게 걷는다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "걸음걸이가 자연스럽고 얌전하다.",
+          "desc": ["나는 보폭·속도가 일정하고 중심이 흔들리지 않아요."],
+          "image": {
+            "src": "/qscc/images/9b.jfif",
+            "alt": "걸음걸이가 자연스럽고 얌전하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "걸음이 빠르고 몸을 흔든다.",
+          "desc": ["나는 빨리 걷고 상체가 좌우로 잘 흔들려요."],
+          "image": {
+            "src": "/qscc/images/9c.jfif",
+            "alt": "걸음이 빠르고 몸을 흔든다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "D",
+          "label": "걸음걸이가 꼿꼿하다.",
+          "desc": ["나는 허리를 곧게 세우고 반듯하게 걸어요."],
+          "image": {
+            "src": "/qscc/images/9d.jfif",
+            "alt": "걸음걸이가 꼿꼿하다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 10,
+      "title": "Q10.",
+      "text": "당신은 다음중 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "평소에 땀이 많고 땀을 흘리면 오히려 상쾌하다.",
+          "desc": ["샤워·사우나 후 머리가 맑고 컨디션이 좋아져요."],
+          "image": {
+            "src": "/qscc/images/10a.jfif",
+            "alt": "평소에 땀이 많고 땀을 흘리면 오히려 상쾌하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "평소에 땀이 많지 않고 조금만 땀을 내도 피곤하다.",
+          "desc": ["사우나/더위에 오래 못 버텨요."],
+          "image": {
+            "src": "/qscc/images/10b.jfif",
+            "alt": "평소에 땀이 많지 않고 조금만 땀을 내도 피곤하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "땀을 흘려도 그다지 피곤하지 않다.",
+          "desc": ["더위·사우나도 적당 시간은 무리 없어요."],
+          "image": {
+            "src": "/qscc/images/10c.jfif",
+            "alt": "땀을 흘려도 그다지 피곤하지 않다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 11,
+      "title": "Q11.",
+      "text": "당신은 다음중 어디에 해당됩니까?",
+      "options": [
+        {
+          "id": "A",
+          "label": "거침없고 과단성이 있다.",
+          "desc": ["먼저 방향 제시 · 빠른 의사결정 · 성과 우선 · 돌려 말하지 않음 · 밀어붙이는 추진력"],
+          "image": {
+            "src": "/qscc/images/11a.jfif",
+            "alt": "거침없고 과단성이 있다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "활동적이고 용감하다.",
+          "desc": ["가만히 못 있음 · 현장/체험 선호 · 위험 감수 · 사람들 끌고 나가는 에너지"],
+          "image": {
+            "src": "/qscc/images/11b.jfif",
+            "alt": "활동적이고 용감하다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "용모가 의젓하고 격식을 차리는 편이다.",
+          "desc": ["시간·규칙 엄수 · 문서/체계 좋아함 · 공손한 말투 · 절차대로 진행"],
+          "image": {
+            "src": "./qscc/images/11c.jfif",
+            "alt": "용모가 의젓하고 격식을 차리는 편이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "D",
+          "label": "태도가 온순하고 꾸밈이 없다.",
+          "desc": ["갈등 회피 · 부탁 잘 들어줌 · 심플한 취향 · 뒤에서 묵묵히 정리"],
+          "image": {
+            "src": "./qscc/images/11d.jfif",
+            "alt": "태도가 온순하고 꾸밈이 없다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 12,
+      "title": "Q12.",
+      "text": "다음중 당신은 어느 쪽입니까? (일처리 또는 생활습관)",
+      "options": [
+        {
+          "id": "A",
+          "label": "무슨 일이든지 물러서지 않고 밀고 나간다.",
+          "desc": ["장애물 만나면 돌파 전략 즉시 실행 , 주변에서 추진력 있다는 말 자주 들음"],
+          "image": {
+            "src": "./qscc/images/12a.jfif",
+            "alt": "무슨 일이든지 물러서지 않고 밀고 나간다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "일을 벌려 놓기만 하지 마무리를 잘 하지 못한다.",
+          "desc": ["새 프로젝트/아이디어에 쉽게 끌림 , 초반 에너지는 높지만 중반부터 흥미↓"],
+          "image": {
+            "src": "./qscc/images/12b.jfif",
+            "alt": "일을 벌려 놓기만 하지 마무리를 잘 하지 못한다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "C",
+          "label": "움직이기보다는 조용히 혼자 일을 추진하는 편이다.",
+          "desc": ["회의보다 문서/비동기 커뮤니케이션 선호 , 방해 없이 깊게 몰입하는 시간 중시"],
+          "image": {
+            "src": "./qscc/images/12c.jfif",
+            "alt": "움직이기보다는 조용히 혼자 일을 추진하는 편이다."
+          },
+          "scores": {}
+        },
+        {
+          "id": "D",
+          "label": "한곳에 있을려고만 하지 나다니려하지 않는 편이다.",
+          "desc": ["재택/고정된 자리가 편함 , 외근·행사·출장을 기피 , 가능한 일은 온라인/배달로 해결 , 일정한 루틴 생활 선호"],
+          "image": {
+            "src": "./qscc/images/12d.jfif",
+            "alt": "한곳에 있을려고만하지 나다니려하지 않는 편이다."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 13,
+      "title": "Q13.",
+      "text": "무슨 일이든지 시원스럽게 처리한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["일이 생기면 빠르고 깔끔하게 처리해요"],
+          "image": {
+            "src": "./qscc/images/13a.jfif",
+            "alt": "일이 생기면 빠르고 깔끔하게 처리해요"
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["천천히 신중하게 처리하는 편이에요."],
+          "image": {
+            "src": "./qscc/images/13b.jfif",
+            "alt": "천천히 신중하게 처리하는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 14,
+      "title": "Q14.",
+      "text": "활발하고 대가 센 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["사교적이고 말을 잘해요."],
+          "image": {
+            "src": "./qscc/images/14a.jfif",
+            "alt": "사교적이고 말을 잘해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["조용하고 말수가 적어요."],
+          "image": {
+            "src": "./qscc/images/14b.jfif",
+            "alt": "조용하고 말수가 적어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 15,
+      "title": "Q15.",
+      "text": "매사에 이해를 따지지 않고 나서는 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["내게 이득이 되는지 아닌지 따지지 않고 행동해요."],
+          "image": {
+            "src": "./qscc/images/15a.jfif",
+            "alt": "내게 이득이 되는지 아닌지 따지지 않고 행동해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["내게 이득이 되는지 아닌지 생각하고 행동해요."],
+          "image": {
+            "src": "./qscc/images/15b.jfif",
+            "alt": "내게 이득이 되는지 아닌지 생각하고 행동해요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 16,
+      "title": "Q16.",
+      "text": "진득하게 한곳에 오래 있을 수 있다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["한 가지 일에 오래 집중할 수 있어요."],
+          "image": {
+            "src": "./qscc/images/16a.jfif",
+            "alt": "한 가지 일에 오래 집중할 수 있어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["지루하면 금방 다른 일로 넘어가요."],
+          "image": {
+            "src": "./qscc/images/16b.jfif",
+            "alt": "지루하면 금방 다른 일로 넘어가요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 17,
+      "title": "Q17.",
+      "text": "치밀하고 꼼꼼한 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["작은 부분까지 세심하게 챙겨요."],
+          "image": {
+            "src": "./qscc/images/17a.jfif",
+            "alt": "작은 부분까지 세심하게 챙겨요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["대충대충 하고 세세한 것에는 신경을 안 써요."],
+          "image": {
+            "src": "./qscc/images/17b.jfif",
+            "alt": "대충대충 하고 세세한 것에는 신경을 안 써요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 18,
+      "title": "Q18.",
+      "text": "가까운 사람끼리만 어울리는 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["친한 사람들끼리만 편하게 지내요."],
+          "image": {
+            "src": "./qscc/images/18a.jfif",
+            "alt": "친한 사람들끼리만 편하게 지내요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["처음 만나는 사람과도 금방 어울려요."],
+          "image": {
+            "src": "./qscc/images/18b.jfif",
+            "alt": "처음 만나는 사람과도 금방 어울려요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 19,
+      "title": "Q19.",
+      "text": "사람을 사귈 때 이것저것 따지지않고 쉽게 잘사귄다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["첫인상이나 조건에 크게 신경 쓰지 않고 쉽게 친해져요."],
+          "image": {
+            "src": "./qscc/images/19a.jfif",
+            "alt": "첫인상이나 조건에 크게 신경 쓰지 않고 쉽게 친해져요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["친해지기 전에 상대를 살펴보고 신중하게 사귀어요."],
+          "image": {
+            "src": "./qscc/images/19b.jfif",
+            "alt": "친해지기 전에 상대를 살펴보고 신중하게 사귀어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 20,
+      "title": "Q20.",
+      "text": "사회적인 일보다 개인적인 일에 열심이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["남을 위한 일보다는 내 일이나 관심사에 더 신경 써요."],
+          "image": {
+            "src": "./qscc/images/20a.jfif",
+            "alt": "남을 위한 일보다는 내 일이나 관심사에 더 신경 써요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["내 일보다는 남을 위한 일에 더 신경 써요."],
+          "image": {
+            "src": "./qscc/images/20b.jfif",
+            "alt": "내 일보다는 남을 위한 일에 더 신경 써요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 21,
+      "title": "Q21.",
+      "text": "내면적인 것보다 외면적인 것을 더 중요시한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["속마음보다는 겉모습이나 외적인 평가를 더 신경 써요."],
+          "image": {
+            "src": "./qscc/images/21a.jfif",
+            "alt": "속마음보다는 겉모습이나 외적인 평가를 더 신경 써요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["겉모습보다 마음이나 성격 같은 내면을 더 신경 써요."],
+          "image": {
+            "src": "./qscc/images/21b.jfif",
+            "alt": "겉모습보다 마음이나 성격 같은 내면을 더 신경 써요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 22,
+      "title": "Q22.",
+      "text": "사람을 사귈 때 이것저것 따져서 쉽게 사귀지 못하는 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["친해지기 전에 상대를 살펴보고 신중하게 사귀어요."],
+          "image": {
+            "src": "./qscc/images/22a.jfif",
+            "alt": "친해지기 전에 상대를 살펴보고 신중하게 사귀어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["첫인상이나 조건에 크게 신경 쓰지 않고 쉽게 친해져요."],
+          "image": {
+            "src": "./qscc/images/22b.jfif",
+            "alt": "첫인상이나 조건에 크게 신경 쓰지 않고 쉽게 친해져요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 23,
+      "title": "Q23.",
+      "text": "단정하고 신중하다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["말이나 행동을 신중하게 하고 차분하게 처리해요."],
+          "image": {
+            "src": "./qscc/images/23a.png",
+            "alt": "말이나 행동을 신중하게 하고 차분하게 처리해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["조금 급하거나 성급하게 행동할 때가 있어요."],
+          "image": {
+            "src": "./qscc/images/23b.png",
+            "alt": "조금 급하거나 성급하게 행동할 때가 있어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 24,
+      "title": "Q24.",
+      "text": "성격이 시원시원하다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["생각이나 감정을 솔직하게 표현하고 행동도 거침없어요."],
+          "image": {
+            "src": "./qscc/images/24a.png",
+            "alt": "생각이나 감정을 솔직하게 표현하고 행동도 거침없어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["조심스럽고 속마음을 쉽게 드러내지 않아요."],
+          "image": {
+            "src": "./qscc/images/24b.png",
+            "alt": "조심스럽고 속마음을 쉽게 드러내지 않아요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 25,
+      "title": "Q25.",
+      "text": "다정 다감하여 남을 잘 달랜다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["다른 사람의 마음을 살피고 위로해 주거나 기분 좋게 해줘요."],
+          "image": {
+            "src": "./qscc/images/25a.png",
+            "alt": "다른 사람의 마음을 살피고 위로해 주거나 기분 좋게 해줘요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["무뚝뚝해서 남을 달래주는 편은 아니에요."],
+          "image": {
+            "src": "./qscc/images/25b.png",
+            "alt": "무뚝뚝해서 남을 달래주는 편은 아니에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 26,
+      "title": "Q26.",
+      "text": "각종 사회활동 모임에 즐거이 참여한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["사람들과 어울리는 활동에 적극적으로 참여해요."],
+          "image": {
+            "src": "./qscc/images/26a.png",
+            "alt": "사람들과 어울리는 활동에 적극적으로 참여해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["사람들과 함께하는 모임보다는 혼자 있거나 소수와만 어울리는 편이에요."],
+          "image": {
+            "src": "./qscc/images/26b.png",
+            "alt": "사람들과 함께하는 모임보다는 혼자 있거나 소수와만 어울리는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 27,
+      "title": "Q27.",
+      "text": "나는 사람을 볼 때 그 사람이 부지런한지 아닌지를 금방 알아차린다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["사람의 행동이나 습관을 보면 성실한지 금방 알 수 있어요."],
+          "image": {
+            "src": "./qscc/images/27a.jfif",
+            "alt": "사람의 행동이나 습관을 보면 성실한지 금방 알 수 있어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["겉으로는 잘 알아차리지 못하고, 오랜 시간 지내 봐야 알 수 있어요."],
+          "image": {
+            "src": "./qscc/images/27b.jfif",
+            "alt": "겉으로는 잘 알아차리지 못하고, 오랜 시간 지내 봐야 알 수 있어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 28,
+      "title": "Q28.",
+      "text": "항상 급하게 서두루는 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["빨리빨리 하는 게 좋아요."],
+          "image": {
+            "src": "./qscc/images/28a.png",
+            "alt": "빨리빨리 하는 게 좋아요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["여유를 가지고 천천히 하는 편이에요."],
+          "image": {
+            "src": "./qscc/images/28b.png",
+            "alt": "여유를 가지고 천천히 하는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 29,
+      "title": "Q29.",
+      "text": "처음에 남앞에 잘 나서지 못한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["처음 보는 사람 앞에서는 조금 수줍어하고 조심스러워요."],
+          "image": {
+            "src": "./qscc/images/29a.png",
+            "alt": "처음 보는 사람 앞에서는 조금 수줍어하고 조심스러워요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["처음 보는 사람 앞에서도 적극적으로 나서요."],
+          "image": {
+            "src": "./qscc/images/29b.png",
+            "alt": "처음 보는 사람 앞에서도 적극적으로 나서요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 30,
+      "title": "Q30.",
+      "text": "평소 소심하여 항상 불안한 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["작은 일에도 걱정이 많고 불안한 마음이 자주 들어요."],
+          "image": {
+            "src": "./qscc/images/30aa.png",
+            "alt": "작은 일에도 걱정이 많고 불안한 마음이 자주 들어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["걱정이 많지 않고 마음이 편안한 편이에요."],
+          "image": {
+            "src": "./qscc/images/30bb.png",
+            "alt": "걱정이 많지 않고 마음이 편안한 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 31,
+      "title": "Q31.",
+      "text": "평소에 신경이 예민한 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["작은 자극이나 변화에도 쉽게 신경이 쓰여요."],
+          "image": {
+            "src": "./qscc/images/31a.png",
+            "alt": "작은 자극이나 변화에도 쉽게 신경이 쓰여요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["조금의 변화나 자극에도 크게 개의치 않아요."],
+          "image": {
+            "src": "./qscc/images/31b.png",
+            "alt": "조금의 변화나 자극에도 크게 개의치 않아요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 32,
+      "title": "Q32.",
+      "text": "인내심이 많다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["어려운 상황이나 기다림에도 참을성을 발휘해요."],
+          "image": {
+            "src": "./qscc/images/32a.png",
+            "alt": "어려운 상황이나 기다림에도 참을성을 발휘해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["조금도 참기 힘들고 쉽게 포기하거나 화를 내기도 해요."],
+          "image": {
+            "src": "./qscc/images/32b.png",
+            "alt": "조금도 참기 힘들고 쉽게 포기하거나 화를 내기도 해요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 33,
+      "title": "Q33.",
+      "text": "행동이 경솔한 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["생각보다 행동이 앞서고 조심성이 부족한 편이에요."],
+          "image": {
+            "src": "./qscc/images/33a.png",
+            "alt": "생각보다 행동이 앞서고 조심성이 부족한 편이에요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["조심스럽게 생각하고 신중하게 행동해요."],
+          "image": {
+            "src": "./qscc/images/33b.png",
+            "alt": "조심스럽게 생각하고 신중하게 행동해요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 34,
+      "title": "Q34.",
+      "text": "별일이 아닌데도 조바심치며 불안해한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["작은 일에도 마음이 급하고 쉽게 불안해져요."],
+          "image": {
+            "src": "./qscc/images/34a.png",
+            "alt": "작은 일에도 마음이 급하고 쉽게 불안해져요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["대부분 침착하게 마음을 가라앉히고 차분해요."],
+          "image": {
+            "src": "./qscc/images/34b.png",
+            "alt": "대부분 침착하게 마음을 가라앉히고 차분해요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 35,
+      "title": "Q35.",
+      "text": "남성적인 면이 많고 여성적인 면이 적다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["강하고 단호한 편이에요."],
+          "image": {
+            "src": "./qscc/images/35a.png",
+            "alt": "강하고 단호한 편이에요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["부드럽고 섬세한 성향이 더 많아요."],
+          "image": {
+            "src": "./qscc/images/35b.png",
+            "alt": "부드럽고 섬세한 성향이 더 많아요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 36,
+      "title": "Q36.",
+      "text": "별것 아닌 사소한 일 때문에 짜증을 내곤 한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["작은 일에도 쉽게 짜증이 나고 신경이 거슬려요."],
+          "image": {
+            "src": "./qscc/images/36a.png",
+            "alt": "작은 일에도 쉽게 짜증이 나고 신경이 거슬려요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["짜증을 쉽게 내지 않고 마음을 차분하게 유지해요."],
+          "image": {
+            "src": "./qscc/images/36b.png",
+            "alt": "짜증을 쉽게 내지 않고 마음을 차분하게 유지해요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 37,
+      "title": "Q37.",
+      "text": "앞에 나가서 말을 하거나 발표하는 것이 어렵다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["사람들 앞에서 말하거나 발표할 때 긴장되고 어렵게 느껴져요."],
+          "image": {
+            "src": "./qscc/images/37a.png",
+            "alt": "사람들 앞에서 말하거나 발표할 때 긴장되고 어렵게 느껴져요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["사람들 앞에서 자연스럽게 말하고 발표할 수 있어요."],
+          "image": {
+            "src": "./qscc/images/37b.png",
+            "alt": "사람들 앞에서 자연스럽게 말하고 발표할 수 있어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 38,
+      "title": "Q38.",
+      "text": "평소에는 명량하지만 감정의 기복이 심한 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["평소에는 밝고 명랑하지만 기분이 쉽게 오르락 내리락 해요."],
+          "image": {
+            "src": "./qscc/images/38a.png",
+            "alt": "평소에는 밝고 명랑하지만 기분이 쉽게 오르락 내리락 해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["평소에 감정이 안정적이고 크게 기복이 없어요."],
+          "image": {
+            "src": "./qscc/images/30b.png",
+            "alt": "평소에 감정이 안정적이고 크게 기복이 없어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 39,
+      "title": "Q39.",
+      "text": "마음이 상했더라도 괜찮은 척 한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["마음이 상했더라도 겉으로는 괜찮은 듯 행동해요."],
+          "image": {
+            "src": "./qscc/images/39a.png",
+            "alt": "마음이 상했더라도 겉으로는 괜찮은 듯 행동해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["마음이 상하면 솔직하게 드러내는 편이에요."],
+          "image": {
+            "src": "./qscc/images/39b.png",
+            "alt": "마음이 상하면 솔직하게 드러내는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 40,
+      "title": "Q40.",
+      "text": "업신여김을 당하면 화가 나서 주체할 수 없다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["무시당하거나 다른 사람들이 날 깔보면 화가 나서 참기 어려워요."],
+          "image": {
+            "src": "./qscc/images/40a.png",
+            "alt": "무시당하거나 다른 사람들이 날 깔보면 화가 나서 참기 어려워요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["무시당해도 침착하게 마음을 다스리는 편이에요."],
+          "image": {
+            "src": "./qscc/images/40b.png",
+            "alt": "무시당해도 침착하게 마음을 다스리는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 41,
+      "title": "Q41.",
+      "text": "내 생각이 옳다고 확신되기까지는 함부로 말하지 않는다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["생각이 확실해질 때까지 신중하게 행동해요."],
+          "image": {
+            "src": "./qscc/images/41a.png",
+            "alt": "생각이 확실해질 때까지 신중하게 행동해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["확신이 없어도 내 의견을 바로 말하는 편이에요."],
+          "image": {
+            "src": "./qscc/images/41b.png",
+            "alt": "확신이 없어도 내 의견을 바로 말하는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 42,
+      "title": "Q42.",
+      "text": "아는 척 하거나 과시하는 경우가 많다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["내가 아는 것을 뽐내거나 돋보이려는 경향이 있어요."],
+          "image": {
+            "src": "./qscc/images/42a.png",
+            "alt": "내가 아는 것을 뽐내거나 돋보이려는 경향이 있어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["잘 알더라도 겸손하게 행동하는 편이에요."],
+          "image": {
+            "src": "./qscc/images/42b.png",
+            "alt": "잘 알더라도 겸손하게 행동하는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 43,
+      "title": "Q43.",
+      "text": "자신에게는 소흘히하고 남에게는 깍듯이 대하다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["나한테는 크게 신경 쓰지 않지만, 타인에게는 예의를 갖추고 배려해요."],
+          "image": {
+            "src": "./qscc/images/43a.png",
+            "alt": "나한테는 크게 신경 쓰지 않지만, 타인에게는 예의를 갖추고 배려해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["타인에게 예의를 갖추고 배려하는 만큼 나에게도 신경 써요."],
+          "image": {
+            "src": "./qscc/images/43b.png",
+            "alt": "타인에게 예의를 갖추고 배려하는 만큼 나에게도 신경 써요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 44,
+      "title": "Q44.",
+      "text": "남앞에 잘 나서지 못한다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["사람들 앞에서는 조용히 있고 잘 나서지 않아요."],
+          "image": {
+            "src": "./qscc/images/44a.png",
+            "alt": "사람들 앞에서는 조용히 있고 잘 나서지 않아요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["사람들 앞에서도 적극적으로 나서는 편이에요."],
+          "image": {
+            "src": "./qscc/images/44b.png",
+            "alt": "사람들 앞에서도 적극적으로 나서는 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 45,
+      "title": "Q45.",
+      "text": "남을 의식하지 않고 내 멋대로 하는 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["다른 사람 시선을 신경 쓰지 않고 내가 하고 싶은 대로 행동해요."],
+          "image": {
+            "src": "./qscc/images/45a.png",
+            "alt": "다른 사람 시선을 신경 쓰지 않고 내가 하고 싶은 대로 행동해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["다른 사람의 시선이나 반응을 신경 써요."],
+          "image": {
+            "src": "./qscc/images/45b.png",
+            "alt": "다른 사람의 시선이나 반응을 신경 써요."
+
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 46,
+      "title": "Q46.",
+      "text": "소심하여 항상 불안한 편이다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["작은 일에도 걱정이 많고 불안해요."],
+          "image": {
+            "src": "./qscc/images/46a.png",
+            "alt": "작은 일에도 걱정이 많고 불안해요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["걱정이 적고 마음이 안정되어 있어요."],
+          "image": {
+            "src": "./qscc/images/46b.png",
+            "alt": "걱정이 적고 마음이 안정되어 있어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 47,
+      "title": "Q47.",
+      "text": "여성적인 면이 많고 남성적인 면이 적다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["부드럽고 섬세한 편이에요."],
+          "image": {
+            "src": "./qscc/images/47a.png",
+            "alt": "부드럽고 섬세한 편이에요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["강하고 단호한 편이에요."],
+          "image": {
+            "src": "./qscc/images/47b.png",
+            "alt": "강하고 단호한 편이에요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 48,
+      "title": "Q48.",
+      "text": "웬만한 일을 성취하였어도 부족함을 느낄 때가 많다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["일을 해내도 뭔가 아쉽고 더 잘하고 싶다는 생각이 들어요."],
+          "image": {
+            "src": "./qscc/images/48aa.png",
+            "alt": "일을 해내도 뭔가 아쉽고 더 잘하고 싶다는 생각이 들어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["작은 일이라도 그 일을 해내면 스스로 만족감이 들고 뿌듯해요."],
+          "image": {
+            "src": "./qscc/images/48bb.png", 
+            "alt": "작은 일이라도 그 일을 해내면 스스로 만족감이 들고 뿌듯해요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 49,
+      "title": "Q49.",
+      "text": "이유없이 토하거나 음식을 삼키기가 어려운 적이 있었다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["가끔 특별한 이유 없이 음식을 토하거나 삼키기 힘들어요."],
+          "image": {
+            "src": "./qscc/images/49a.png",
+            "alt": "가끔 특별한 이유 없이 음식을 토하거나 삼키기 힘들어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["음식을 토하거나 삼키기 힘들었던 적이 거의 없어요."],
+          "image": {
+            "src": "./qscc/images/49b.png",
+            "alt": "음식을 토하거나 삼키기 힘들었던 적이 거의 없어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 50,
+      "title": "Q50.",
+      "text": "몸이 안 좋을 때 땀을 내면 개운하다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["몸이 안 좋을 때 땀을 빼고 나면 한결 개운해져요."],
+          "image": {
+            "src": "./qscc/images/50a.png",
+            "alt": "몸이 안 좋을 때 땀을 빼고 나면 한결 개운해져요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["몸이 안 좋을 때 땀을 내도 별로 개운하지 않아요."],
+          "image": {
+            "src": "./qscc/images/50b.png",
+            "alt": "몸이 안 좋을 때 땀을 내도 별로 개운하지 않아요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 51,
+      "title": "Q51.",
+      "text": "몸이 안 좋으면 소화가 잘 되지 않는다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["컨디션이 안 좋으면 음식이 잘 안 내려가고 소화가 힘들어요."],
+          "image": {
+            "src": "./qscc/images/51a.png",
+            "alt": "컨디션이 안 좋으면 음식이 잘 안 내려가고 소화가 힘들어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["컨디션이 안 좋아도 소화에는 큰 문제가 없어요."],
+          "image": {
+            "src": "./qscc/images/51b.png",
+            "alt": "컨디션이 안 좋아도 소화에는 큰 문제가 없어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 52,
+      "title": "Q52.",
+      "text": "평소에 기운이 없어 한숨을 내쉬는 경우가 자주 있다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["힘이 없고 지치면 한숨을 자주 쉬어요."],
+          "image": {
+            "src": "./qscc/images/52a.png",
+            "alt": "힘이 없고 지치면 한숨을 자주 쉬어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["기운이 없어서 한숨 쉬는 경우는 거의 없어요."],
+          "image": {
+            "src": "./qscc/images/52b.png",
+            "alt": "기운이 없어서 한숨 쉬는 경우는 거의 없어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 53,
+      "title": "Q53.",
+      "text": "온몸과 다리가 힘이 빠져 움직이기가 어려운 증상을 경험한 적이 있다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["갑자기 몸과 다리에 힘이 빠져서 제대로 움직이기 힘들었던 적이 있어요."],
+          "image": {
+            "src": "./qscc/images/53a.png",
+            "alt": "갑자기 몸과 다리에 힘이 빠져서 제대로 움직이기 힘들었던 적이 있어요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["그런 적은 거의 없어요."],
+          "image": {
+            "src": "./qscc/images/53b.png",
+            "alt": "그런 적은 거의 없어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": 54,
+      "title": "Q54.",
+      "text": "음식을 먹은 후 가슴과 배가 더부룩한 증상이 자주 있다.",
+      "options": [
+        {
+          "id": "A",
+          "label": "YES",
+          "desc": ["음식을 먹으면 몸이 무겁고 더부룩하게 느껴져요."],
+          "image": {
+            "src": "./qscc/images/54aa.png",
+            "alt": "음식을 먹으면 몸이 무겁고 더부룩하게 느껴져요."
+          },
+          "scores": {}
+        },
+        {
+          "id": "B",
+          "label": "NO",
+          "desc": ["음식을 먹었을 때 불편하게 느껴진 적이 거의 없어요."],
+          "image": {
+            "src": "./qscc/images/54bb.png",
+            "alt": "음식을 먹었을 때 불편하게 느껴진 적이 거의 없어요."
+          },
+          "scores": {}
+        }
+      ],
+      "required": true
+    }
+  ]
+}

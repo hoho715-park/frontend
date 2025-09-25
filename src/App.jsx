@@ -10,7 +10,8 @@ import InputStart from './pages/Input.jsx';
 import InputMeasure from './pages/InputMeasure.jsx';
 import SignUp from './pages/SignUp.jsx';
 import QsccIntro from './pages/QsccIntro.jsx';
-import QsccSurvey from './pages/QsccSurvey.jsx'; // QsccSurvey 컴포넌트 import
+import QsccSurvey from './pages/QsccSurvey.jsx';
+import QsccQuestion from './pages/QsccQuestion.jsx'; // QsccQuestion 컴포넌트 import
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
       <Route path="/input/measure" element={<InputMeasure />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/test/qsc-intro" element={<><Header /><QsccIntro /></>} />
-      <Route path="/test/qsc-survey" element={<><Header /><QsccSurvey /></>} /> {/* QSCC 설문 페이지 라우트 추가 */}
-      <Route path="/test/qsc-survey-questions" element={<><Header /><div>QSCC 설문 문제 페이지 (추후 구현)</div></>} /> {/* 설문 문제 페이지 라우트 추가 */}
+      <Route path="/test/qsc-survey" element={<><Header /><QsccSurvey /></>} />
+      <Route path="/test/qsc-survey-questions" element={<><Header /><QsccQuestion /></>} /> {/* QSCC 설문 문제 페이지 라우트 수정 */}
     </Routes>
   );
 }

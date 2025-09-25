@@ -1655,7 +1655,7 @@
           "label": "YES",
           "desc": ["갑자기 몸과 다리에 힘이 빠져서 제대로 움직이기 힘들었던 적이 있어요."],
           "image": {
-            "src": "./qscc/images/53a.png",
+            "src": "/qscc/images/53a.png",
             "alt": "갑자기 몸과 다리에 힘이 빠져서 제대로 움직이기 힘들었던 적이 있어요."
           },
           "scores": {}
@@ -1665,7 +1665,7 @@
           "label": "NO",
           "desc": ["그런 적은 거의 없어요."],
           "image": {
-            "src": "./qscc/images/53b.png",
+            "src": "/qscc/images/53b.png",
             "alt": "그런 적은 거의 없어요."
           },
           "scores": {}
@@ -1683,7 +1683,7 @@
           "label": "YES",
           "desc": ["음식을 먹으면 몸이 무겁고 더부룩하게 느껴져요."],
           "image": {
-            "src": "./qscc/images/54aa.png",
+            "src": "/qscc/images/54a.png",
             "alt": "음식을 먹으면 몸이 무겁고 더부룩하게 느껴져요."
           },
           "scores": {}
@@ -1693,7 +1693,7 @@
           "label": "NO",
           "desc": ["음식을 먹었을 때 불편하게 느껴진 적이 거의 없어요."],
           "image": {
-            "src": "./qscc/images/54bb.png",
+            "src": "/qscc/images/54b.png",
             "alt": "음식을 먹었을 때 불편하게 느껴진 적이 거의 없어요."
           },
           "scores": {}

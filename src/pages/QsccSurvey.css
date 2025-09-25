@@ -1,211 +1,60 @@
-/* src/pages/QsccQuestion.css */
+/* src/pages/QsccSurvey.css */
 
-.qscc-question-container {
+.qsc-survey-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 40px;
   background-color: #f0f2f5;
-  box-sizing: border-box;
 }
 
-.qscc-question-box {
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 1100px; /* 사각형 틀 너비 확장 */
-  min-height: 600px;
-  padding: 40px;
+.qsc-main-hero {
+  position: relative;
+  width: 987px;
+  height: 554px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.question-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.question-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.question-text {
-  font-size: 1.2rem;
-  color: #555;
-  margin-top: 10px;
-}
-
-.options-container {
-  display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
-  margin-top: 20px;
+}
+
+.qsc-hero-img {
   width: 100%;
+  height: auto;
+  border-radius: 20px;
 }
 
-.option-card {
-  width: 250px; /* 카드 너비 조정 */
-  background-color: #fff;
-  border: 2px solid #ddd;
-  border-radius: 15px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-}
-
-.option-card:hover {
-  border-color: #8a7acd;
-  box-shadow: 0 0 10px rgba(138, 122, 205, 0.3);
-}
-
-.option-card.selected {
-  border-color: #8a7acd;
-  background-color: #f5f2ff;
-}
-
-.option-image-wrapper {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 15px;
-}
-
-.option-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.option-label {
+.start-test-button {
+  padding: 15px 120px;
+  background-color: #8a7acd;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 구분선 스타일 */
-.option-divider {
-    width: 80%;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 10px 0;
+.start-test-button:hover {
+  background-color: #7a6ac0;
 }
 
-.option-description {
-  font-size: 0.9rem;
+.intro-link-text {
   color: #888;
-  line-height: 1.4;
-}
-
-.option-description p {
-    margin: 0;
-    padding: 0;
-}
-
-.navigation-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-  width: 100%;
-}
-
-.nav-arrow {
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  background-color: #f8f8f8;
-  color: #555;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: none;
-}
-
-.nav-arrow:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.pager-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    gap: 10px;
-}
-
-.pager {
-  display: flex;
-  gap: 5px;
-}
-
-.pager-dot {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #ddd;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-decoration: none;
   font-size: 0.9rem;
-  color: #555;
-  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-top: -15px;
 }
 
-/* 색상 지정 */
-.pager-dot {
-    background-color: #DDDDDD;
-}
-
-.pager-dot.answered {
-    background-color: #59A288;
-    color: #fff;
-}
-
-.pager-dot.active {
-    background-color: #EDA35A;
-    color: #fff;
-}
-
-.progress-counter-and-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.progress-counter {
-  font-size: 1rem;
-  font-weight: bold;
+.intro-link-text:hover {
   color: #6a5acd;
-  margin-bottom: 10px;
-}
-
-.progress-bar-container {
-  width: 100%;
-  max-width: 600px;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background-color: #6a5acd;
-  transition: width 0.5s ease-in-out;
+  text-decoration: underline;
 }

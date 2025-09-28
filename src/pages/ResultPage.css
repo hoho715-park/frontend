@@ -30,8 +30,8 @@
 
 /* 체질 캐릭터 이미지 Wrapper */
 .body-type-image-wrapper {
-    width: 550px; 
-    height: 550px; 
+    width: 600px; 
+    height: 600px; 
     margin: 20px auto;
 }
 
@@ -55,7 +55,7 @@
 .graph-container {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 50px;
     width: 100%;
     margin-bottom: 30px;
 }
@@ -66,7 +66,7 @@
     padding: 20px;
     background-color: #f8f8f8;
     width: 45%;
-    max-width: 450px;
+    max-width: 550px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: flex; 
     flex-direction: column;
@@ -99,6 +99,15 @@
 .graph-placeholder {
     width: 100%;
     height: 200px;
+}
+
+/* 측정 일시와 버튼 컨테이너 스타일 */
+.timestamp-and-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
 .measure-timestamp {
@@ -153,7 +162,7 @@
 .recommendation-group {
     position: relative;
     transition: width 0.3s ease;
-    width: 300px; /* 고정 너비 설정 (단일 카드가 커짐) */
+    width: 300px; 
     height: 350px; /* 고정 높이 설정 */
     overflow: hidden;
 }
@@ -161,7 +170,6 @@
 /* 기본 추천 카드 스타일 (단일 섹션과 확장 전 섹션의 공통 스타일) */
 .recommendation-card,
 .recommendation-group .default-view {
-    /* 기존 flex: 1 대신 고정 크기 사용 */
     width: 300px;
     height: 350px;
     padding: 30px;
@@ -177,7 +185,10 @@
     justify-content: center;
     transition: all 0.3s;
     cursor: pointer;
-    position: relative; /* 호버 애니메이션을 위해 */
+    position: relative;
+    /* ✅ 수정: 기본 뷰와 확장 카드의 패딩을 통일 */
+    box-sizing: border-box; 
+    padding: 30px; 
 }
 /* 단일 섹션(생활습관, 운동)의 너비도 고정 */
 .recommendation-sections > a.recommendation-card {
@@ -194,10 +205,10 @@
     width: 150px; 
     height: 150px;
     margin-bottom: 15px;
-    transition: transform 0.3s ease-out; /* 이미지 강조 애니메이션 */
+    transition: transform 0.3s ease-out;
 }
 
-/* 🌟 수정사항 2 반영: 이미지 강조 애니메이션 */
+/* 이미지 강조 애니메이션 */
 .recommendation-card:hover .recommendation-img,
 .default-view:hover .recommendation-img {
     transform: scale(1.1);
@@ -212,8 +223,8 @@
 
 /* 식단 섹션 확장 상태 */
 .recommendation-group.expanded {
-    width: 630px; /* 카드 2개 (300*2 + 30px 간격) */
-    height: 350px; /* 높이 유지 */
+    width: 630px; 
+    height: 350px; 
     z-index: 5;
 }
 
@@ -229,6 +240,8 @@
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     z-index: 3;
+    box-sizing: border-box; /* ✅ 추가: 확장 뷰도 box-sizing 통일 */
+    padding: 30px; /* ✅ 추가: 확장 뷰 컨테이너도 패딩 통일 */
 }
 
 .recommendation-group.expanded .expanded-view {
@@ -236,12 +249,11 @@
 }
 
 .recommendation-group.expanded .default-view {
-    opacity: 0; /* 확장되면 기본 뷰 숨김 */
+    opacity: 0;
     pointer-events: none;
 }
 
 .expanded-view .expanded-card {
-    /* expanded-card 내부 스타일 유지 */
     background-color: #fff;
     padding: 20px;
     border-radius: 15px;
@@ -268,7 +280,7 @@
 }
 
 .expanded-view .expanded-card:hover img {
-    transform: scale(1.1); /* 확장된 카드 내부 이미지 강조 */
+    transform: scale(1.1);
 }
 
 /* 주류/음식 카드 구분을 위한 추가 스타일 */

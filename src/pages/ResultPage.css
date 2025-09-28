@@ -30,8 +30,9 @@
 
 /* 체질 캐릭터 이미지 Wrapper */
 .body-type-image-wrapper {
-    width: 600px; 
-    height: 600px; 
+    position: relative;
+    width: 300px; 
+    height: 300px; 
     margin: 20px auto;
 }
 
@@ -42,7 +43,44 @@
     object-fit: contain;
 }
 
-/* 오늘의 장기 수치 섹션 제목 스타일 */
+/* 체질 특징 태그 기본 스타일 */
+.feature-tag {
+    position: absolute;
+    background-color: #6a5acd; 
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    white-space: nowrap; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.feature-tag:hover {
+    transform: scale(1.05); 
+}
+
+/* 각 위치별 태그 스타일 */
+.feature-tag.top-left { top: -10px; left: -20px; }
+.feature-tag.top-right { top: -10px; right: -20px; }
+.feature-tag.bottom-left { bottom: -10px; left: -20px; }
+.feature-tag.bottom-right { bottom: -10px; right: -20px; }
+
+
+/* 오늘의 장기 수치 섹션 스타일 */
+
+/* 캡처할 섹션 Wrapper */
+.graph-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+}
+
 .section-title {
     font-size: 1.8rem;
     font-weight: bold;
@@ -55,7 +93,7 @@
 .graph-container {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 50px; 
     width: 100%;
     margin-bottom: 30px;
 }
@@ -117,27 +155,61 @@
     font-weight: bold;
 }
 
-.view-history-button {
+/* 🔥 [수정] 버튼 그룹 컨테이너 스타일 */
+.button-group {
+    display: flex; 
+    align-items: stretch; /* 자식 요소 높이를 부모에 맞춤 */
+    overflow: hidden; 
+    border: 2px solid #8a7acd; 
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 5px; /* 측정일시와 분리 */
+}
+
+/* 🔥 [수정] 각 버튼 스타일 (공통 속성은 유지) */
+.save-png-button, 
+.view-history-button-part {
+    flex: 1; /* 두 버튼이 동일한 크기를 가지도록 설정 */
     padding: 10px 30px;
-    background-color: #8a7acd;
     color: #fff;
     border: none;
-    border-radius: 20px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s;
+    white-space: nowrap; 
 }
 
-.view-history-button:hover {
-    background-color: #7a6ac0;
+/* 🔥 [수정] "오늘 수치 PNG 저장하기" 버튼 색상 */
+.save-png-button {
+    background-color: #8a7acd; /* 기존 색상 */
+}
+
+.save-png-button:hover {
+    background-color: #7a6ac0; /* 기존 호버 색상 */
+}
+
+/* 🔥 [수정] "이전 수치 확인하기" 버튼 색상 (새로운 색상 적용) */
+.view-history-button-part {
+    background-color: #A497D6; /* 변경된 색상 (기존 구분선 색상과 유사) */
+}
+
+.view-history-button-part:hover {
+    background-color: #9385C9; /* 변경된 호버 색상 */
 }
 
 
-/* --- 추천 섹션 스타일 --- */
+/* 🔥 [유지] 구분선 스타일 */
+.button-separator {
+    width: 2px;
+    height: 30px; /* 버튼 높이에 따라 자동으로 늘어나도록 조정 가능 */
+    background-color: #a497d6; 
+    flex-shrink: 0;
+}
 
-/* 추천 섹션 타이틀 */
+
+/* --- 추천 섹션 스타일 (전체 높이 맞춤) --- */
+
 .recommendation-title {
     font-size: 1.8rem;
     font-weight: bold;
@@ -148,7 +220,6 @@
     margin-top: 100px;
 }
 
-/* 추천 섹션 컨테이너 */
 .recommendation-sections {
     display: flex;
     justify-content: center;
@@ -167,7 +238,7 @@
     overflow: hidden;
 }
 
-/* 기본 추천 카드 스타일 (단일 섹션과 확장 전 섹션의 공통 스타일) */
+/* 기본 추천 카드 스타일 (높이 통일) */
 .recommendation-card,
 .recommendation-group .default-view {
     width: 300px;
@@ -176,7 +247,7 @@
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #f8f8f8;
+    background-color: #FAEAB1; 
     text-decoration: none;
     color: #333;
     display: flex;
@@ -186,10 +257,9 @@
     transition: all 0.3s;
     cursor: pointer;
     position: relative;
-    /* ✅ 수정: 기본 뷰와 확장 카드의 패딩을 통일 */
-    box-sizing: border-box; 
-    padding: 30px; 
+    box-sizing: border-box; /* 패딩 포함 높이 계산 */
 }
+
 /* 단일 섹션(생활습관, 운동)의 너비도 고정 */
 .recommendation-sections > a.recommendation-card {
     width: 300px;
@@ -211,7 +281,7 @@
 /* 이미지 강조 애니메이션 */
 .recommendation-card:hover .recommendation-img,
 .default-view:hover .recommendation-img {
-    transform: scale(1.1);
+    transform: scale(1.1); 
 }
 
 .recommendation-card h3,
@@ -240,8 +310,9 @@
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     z-index: 3;
-    box-sizing: border-box; /* ✅ 추가: 확장 뷰도 box-sizing 통일 */
-    padding: 30px; /* ✅ 추가: 확장 뷰 컨테이너도 패딩 통일 */
+    box-sizing: border-box;
+    padding: 30px;
+    background-color: #FAEAB1; 
 }
 
 .recommendation-group.expanded .expanded-view {
@@ -280,7 +351,7 @@
 }
 
 .expanded-view .expanded-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.1); 
 }
 
 /* 주류/음식 카드 구분을 위한 추가 스타일 */

@@ -1,0 +1,83 @@
+/* src/components/CalendarModal.css */
+
+/* 모달 오버레이: 화면 전체를 덮고 모달을 중앙에 위치시킵니다. */
+.modal-overlay {
+    position: fixed; /* 화면에 고정 */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* 배경을 어둡게 처리 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    z-index: 9999; /* 화면 최상단에 표시 */
+}
+
+/* 모달 컨텐츠 박스 */
+.calendar-modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 380px; /* 모달 가로 크기 지정 */
+    max-width: 90%;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-footer-text {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* 닫기 버튼 (X) */
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    line-height: 1; 
+    transition: color 0.2s;
+}
+.modal-close-button:hover {
+    color: #333;
+}
+
+
+/* react-calendar 커스텀 스타일을 위한 래퍼 */
+.calendar-wrapper {
+    width: 100%;
+}
+
+/* react-calendar 기본 스타일 재정의 */
+.react-calendar {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    padding: 10px; /* 달력 내부 패딩 */
+}
+
+/* 기록이 있는 날짜 표시 */
+.react-calendar .react-calendar__tile.has-record {
+    background-color: #e6f7ff; /* 기록 있는 날짜 배경색 */
+    color: #0056b3;
+    font-weight: bold;
+    border-radius: 50%; /* 동그랗게 표시 */
+}
+.react-calendar .react-calendar__tile.has-record:hover {
+    background-color: #cceeff;
+}

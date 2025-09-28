@@ -1,8 +1,9 @@
-// src/pages/ResultPage.jsx
+// src/pages/ResultPage.jsx (전체 코드)
 
-import React from 'react';
+import React, { useState } from 'react'; // useState import 필수
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header.jsx';
+import CalendarModal from '../components/CalendarModal.jsx'; // 캘린더 모달 컴포넌트 import
 import './ResultPage.css';
 
 // 체질별 이미지 파일 매핑
@@ -14,29 +15,26 @@ const bodyTypeImages = {
     '평형인': '/default_people.png', 
 };
 
-// 그래프 표시 순서 정의 (신장 -> 비장 -> 폐 -> 심장 -> 간 -> 방광)
+// 그래프 표시 순서 정의 및 한글 이름 (유지)
 const GRAPH_ORDER = ['kidney', 'spleen', 'lung', 'heart', 'liver', 'bladder'];
 const ORGAN_NAMES_KR = {
     'kidney': '신장', 'spleen': '비장', 'lung': '폐', 
     'heart': '심장', 'liver': '간', 'bladder': '방광'
 };
 
-// 장기 수치를 그래프 SVG 좌표로 변환하는 유틸리티
+// 장기 수치를 그래프 SVG 좌표로 변환하는 유틸리티 (유지)
 const mapDataToSVGPoints = (data, hand) => {
     const maxValue = 50;
-    const yAxisHeight = 160; // SVG 내 Y축 실제 높이 (180 - 20)
-    const xUnit = 60;        // X축 간격
-    const xStart = 20;       // X축 시작점
+    const yAxisHeight = 160;
+    const xUnit = 60;
+    const xStart = 20; 
     
     let points = "";
-    let pointData = []; // 데이터 포인트와 값을 저장
+    let pointData = [];
 
     GRAPH_ORDER.forEach((organId, index) => {
-        const value = parseInt(data[organId]?.[hand] || 0); // 데이터가 없으면 0으로 처리
-        
+        const value = parseInt(data[organId]?.[hand] || 25); 
         const clampedValue = Math.max(0, Math.min(maxValue, value));
-        
-        // Y 좌표 계산: 180 (바닥선) - (값 / 50 * 160)
         const y = 180 - (clampedValue / maxValue) * yAxisHeight;
         const x = xStart + (index * xUnit);
         
@@ -47,7 +45,7 @@ const mapDataToSVGPoints = (data, hand) => {
     return { points: points.trim(), pointData };
 };
 
-// 측정 일시 포맷 함수
+// 측정 일시 포맷 함수 (유지)
 const formatTime = (date) => {
     const d = new Date(date);
     const year = String(d.getFullYear()).slice(2);
@@ -64,6 +62,8 @@ const formatTime = (date) => {
 
 const ResultPage = () => {
     const location = useLocation();
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
+    
     const { 
         bodyType = '체질 판별 중...', 
         recommendations = {}, 
@@ -75,6 +75,19 @@ const ResultPage = () => {
     
     const { points: leftPoints, pointData: leftPointData } = mapDataToSVGPoints(formData, 'left');
     const { points: rightPoints, pointData: rightPointData } = mapDataToSVGPoints(formData, 'right');
+
+    const handleDateSelect = (selectedDate) => {
+        // TODO: DB 연동 후 해당 날짜의 기록을 불러오는 로직
+        console.log("Selected Date:", selectedDate);
+        alert(`선택된 날짜의 기록을 불러옵니다: ${selectedDate.toLocaleDateString('ko-KR')}`);
+    };
+    
+    // 임시 기록 날짜 (DB 연동 시 필요 없음)
+    const DUMMY_AVAILABLE_DATES = [
+        new Date().toISOString().slice(0, 10),
+        new Date(Date.now() - 86400000 * 5).toISOString().slice(0, 10), // 5일 전
+    ];
+
 
     return (
         <>
@@ -94,118 +107,71 @@ const ResultPage = () => {
                         </div>
                     </div>
                     
-                    {/* 새로운 섹션 제목 추가 */}
                     <h2 className="section-title">오늘의 장기 수치</h2> 
 
                     <div className="graph-container">
-                        {/* 1. 왼손 그래프 */}
+                        {/* 1. 왼손 그래프 (SVG 코드 생략 - 유지) */}
                         <div className="graph-box left-hand-graph">
-                            {/* 그래프 제목을 가운데 정렬하기 위한 div 추가 */}
                             <div className="graph-box-header">
                                 <h2>왼손 장기 수치</h2>
                             </div>
                             <div className="graph-placeholder">
                                 <svg width="100%" height="100%" viewBox="0 0 400 200">
-                                    {/* 눈금선 및 Y축 레이블 (0, 10, 20, 30, 40, 50) */}
                                     {[0, 10, 20, 30, 40, 50].map(v => (
                                         <g key={v}>
-                                            <text x="15" y={180 - (v / 50) * 160 + 5} fontSize="10" fill="#999" textAnchor="end">
-                                                {v}
-                                            </text>
-                                            <line 
-                                                x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} 
-                                                stroke={v === 0 ? "#333" : "#eee"} strokeWidth="1"
-                                            />
+                                            <text x="15" y={180 - (v / 50) * 160 + 5} fontSize="10" fill="#999" textAnchor="end">{v}</text>
+                                            <line x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} stroke={v === 0 ? "#333" : "#eee"} strokeWidth="1"/>
                                         </g>
                                     ))}
-                                    
-                                    {/* 데이터 라인 */}
-                                    <polyline 
-                                        fill="none" 
-                                        stroke="#4CAF50" 
-                                        strokeWidth="2" 
-                                        points={leftPoints} 
-                                    />
-
-                                    {/* 데이터 포인트 및 수치 텍스트 */}
+                                    <polyline fill="none" stroke="#4CAF50" strokeWidth="2" points={leftPoints} />
                                     {leftPointData.map((p, i) => (
                                         <g key={i}>
                                             <circle cx={p.x} cy={p.y} r="3" fill="#4CAF50" />
-                                            <text x={p.x} y={p.y - 10} fontSize="10" fill="#4CAF50" textAnchor="middle">
-                                                {p.value}
-                                            </text>
+                                            <text x={p.x} y={p.y - 10} fontSize="10" fill="#4CAF50" textAnchor="middle">{p.value}</text>
                                         </g>
                                     ))}
-                                    
-                                    {/* X축 레이블 (장기 이름) */}
                                     {GRAPH_ORDER.map((id, index) => (
-                                        <text 
-                                            key={id} 
-                                            x={20 + index * 60} y="195" 
-                                            fontSize="10" fill="#555" textAnchor="middle"
-                                        >
-                                            {ORGAN_NAMES_KR[id]}
-                                        </text>
+                                        <text key={id} x={20 + index * 60} y="195" fontSize="10" fill="#555" textAnchor="middle">{ORGAN_NAMES_KR[id]}</text>
                                     ))}
                                 </svg>
                             </div>
                         </div>
 
-                        {/* 2. 오른손 그래프 */}
+                        {/* 2. 오른손 그래프 (SVG 코드 생략 - 유지) */}
                         <div className="graph-box right-hand-graph">
-                            {/* 그래프 제목을 가운데 정렬하기 위한 div 추가 */}
                             <div className="graph-box-header">
                                 <h2>오른손 장기 수치</h2>
                             </div>
                             <div className="graph-placeholder">
                                 <svg width="100%" height="100%" viewBox="0 0 400 200">
-                                    {/* 눈금선 및 Y축 레이블 */}
                                     {[0, 10, 20, 30, 40, 50].map(v => (
                                         <g key={v}>
-                                            <text x="15" y={180 - (v / 50) * 160 + 5} fontSize="10" fill="#999" textAnchor="end">
-                                                {v}
-                                            </text>
-                                            <line 
-                                                x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} 
-                                                stroke={v === 0 ? "#333" : "#eee"} strokeWidth="1"
-                                            />
+                                            <text x="15" y={180 - (v / 50) * 160 + 5} fontSize="10" fill="#999" textAnchor="end">{v}</text>
+                                            <line x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} stroke={v === 0 ? "#333" : "#eee"} strokeWidth="1"/>
                                         </g>
                                     ))}
-                                    
-                                    {/* 데이터 라인 */}
-                                    <polyline 
-                                        fill="none" 
-                                        stroke="#FF8C69" 
-                                        strokeWidth="2" 
-                                        points={rightPoints} 
-                                    />
-
-                                    {/* 데이터 포인트 및 수치 텍스트 */}
+                                    <polyline fill="none" stroke="#FF8C69" strokeWidth="2" points={rightPoints} />
                                     {rightPointData.map((p, i) => (
                                         <g key={i}>
                                             <circle cx={p.x} cy={p.y} r="3" fill="#FF8C69" />
-                                            <text x={p.x} y={p.y - 10} fontSize="10" fill="#FF8C69" textAnchor="middle">
-                                                {p.value}
-                                            </text>
+                                            <text x={p.x} y={p.y - 10} fontSize="10" fill="#FF8C69" textAnchor="middle">{p.value}</text>
                                         </g>
                                     ))}
-                                    
-                                    {/* X축 레이블 (장기 이름) */}
                                     {GRAPH_ORDER.map((id, index) => (
-                                        <text 
-                                            key={id} 
-                                            x={20 + index * 60} y="195" 
-                                            fontSize="10" fill="#555" textAnchor="middle"
-                                        >
-                                            {ORGAN_NAMES_KR[id]}
-                                        </text>
+                                        <text key={id} x={20 + index * 60} y="195" fontSize="10" fill="#555" textAnchor="middle">{ORGAN_NAMES_KR[id]}</text>
                                     ))}
                                 </svg>
                             </div>
                         </div>
                     </div>
                     
-                    <p className="measure-timestamp">측정 일시 : {formatTime(measureTime)}</p>
+                    <div className="timestamp-and-button">
+                        <p className="measure-timestamp">측정 일시 : {formatTime(measureTime)}</p>
+                        {/* 버튼 추가 및 모달 열기 함수 연결 */}
+                        <button className="view-history-button" onClick={() => setIsModalOpen(true)}>
+                            이전 수치 확인하기
+                        </button>
+                    </div>
 
                     <div className="recommendation-sections">
                         <section className="recommendation-card diet">
@@ -225,6 +191,15 @@ const ResultPage = () => {
                     </div>
                 </div>
             </div>
+            
+            {/* CalendarModal 렌더링 */}
+            {isModalOpen && (
+                <CalendarModal 
+                    onClose={() => setIsModalOpen(false)}
+                    onDateSelect={handleDateSelect}
+                    availableDates={DUMMY_AVAILABLE_DATES}
+                />
+            )}
         </>
     );
 };

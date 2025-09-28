@@ -31,8 +31,8 @@
 /* 체질 캐릭터 이미지 Wrapper */
 .body-type-image-wrapper {
     position: relative;
-    width: 300px; 
-    height: 300px; 
+    width: 550px; 
+    height: 550px; 
     margin: 20px auto;
 }
 
@@ -63,11 +63,34 @@
     transform: scale(1.05); 
 }
 
-/* 각 위치별 태그 스타일 */
-.feature-tag.top-left { top: -10px; left: -20px; }
-.feature-tag.top-right { top: -10px; right: -20px; }
-.feature-tag.bottom-left { bottom: -10px; left: -20px; }
-.feature-tag.bottom-right { bottom: -10px; right: -20px; }
+/* ✅ 수정: 각 위치별 태그 스타일 (550px 컨테이너 기준으로 외곽 배치) */
+/* 왼쪽 상단 */
+.feature-tag.top-left {
+    top: 50px;
+    left: 0;
+    transform: translateX(-100%); /* 텍스트를 왼쪽으로 더 밀어냄 */
+}
+
+/* 오른쪽 상단 */
+.feature-tag.top-right {
+    top: 50px;
+    right: 0;
+    transform: translateX(100%); /* 텍스트를 오른쪽으로 더 밀어냄 */
+}
+
+/* 왼쪽 하단 */
+.feature-tag.bottom-left {
+    bottom: 50px;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+/* 오른쪽 하단 */
+.feature-tag.bottom-right {
+    bottom: 50px;
+    right: 0;
+    transform: translateX(100%);
+}
 
 
 /* 오늘의 장기 수치 섹션 스타일 */
@@ -158,18 +181,18 @@
 /* 🔥 [수정] 버튼 그룹 컨테이너 스타일 */
 .button-group {
     display: flex; 
-    align-items: stretch; /* 자식 요소 높이를 부모에 맞춤 */
+    align-items: stretch;
     overflow: hidden; 
-    border: 2px solid #8a7acd; 
+    /* border: 2px solid #8a7acd; */ /* 테두리를 버튼 자체에 적용하여 틈 문제 해결 */
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-top: 5px; /* 측정일시와 분리 */
+    margin-top: 5px;
 }
 
-/* 🔥 [수정] 각 버튼 스타일 (공통 속성은 유지) */
+/* 🔥 [수정] 각 버튼 스타일 (공통) */
 .save-png-button, 
 .view-history-button-part {
-    flex: 1; /* 두 버튼이 동일한 크기를 가지도록 설정 */
+    flex-grow: 1; 
     padding: 10px 30px;
     color: #fff;
     border: none;
@@ -178,37 +201,37 @@
     cursor: pointer;
     transition: background-color 0.2s;
     white-space: nowrap; 
+    /* ✅ 추가: 버튼 사이에 틈이 생기지 않도록 border-right와 border-left로 구분선 대체 */
+    border-right: 2px solid #a497d6; /* 오른쪽 버튼에 세로선 추가 */
 }
 
-/* 🔥 [수정] "오늘 수치 PNG 저장하기" 버튼 색상 */
+/* 🔥 [수정] PNG 저장 버튼 (왼쪽 버튼) */
 .save-png-button {
-    background-color: #8a7acd; /* 기존 색상 */
+    background-color: #8a7acd; 
+    border-radius: 20px 0 0 20px; /* 왼쪽만 둥글게 */
 }
-
 .save-png-button:hover {
-    background-color: #7a6ac0; /* 기존 호버 색상 */
+    background-color: #7a6ac0; 
 }
 
-/* 🔥 [수정] "이전 수치 확인하기" 버튼 색상 (새로운 색상 적용) */
+/* 🔥 [수정] 이전 수치 확인 버튼 (오른쪽 버튼) */
 .view-history-button-part {
-    background-color: #A497D6; /* 변경된 색상 (기존 구분선 색상과 유사) */
+    background-color: #8a7acd; /* 색상 통일 */
+    border-left: none; /* 좌측에 이미 구분선이 있으므로 테두리 제거 */
+    border-radius: 0 20px 20px 0; /* 오른쪽만 둥글게 */
 }
 
 .view-history-button-part:hover {
-    background-color: #9385C9; /* 변경된 호버 색상 */
+    background-color: #7a6ac0; 
 }
 
-
-/* 🔥 [유지] 구분선 스타일 */
+/* 🔥 [삭제] 구분선 요소는 이제 버튼 테두리로 대체되므로 삭제 */
 .button-separator {
-    width: 2px;
-    height: 30px; /* 버튼 높이에 따라 자동으로 늘어나도록 조정 가능 */
-    background-color: #a497d6; 
-    flex-shrink: 0;
+    display: none;
 }
 
 
-/* --- 추천 섹션 스타일 (전체 높이 맞춤) --- */
+/* --- 추천 섹션 스타일 --- */
 
 .recommendation-title {
     font-size: 1.8rem;
@@ -234,7 +257,7 @@
     position: relative;
     transition: width 0.3s ease;
     width: 300px; 
-    height: 350px; /* 고정 높이 설정 */
+    height: 350px; 
     overflow: hidden;
 }
 
@@ -247,7 +270,7 @@
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #FAEAB1; 
+    background-color: #f8f8f8; /* 🔥 수정: 원래 색상으로 되돌림 */
     text-decoration: none;
     color: #333;
     display: flex;
@@ -257,7 +280,7 @@
     transition: all 0.3s;
     cursor: pointer;
     position: relative;
-    box-sizing: border-box; /* 패딩 포함 높이 계산 */
+    box-sizing: border-box;
 }
 
 /* 단일 섹션(생활습관, 운동)의 너비도 고정 */
@@ -312,7 +335,7 @@
     z-index: 3;
     box-sizing: border-box;
     padding: 30px;
-    background-color: #FAEAB1; 
+    background-color: #FAEAB1; /* 🔥 수정: 확장 뷰 배경색 유지 */
 }
 
 .recommendation-group.expanded .expanded-view {

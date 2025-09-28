@@ -5,8 +5,16 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding-top: 120px;
+    padding-top: 120px; 
     background-color: #fff;
+}
+
+.results-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .result-header {
@@ -22,8 +30,8 @@
 
 /* 체질 캐릭터 이미지 Wrapper */
 .body-type-image-wrapper {
-    width: 600px;
-    height: 600px;
+    width: 600px; 
+    height: 600px; 
     margin: 20px auto;
 }
 
@@ -34,6 +42,71 @@
     object-fit: contain;
 }
 
+/* ✅ 추가: '오늘의 장기 수치' 섹션 제목 스타일 */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px; /* 그래프와의 간격 */
+    width: 100%;
+    text-align: center;
+}
+
+.graph-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.graph-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    width: 45%;
+    max-width: 450px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex; /* 내부 요소를 정렬하기 위해 flex 사용 */
+    flex-direction: column;
+    align-items: center; /* 자식 요소들을 가운데 정렬 */
+}
+
+/* ✅ 추가: 그래프 박스 내부 제목 컨테이너 */
+.graph-box-header {
+    width: 100%; /* 너비를 100%로 설정하여 h2가 가운데 올 수 있도록 */
+    text-align: center; /* h2 텍스트를 가운데 정렬 */
+    margin-bottom: 15px; /* 제목과 그래프 간의 간격 */
+}
+
+/* 왼손 그래프 제목 */
+.left-hand-graph h2 {
+    font-size: 1.5rem;
+    color: #4CAF50; /* 왼손: 녹색 계열 */
+    font-weight: bold;
+    margin: 0; /* 부모 div가 정렬하므로 h2 자체 마진은 0으로 */
+}
+
+/* 오른손 그래프 제목 */
+.right-hand-graph h2 {
+    font-size: 1.5rem;
+    color: #FF8C69; /* 오른손: 주황색 계열 */
+    font-weight: bold;
+    margin: 0; /* 부모 div가 정렬하므로 h2 자체 마진은 0으로 */
+}
+
+.graph-placeholder {
+    width: 100%;
+    height: 200px;
+}
+
+.measure-timestamp {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
 
 .recommendation-sections {
     display: flex;

@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding-top: 120px; /* 헤더 여백 확보 */
+    padding-top: 120px;
     background-color: #fff;
 }
 
@@ -30,8 +30,8 @@
 
 /* 체질 캐릭터 이미지 Wrapper */
 .body-type-image-wrapper {
-    width: 600px; 
-    height: 600px; 
+    width: 550px; 
+    height: 550px; 
     margin: 20px auto;
 }
 
@@ -42,12 +42,12 @@
     object-fit: contain;
 }
 
-/* ✅ 추가: '오늘의 장기 수치' 섹션 제목 스타일 */
+/* 오늘의 장기 수치 섹션 제목 스타일 */
 .section-title {
     font-size: 1.8rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 40px;
+    margin-bottom: 40px; 
     width: 100%;
     text-align: center;
 }
@@ -101,29 +101,19 @@
     height: 200px;
 }
 
-/* ✅ 수정: 측정 일시와 버튼 컨테이너 스타일 */
-.timestamp-and-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 버튼을 가운데 정렬 */
-    width: 100%;
-    margin-bottom: 50px;
-}
-
 .measure-timestamp {
     font-size: 1rem;
     color: #555;
-    margin-bottom: 20px; /* 버튼과의 간격 조정 */
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
-/* ✅ 수정: 이전 수치 확인하기 버튼 디자인 */
 .view-history-button {
     padding: 10px 30px;
-    background-color: #8a7acd; /* 보라색 배경 */
+    background-color: #8a7acd;
     color: #fff;
     border: none;
-    border-radius: 20px; /* 둥근 모서리 */
+    border-radius: 20px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
@@ -136,6 +126,20 @@
 }
 
 
+/* --- 추천 섹션 스타일 --- */
+
+/* 추천 섹션 타이틀 */
+.recommendation-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px; 
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* 추천 섹션 컨테이너 */
 .recommendation-sections {
     display: flex;
     justify-content: center;
@@ -145,21 +149,131 @@
     padding-bottom: 50px;
 }
 
-.recommendation-card {
-    flex: 1;
-    min-width: 250px;
+/* 그룹 컨테이너 (식단처럼 확장될 수 있는 요소) */
+.recommendation-group {
+    position: relative;
+    transition: width 0.3s ease;
+    width: 300px; /* 고정 너비 설정 (단일 카드가 커짐) */
+    height: 350px; /* 고정 높이 설정 */
+    overflow: hidden;
+}
+
+/* 기본 추천 카드 스타일 (단일 섹션과 확장 전 섹션의 공통 스타일) */
+.recommendation-card,
+.recommendation-group .default-view {
+    /* 기존 flex: 1 대신 고정 크기 사용 */
+    width: 300px;
+    height: 350px;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     background-color: #f8f8f8;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative; /* 호버 애니메이션을 위해 */
+}
+/* 단일 섹션(생활습관, 운동)의 너비도 고정 */
+.recommendation-sections > a.recommendation-card {
+    width: 300px;
 }
 
-.recommendation-card h3 {
+/* 호버 시 카드 그림자/배경 강조 */
+.recommendation-card:hover,
+.recommendation-group .default-view:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.recommendation-img {
+    width: 150px; 
+    height: 150px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-out; /* 이미지 강조 애니메이션 */
+}
+
+/* 🌟 수정사항 2 반영: 이미지 강조 애니메이션 */
+.recommendation-card:hover .recommendation-img,
+.default-view:hover .recommendation-img {
+    transform: scale(1.1);
+}
+
+.recommendation-card h3,
+.recommendation-group .default-view h3 {
     font-size: 1.5rem;
     color: #6a5acd;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
+
+/* 식단 섹션 확장 상태 */
+.recommendation-group.expanded {
+    width: 630px; /* 카드 2개 (300*2 + 30px 간격) */
+    height: 350px; /* 높이 유지 */
+    z-index: 5;
+}
+
+/* 확장된 뷰 (음식 + 주류) */
+.recommendation-group .expanded-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 3;
+}
+
+.recommendation-group.expanded .expanded-view {
+    opacity: 1;
+}
+
+.recommendation-group.expanded .default-view {
+    opacity: 0; /* 확장되면 기본 뷰 숨김 */
+    pointer-events: none;
+}
+
+.expanded-view .expanded-card {
+    /* expanded-card 내부 스타일 유지 */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+    height: 100%;
+}
+
+.expanded-view .expanded-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.expanded-view .expanded-card span {
+    font-weight: bold;
+    color: #6a5acd;
+}
+
+.expanded-view .expanded-card:hover img {
+    transform: scale(1.1); /* 확장된 카드 내부 이미지 강조 */
+}
+
+/* 주류/음식 카드 구분을 위한 추가 스타일 */
+.expanded-view .food-card:hover { background-color: #e8f8e8; }
+.expanded-view .alcohol-card:hover { background-color: #f5e8f5; }
 
 .recommendation-card p {
     font-size: 1rem;

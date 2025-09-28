@@ -1,12 +1,12 @@
 // src/pages/ResultPage.jsx (전체 코드)
 
-import React, { useState } from 'react'; // useState import 필수
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import Header from '../components/Header.jsx';
-import CalendarModal from '../components/CalendarModal.jsx'; // 캘린더 모달 컴포넌트 import
+import CalendarModal from '../components/CalendarModal.jsx'; 
 import './ResultPage.css';
 
-// 체질별 이미지 파일 매핑
+// 체질별 이미지 파일 매핑 (유지)
 const bodyTypeImages = {
     '태양인': '/taeyang_people.png',
     '태음인': '/taeeum_people.png',
@@ -25,7 +25,7 @@ const ORGAN_NAMES_KR = {
 // 장기 수치를 그래프 SVG 좌표로 변환하는 유틸리티 (유지)
 const mapDataToSVGPoints = (data, hand) => {
     const maxValue = 50;
-    const yAxisHeight = 160;
+    const yAxisHeight = 160; 
     const xUnit = 60;
     const xStart = 20; 
     
@@ -35,6 +35,7 @@ const mapDataToSVGPoints = (data, hand) => {
     GRAPH_ORDER.forEach((organId, index) => {
         const value = parseInt(data[organId]?.[hand] || 25); 
         const clampedValue = Math.max(0, Math.min(maxValue, value));
+        
         const y = 180 - (clampedValue / maxValue) * yAxisHeight;
         const x = xStart + (index * xUnit);
         
@@ -62,7 +63,11 @@ const formatTime = (date) => {
 
 const ResultPage = () => {
     const location = useLocation();
-    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [hoveredSection, setHoveredSection] = useState(null); // 호버 상태: 'diet', 'lifestyle', 'sport'
+
+    // 이미지 강조 애니메이션을 위한 호버 상태 추가 (section-name_hover)
+    const [hoveredCard, setHoveredCard] = useState(null); 
     
     const { 
         bodyType = '체질 판별 중...', 
@@ -77,15 +82,13 @@ const ResultPage = () => {
     const { points: rightPoints, pointData: rightPointData } = mapDataToSVGPoints(formData, 'right');
 
     const handleDateSelect = (selectedDate) => {
-        // TODO: DB 연동 후 해당 날짜의 기록을 불러오는 로직
         console.log("Selected Date:", selectedDate);
         alert(`선택된 날짜의 기록을 불러옵니다: ${selectedDate.toLocaleDateString('ko-KR')}`);
     };
     
-    // 임시 기록 날짜 (DB 연동 시 필요 없음)
     const DUMMY_AVAILABLE_DATES = [
         new Date().toISOString().slice(0, 10),
-        new Date(Date.now() - 86400000 * 5).toISOString().slice(0, 10), // 5일 전
+        new Date(Date.now() - 86400000 * 5).toISOString().slice(0, 10),
     ];
 
 
@@ -167,28 +170,57 @@ const ResultPage = () => {
                     
                     <div className="timestamp-and-button">
                         <p className="measure-timestamp">측정 일시 : {formatTime(measureTime)}</p>
-                        {/* 버튼 추가 및 모달 열기 함수 연결 */}
                         <button className="view-history-button" onClick={() => setIsModalOpen(true)}>
                             이전 수치 확인하기
                         </button>
                     </div>
 
-                    <div className="recommendation-sections">
-                        <section className="recommendation-card diet">
-                            <h3>식단 추천</h3>
-                            <p>{recommendations.diet || '체질에 맞는 추천 식단을 준비 중입니다.'}</p>
-                        </section>
-                        
-                        <section className="recommendation-card lifestyle">
-                            <h3>생활 습관</h3>
-                            <p>{recommendations.lifestyle || '체질에 맞는 생활 습관 가이드를 제공합니다.'}</p>
-                        </section>
+                    {/* 추천 섹션 시작 */}
+                    <h2 className="section-title recommendation-title">체질 맞춤 추천</h2>
 
-                        <section className="recommendation-card alcohol">
-                            <h3>주류 추천</h3>
-                            <p>{recommendations.alcohol || '체질에 맞는 주류 추천을 준비 중입니다.'}</p>
-                        </section>
+                    <div className="recommendation-sections">
+                        {/* 1. 식단 (확장 가능한 섹션) */}
+                        <div className={`recommendation-group ${hoveredSection === 'diet' ? 'expanded' : ''}`}
+                             onMouseEnter={() => setHoveredSection('diet')}
+                             onMouseLeave={() => setHoveredSection(null)}>
+                            
+                            <Link to="/recommend/diet" state={{ bodyType, recommendationType: 'diet' }} className={`default-view ${hoveredCard === 'diet' ? 'img-hover' : ''}`}
+                                onMouseEnter={() => setHoveredCard('diet')}
+                                onMouseLeave={() => setHoveredCard(null)}>
+                                <img src="/recommend_food.png" alt="식단" className="recommendation-img" />
+                                <h3>식단 추천</h3>
+                            </Link>
+
+                            <div className="expanded-view">
+                                <Link to="/recommend/food" state={{ bodyType, recommendationType: 'food' }} className="expanded-card food-card">
+                                    <img src="/recommend_food.png" alt="추천 음식" />
+                                    <span>음식 추천</span>
+                                </Link>
+                                <Link to="/recommend/alcohol" state={{ bodyType, recommendationType: 'alcohol' }} className="expanded-card alcohol-card">
+                                    <img src="/recommend_beer.png" alt="주류 추천" />
+                                    <span>주류 추천</span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* 2. 생활 습관 (단일 섹션) */}
+                        <Link to="/recommend/lifestyle" state={{ bodyType, recommendationType: 'lifestyle' }} className={`recommendation-card ${hoveredCard === 'lifestyle' ? 'img-hover' : ''}`}
+                              onMouseEnter={() => setHoveredCard('lifestyle')}
+                              onMouseLeave={() => setHoveredCard(null)}>
+                            <img src="/recommend_life.png" alt="생활 습관" className="recommendation-img" />
+                            <h3>생활 습관</h3>
+                        </Link>
+
+                        {/* 3. 운동 (단일 섹션) */}
+                        <Link to="/recommend/sport" state={{ bodyType, recommendationType: 'sport' }} className={`recommendation-card ${hoveredCard === 'sport' ? 'img-hover' : ''}`}
+                              onMouseEnter={() => setHoveredCard('sport')}
+                              onMouseLeave={() => setHoveredCard(null)}>
+                            <img src="/recommend_sport.png" alt="운동 추천" className="recommendation-img" />
+                            <h3>운동 추천</h3>
+                        </Link>
                     </div>
+                    {/* 추천 섹션 끝 */}
+
                 </div>
             </div>
             

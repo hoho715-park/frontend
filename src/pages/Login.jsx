@@ -7,7 +7,7 @@ import { FaRegUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
 const Login = () => {
-  const [userId, setUserId] = useState("");  // user_id로 변경
+  const [userId, setUserId] = useState("");   // 로그인 아이디
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -26,10 +26,10 @@ const Login = () => {
       if (response.data.status === "success") {
         // ✅ 로그인 성공 → localStorage 저장
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", response.data.username); // 이름 저장
-        localStorage.setItem("userId", response.data.userId);     // 아이디 저장
+        localStorage.setItem("username", response.data.username); // 사용자 이름
+        localStorage.setItem("userId", response.data.id);         // ✅ DB PK(id) 저장
 
-        navigate("/"); // 메인페이지로 이동
+        navigate("/"); // 메인 페이지로 이동
         window.location.reload();
       } else {
         alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");

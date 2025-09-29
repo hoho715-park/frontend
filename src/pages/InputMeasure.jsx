@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { FaCheckCircle, FaCheck } from 'react-icons/fa'; // 체크 아이콘 import
+import axios from 'axios'; // ✅ axios 추가
 import './InputMeasure.css';
 
 const organs = [
@@ -22,7 +23,6 @@ const InputMeasure = () => {
   const [leftHandValue, setLeftHandValue] = useState('');
   const [rightHandValue, setRightHandValue] = useState('');
   
-  // 완료 상태는 formData의 존재 여부로 확인 (계산 속성)
   const currentOrgan = organs[currentOrganIndex];
   const isLeftCompleted = !!(formData[currentOrgan.id] && formData[currentOrgan.id].left);
   const isRightCompleted = !!(formData[currentOrgan.id] && formData[currentOrgan.id].right);
@@ -32,62 +32,37 @@ const InputMeasure = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // 장기가 바뀔 때마다 입력값만 초기화 
     setLeftHandValue('');
     setRightHandValue('');
-    setIsTransitioning(false); // 전환이 끝나면 상태 초기화
+    setIsTransitioning(false);
   }, [currentOrganIndex]);
 
-  // 🔥 [핵심] 임시 체질 판별 로직
+  // 🔥 체질 판별 로직 (임시)
   const determineBodyType = (data) => {
-      // ------------------------------------------------
-      // TODO: 머신러닝 모델 적용 시 이 로직을 대체해야 함
-      // ------------------------------------------------
-      const getValue = (organId, hand) => parseInt(data[organId]?.[hand] || 0);
+    const getValue = (organId, hand) => parseInt(data[organId]?.[hand] || 0);
 
-      // 폐/간/비장/신장 수치를 사용합니다. (양손 합산)
-      const sumLung = getValue('lung', 'left') + getValue('lung', 'right');
-      const sumLiver = getValue('liver', 'left') + getValue('liver', 'right');
-      const sumSpleen = getValue('spleen', 'left') + getValue('spleen', 'right');
-      const sumKidney = getValue('kidney', 'left') + getValue('kidney', 'right');
-      
-      const lungLiverDiff = sumLung - sumLiver;
-      const spleenKidneyDiff = sumSpleen - sumKidney;
-      
-      const diffThreshold = 10; // 차이가 클 경우의 임시 기준점
+    const sumLung = getValue('lung', 'left') + getValue('lung', 'right');
+    const sumLiver = getValue('liver', 'left') + getValue('liver', 'right');
+    const sumSpleen = getValue('spleen', 'left') + getValue('spleen', 'right');
+    const sumKidney = getValue('kidney', 'left') + getValue('kidney', 'right');
+    
+    const lungLiverDiff = sumLung - sumLiver;
+    const spleenKidneyDiff = sumSpleen - sumKidney;
+    
+    const diffThreshold = 10;
 
-      if (lungLiverDiff > diffThreshold) {
-          // 폐 > 간, 차이가 클 때 (태양인)
-          return {
-              bodyType: '태양인',
-              recommendations: { diet: '담백한 채소 위주', lifestyle: '상체 운동', alcohol: '담백한 술' }
-          };
-      } else if (lungLiverDiff < -diffThreshold) {
-          // 폐 < 간, 차이가 클 때 (태음인)
-          return {
-              bodyType: '태음인',
-              recommendations: { diet: '따뜻한 음식 위주', lifestyle: '하체 운동', alcohol: '따뜻한 술' }
-          };
-      } else if (spleenKidneyDiff > diffThreshold) {
-          // 비장 > 신장, 차이가 클 때 (소양인)
-          return {
-              bodyType: '소양인',
-              recommendations: { diet: '찬 음식 피하기', lifestyle: '유산소 운동', alcohol: '차가운 맥주' }
-          };
-      } else if (spleenKidneyDiff < -diffThreshold) {
-          // 비장 < 신장, 차이가 클 때 (소음인)
-          return {
-              bodyType: '소음인',
-              recommendations: { diet: '따뜻한 음식 섭취', lifestyle: '가벼운 산책', alcohol: '따뜻한 막걸리' }
-          };
-      } else {
-          return {
-              bodyType: '평형인', // 모든 조건에 해당하지 않을 경우
-              recommendations: { diet: '균형 잡힌 식단', lifestyle: '규칙적인 생활', alcohol: '적당히' }
-          };
-      }
+    if (lungLiverDiff > diffThreshold) {
+      return { bodyType: '태양인', recommendations: { diet: '담백한 채소 위주', lifestyle: '상체 운동', alcohol: '담백한 술' } };
+    } else if (lungLiverDiff < -diffThreshold) {
+      return { bodyType: '태음인', recommendations: { diet: '따뜻한 음식 위주', lifestyle: '하체 운동', alcohol: '따뜻한 술' } };
+    } else if (spleenKidneyDiff > diffThreshold) {
+      return { bodyType: '소양인', recommendations: { diet: '찬 음식 피하기', lifestyle: '유산소 운동', alcohol: '차가운 맥주' } };
+    } else if (spleenKidneyDiff < -diffThreshold) {
+      return { bodyType: '소음인', recommendations: { diet: '따뜻한 음식 섭취', lifestyle: '가벼운 산책', alcohol: '따뜻한 막걸리' } };
+    } else {
+      return { bodyType: '평형인', recommendations: { diet: '균형 잡힌 식단', lifestyle: '규칙적인 생활', alcohol: '적당히' } };
+    }
   };
-
 
   const handleValueChange = (e, hand) => {
     const value = e.target.value;
@@ -117,11 +92,11 @@ const InputMeasure = () => {
       newFormData[currentOrgan.id].left = leftHandValue;
       setFormData(newFormData);
       
-      setLeftHandValue(''); 
+      setLeftHandValue('');
     }
   };
 
-  const handleRightHandSubmit = () => {
+  const handleRightHandSubmit = async () => {
     if (rightHandValue !== '') {
       if (!isLeftCompleted) { 
         alert('왼손 수치를 먼저 입력해 주세요.');
@@ -144,13 +119,33 @@ const InputMeasure = () => {
           setCurrentOrganIndex(prevIndex => prevIndex + 1);
         }, 500);
       } else {
-        // 🔥 [핵심 수정] 마지막 장기 입력 완료 시
-        const result = determineBodyType(newFormData); // 최종 체질 판별
-        const measureTime = new Date(); // 측정 일시 기록
-        
-        // alert('모든 장기 입력이 완료되었습니다!'); // 불필요한 alert 제거
-        
-        // 결과 페이지로 이동 (state에 체질 정보와 측정 일시를 담아 전달)
+        // ✅ 마지막 장기 입력 완료 시 DB 저장
+        const userId = localStorage.getItem("userId"); // 로그인 시 저장했다고 가정
+        try {
+          await axios.post("http://localhost:8080/api/measurements", {
+            userId: userId,
+            leftKidney: parseInt(newFormData.kidney?.left || 0),
+            rightKidney: parseInt(newFormData.kidney?.right || 0),
+            leftSpleen: parseInt(newFormData.spleen?.left || 0),
+            rightSpleen: parseInt(newFormData.spleen?.right || 0),
+            leftLung: parseInt(newFormData.lung?.left || 0),
+            rightLung: parseInt(newFormData.lung?.right || 0),
+            leftHeart: parseInt(newFormData.heart?.left || 0),
+            rightHeart: parseInt(newFormData.heart?.right || 0),
+            leftLiver: parseInt(newFormData.liver?.left || 0),
+            rightLiver: parseInt(newFormData.liver?.right || 0),
+            leftBladder: parseInt(newFormData.bladder?.left || 0),
+            rightBladder: parseInt(newFormData.bladder?.right || 0)
+          });
+          console.log("측정값 저장 성공!");
+        } catch (error) {
+  console.error("측정값 저장 실패:", error.response?.data || error.message);
+  alert("DB 저장 중 오류: " + (error.response?.data?.message || error.message));
+}
+
+        // 🔥 결과 페이지 이동
+        const result = determineBodyType(newFormData);
+        const measureTime = new Date();
         navigate('/result', { state: { ...result, formData: newFormData, measureTime: measureTime } });
       }
     }

@@ -24,8 +24,13 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        // ✅ 로그인 성공 → 메인페이지로 이동
+        // ✅ 로그인 성공 시 localStorage에 상태 저장
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+
+        // ✅ 메인페이지로 이동
         navigate("/");
+        window.location.reload(); // 헤더 즉시 갱신
       }
     } catch (error) {
       alert("로그인 실패: " + (error.response?.data || "Network Error"));

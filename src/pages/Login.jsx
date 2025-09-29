@@ -7,7 +7,7 @@ import { FaRegUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState("");  // user_id로 변경
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -19,18 +19,20 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:8080/api/users/login", {
-        username,
+        userId,
         password,
       });
 
-      if (response.status === 200) {
-        // ✅ 로그인 성공 시 localStorage에 상태 저장
+      if (response.data.status === "success") {
+        // ✅ 로그인 성공 → localStorage 저장
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", response.data.username); // 이름 저장
+        localStorage.setItem("userId", response.data.userId);     // 아이디 저장
 
-        // ✅ 메인페이지로 이동
-        navigate("/");
-        window.location.reload(); // 헤더 즉시 갱신
+        navigate("/"); // 메인페이지로 이동
+        window.location.reload();
+      } else {
+        alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
       }
     } catch (error) {
       alert("로그인 실패: " + (error.response?.data || "Network Error"));
@@ -48,8 +50,8 @@ const Login = () => {
           <input
             type="text"
             placeholder="ID"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
           />
         </div>
         <div className="input-group password-group">

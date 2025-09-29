@@ -1,5 +1,3 @@
-// src/pages/SignUp.jsx
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,14 +5,14 @@ import { FaRegUser, FaLock, FaRegIdBadge, FaEnvelope, FaCalendar, FaVenusMars } 
 import "./SignUp.css";
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState("");       // 로그인 ID
+  const [username, setUsername] = useState("");   // 회원 이름
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
   const [gender, setGender] = useState("");
-  const [showPopup, setShowPopup] = useState(false); // 팝업 상태 관리
+  const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,6 +24,7 @@ const SignUp = () => {
 
     try {
       await axios.post("http://localhost:8080/api/users/register", {
+        userId,
         username,
         password,
         email,
@@ -33,9 +32,7 @@ const SignUp = () => {
         gender,
       });
 
-      // 회원가입 성공 → 팝업 띄우기
       setShowPopup(true);
-
     } catch (error) {
       alert("회원가입 실패: " + (error.response?.data || "Network Error"));
     }
@@ -44,16 +41,19 @@ const SignUp = () => {
   return (
     <div className="signup-page-container">
       <div className="signup-box">
-        {/* 로고 */}
         <div className="logo-container">
           <img src="/ieum_가로.png" alt="이음 로고" className="ieum-logo" />
         </div>
 
-        {/* 입력 필드 */}
         <div className="form-section">
           <div className="input-group">
             <FaRegIdBadge className="input-icon" />
-            <input type="text" placeholder="아이디" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" placeholder="아이디" value={userId} onChange={(e) => setUserId(e.target.value)} />
+          </div>
+
+          <div className="input-group">
+            <FaRegUser className="input-icon" />
+            <input type="text" placeholder="이름" value={username} onChange={(e) => setUsername(e.target.value)} />
           </div>
 
           <div className="input-group">
@@ -64,11 +64,6 @@ const SignUp = () => {
           <div className="input-group">
             <FaLock className="input-icon" />
             <input type="password" placeholder="비밀번호 확인" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-          </div>
-
-          <div className="input-group">
-            <FaRegUser className="input-icon" />
-            <input type="text" placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
 
           <div className="input-group">
@@ -90,11 +85,9 @@ const SignUp = () => {
           </div>
         </div>
 
-        {/* 가입하기 버튼 */}
         <button className="signup-button" onClick={handleSignUp}>가입하기</button>
       </div>
 
-      {/* 팝업 */}
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-box">

@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import './Header.css';
 
@@ -15,8 +15,9 @@ const navItems = [
 
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 관리
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const timeoutRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -32,6 +33,10 @@ const Header = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
     }, 200);
+  };
+
+  const handleProfileClick = () => {
+    navigate("/mypage");
   };
 
   return (
@@ -68,7 +73,11 @@ const Header = () => {
 
       <div className="menubar-login">
         {isLoggedIn ? (
-          <FaUserCircle size={28} className="profile-icon" />
+          <FaUserCircle
+            size={38}
+            className="profile-icon"
+            onClick={handleProfileClick}
+          />
         ) : (
           <Link to="/login">LOGIN</Link>
         )}

@@ -16,9 +16,11 @@
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .menubar-logo img {
   height: 50px;
 }
+
 .menubar-nav {
   display: flex;
   list-style: none;
@@ -26,11 +28,13 @@
   padding: 0;
   gap: 100px;
 }
+
 .nav-item {
   position: relative;
   cursor: pointer;
   padding: 0.5rem 0;
 }
+
 .nav-link {
   font-size: 1.2rem;
   font-weight: 500;
@@ -39,9 +43,11 @@
   transition: color 0.3s;
   white-space: nowrap;
 }
+
 .nav-link:hover {
   color: #000;
 }
+
 .menubar-login a {
   font-size: 1.2rem;
   font-weight: 600;
@@ -53,10 +59,12 @@
   transition: background-color 0.3s, color 0.3s;
   white-space: nowrap;
 }
+
 .menubar-login a:hover {
   background-color: #333;
   color: #fff;
 }
+
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -69,18 +77,17 @@
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-width: 150px;
-  
-  /* 드롭다운 메뉴가 서서히 사라지도록 애니메이션 효과 추가 */
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  
   z-index: 100;
 }
+
 .dropdown-menu.visible {
   visibility: visible;
   opacity: 1;
 }
+
 .dropdown-item a {
   display: block;
   padding: 10px 20px;
@@ -90,9 +97,11 @@
   white-space: nowrap;
   transition: background-color 0.2s;
 }
+
 .dropdown-item a:hover {
   background-color: #f4f4f4;
 }
+
 .underline {
   position: absolute;
   bottom: 0;
@@ -101,4 +110,15 @@
   height: 2px;
   width: 100%;
   background-color: #3388ff;
+}
+
+/* ✅ 프로필 아이콘 */
+.profile-icon {
+  color: #5a4fff; /* 보라색 계열 */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.profile-icon:hover {
+  color: #3b2dcc;
 }

@@ -12,7 +12,8 @@ import SignUp from './pages/SignUp.jsx';
 import QsccIntro from './pages/QsccIntro.jsx';
 import QsccSurvey from './pages/QsccSurvey.jsx';
 import QsccQuestion from './pages/QsccQuestion.jsx';
-import ResultPage from './pages/ResultPage.jsx'; // ResultPage 컴포넌트 import
+import ResultPage from './pages/ResultPage.jsx';
+import MyPage from './pages/MyPage.jsx'; // ✅ 추가
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
       <Route path="/test/qsc-intro" element={<><Header /><QsccIntro /></>} />
       <Route path="/test/qsc-survey" element={<><Header /><QsccSurvey /></>} />
       <Route path="/test/qsc-survey-questions" element={<><Header /><QsccQuestion /></>} />
-      <Route path="/result" element={<ResultPage />} /> {/* 결과 페이지 라우트 추가 */}
+      <Route path="/result" element={<ResultPage />} />
+      <Route path="/mypage" element={<><Header /><MyPage /></>} /> {/* ✅ 추가 */}
     </Routes>
   );
 }

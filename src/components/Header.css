@@ -114,11 +114,11 @@
 
 /* ✅ 프로필 아이콘 */
 .profile-icon {
-  color: #5a4fff; /* 보라색 계열 */
+  color: #A376A2; /* 보라색 계열 */
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .profile-icon:hover {
-  color: #3b2dcc;
+  color: #6B3F69;
 }

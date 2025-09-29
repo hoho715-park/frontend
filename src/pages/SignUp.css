@@ -157,3 +157,49 @@
 .signup-button:hover {
   background-color: #7a6ac0;
 }
+
+/* 팝업 배경 */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 팝업 박스 */
+.popup-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.popup-box h2 {
+  margin-bottom: 10px;
+}
+
+.popup-box p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.popup-button {
+  padding: 10px 20px;
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background-color: #5a4bb7;
+}

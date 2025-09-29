@@ -1,7 +1,8 @@
 // src/components/Header.jsx
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import './Header.css';
 
 const navItems = [
@@ -14,7 +15,13 @@ const navItems = [
 
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 관리
   const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedIn);
+  }, []);
 
   const handleMouseEnter = (menuName) => {
     clearTimeout(timeoutRef.current);
@@ -36,7 +43,12 @@ const Header = () => {
       </div>
       <ul className="menubar-nav">
         {navItems.map((item) => (
-          <li key={item.name} className="nav-item" onMouseEnter={() => handleMouseEnter(item.name)} onMouseLeave={handleMouseLeave}>
+          <li
+            key={item.name}
+            className="nav-item"
+            onMouseEnter={() => handleMouseEnter(item.name)}
+            onMouseLeave={handleMouseLeave}
+          >
             <Link to={item.path} className="nav-link">{item.name}</Link>
             {item.subItems && (
               <ul className={`dropdown-menu ${activeMenu === item.name ? 'visible' : ''}`}>
@@ -48,13 +60,18 @@ const Header = () => {
               </ul>
             )}
             {!item.subItems && activeMenu === item.name && (
-                <div className="underline"></div>
+              <div className="underline"></div>
             )}
           </li>
         ))}
       </ul>
+
       <div className="menubar-login">
-        <Link to="/login">LOGIN</Link>
+        {isLoggedIn ? (
+          <FaUserCircle size={28} className="profile-icon" />
+        ) : (
+          <Link to="/login">LOGIN</Link>
+        )}
       </div>
     </nav>
   );

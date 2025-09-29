@@ -1,15 +1,35 @@
 // src/pages/Login.jsx
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaRegUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import './Login.css';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+import { FaRegUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import "./Login.css";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/api/users/login", {
+        username,
+        password,
+      });
+
+      if (response.status === 200) {
+        // ✅ 로그인 성공 → 메인페이지로 이동
+        navigate("/");
+      }
+    } catch (error) {
+      alert("로그인 실패: " + (error.response?.data || "Network Error"));
+    }
   };
 
   return (
@@ -20,19 +40,28 @@ const Login = () => {
         </div>
         <div className="input-group">
           <FaRegUser className="input-icon" />
-          <input type="text" placeholder="ID" />
+          <input
+            type="text"
+            placeholder="ID"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
         <div className="input-group password-group">
           <FaLock className="input-icon" />
           <input
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <span className="password-toggle" onClick={togglePasswordVisibility}>
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-        <button className="login-button">로그인</button>
+        <button className="login-button" onClick={handleLogin}>
+          로그인
+        </button>
         <div className="link-group">
           <Link to="/find-id" className="find-link">아이디 찾기</Link>
           <span className="divider">|</span>
@@ -40,21 +69,7 @@ const Login = () => {
         </div>
         <div className="register-group">
           <span>아직 회원이 아니신가요?</span>
-          <Link to="/signup" className="register-link">회원가입</Link> {/* 경로 수정 */}
-        </div>
-        <div className="social-login-section">
-          <button className="social-button google">
-            <img src="/google_icon.png" alt="구글 로그인" />
-            <span>Google로 로그인</span>
-          </button>
-          <button className="social-button kakao">
-            <img src="/kakao_icon.png" alt="카카오 로그인" />
-            <span>Kakao로 로그인</span>
-          </button>
-          <button className="social-button naver">
-            <img src="/naver_icon.png" alt="네이버 로그인" />
-            <span>Naver로 로그인</span>
-          </button>
+          <Link to="/signup" className="register-link">회원가입</Link>
         </div>
       </div>
     </div>

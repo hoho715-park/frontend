@@ -323,12 +323,11 @@ const ResultPage = () => {
                 </div>
             </div>
 
-            {/* CalendarModal */}
+             {/* CalendarModal */}
             {isModalOpen && (
                 <CalendarModal 
                     onClose={() => setIsModalOpen(false)}
-                    onDateSelect={handleDateSelect}
-                    availableDates={DUMMY_AVAILABLE_DATES}
+                    userId={localStorage.getItem("userId")}
                 />
             )}
         </>

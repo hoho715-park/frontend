@@ -274,7 +274,7 @@ const ResultPage = () => {
                     <div className="timestamp-and-button">
                         <p className="measure-timestamp">측정 일시 : {formatTime(measureTime)}</p>
                         <div className="button-group">
-                            <button className="save-png-button" onClick={handleSaveAsPNG}>오늘 수치 PNG 저장하기</button>
+                            <button className="save-png-button" onClick={handleSaveAsPNG}>이미지 저장</button>
                             <div className="button-separator"></div>
                             <button className="view-history-button-part" onClick={() => setIsModalOpen(true)}>이전 수치 확인하기</button>
                         </div>

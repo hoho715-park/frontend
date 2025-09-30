@@ -18,7 +18,7 @@ const mapDataToSVGPoints = (data, hand) => {
   const maxValue = 50;
   const yAxisHeight = 160;
   const xUnit = 60;
-  const xStart = 20;
+  const xStart = 50;
 
   let points = "";
   let pointData = [];
@@ -105,7 +105,7 @@ const HistoryGraphModal = ({ measurement, onClose }) => {
                 </g>
               ))}
               {GRAPH_ORDER.map((id, index) => (
-                <text key={id} x={20 + index * 60} y="195" fontSize="10" fill="#555" textAnchor="middle">{ORGAN_NAMES_KR[id]}</text>
+                <text key={id} x={50 + index * 60} y="195" fontSize="10" fill="#555" textAnchor="middle">{ORGAN_NAMES_KR[id]}</text>
               ))}
             </svg>
           </div>

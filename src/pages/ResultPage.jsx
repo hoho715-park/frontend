@@ -226,7 +226,7 @@ const ResultPage = () => {
                                         {[0, 10, 20, 30, 40, 50].map(v => (
                                             <g key={v}>
                                                 <text x="15" y={180 - (v / 50) * 160 + 5} fontSize="10" fill="#999" textAnchor="end">{v}</text>
-                                                <line x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} stroke={v === 0 ? "#333" : "#eee"} strokeWidth="1"/>
+                                                <line x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} stroke={v === 0 ? "#333" : "#ccc"} strokeWidth="1"/>
                                             </g>
                                         ))}
                                         <polyline fill="none" stroke="#4CAF50" strokeWidth="2" points={leftPoints} />
@@ -251,7 +251,7 @@ const ResultPage = () => {
                                         {[0, 10, 20, 30, 40, 50].map(v => (
                                             <g key={v}>
                                                 <text x="15" y={180 - (v / 50) * 160 + 5} fontSize="10" fill="#999" textAnchor="end">{v}</text>
-                                                <line x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} stroke={v === 0 ? "#333" : "#eee"} strokeWidth="1"/>
+                                                <line x1="20" y1={180 - (v / 50) * 160} x2="380" y2={180 - (v / 50) * 160} stroke={v === 0 ? "#333" : "#ccc"} strokeWidth="1"/>
                                             </g>
                                         ))}
                                         <polyline fill="none" stroke="#FF8C69" strokeWidth="2" points={rightPoints} />

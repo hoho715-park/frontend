@@ -1,0 +1,37 @@
+.alcohol-page-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff8f0;
+  border-radius: 16px;
+  border: 2px solid #f6b93b;
+  text-align: center;
+}
+
+.alcohol-page-container h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #b35c00;
+}
+
+.alcohol-list {
+  list-style: circle;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.alcohol-list li {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #444;
+}
+
+.back-button {
+  margin-top: 30px;
+}
+
+.back-button a {
+  text-decoration: none;
+  color: #b35c00;
+  font-weight: bold;
+}

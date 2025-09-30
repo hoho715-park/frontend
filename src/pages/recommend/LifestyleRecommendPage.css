@@ -1,0 +1,37 @@
+.lifestyle-page-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #f0f8ff;
+  border-radius: 16px;
+  border: 2px solid #60a3bc;
+  text-align: center;
+}
+
+.lifestyle-page-container h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #0a3d62;
+}
+
+.lifestyle-list {
+  list-style: square;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.lifestyle-list li {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.back-button {
+  margin-top: 30px;
+}
+
+.back-button a {
+  text-decoration: none;
+  color: #0a3d62;
+  font-weight: bold;
+}

@@ -13,7 +13,13 @@ import QsccIntro from './pages/QsccIntro.jsx';
 import QsccSurvey from './pages/QsccSurvey.jsx';
 import QsccQuestion from './pages/QsccQuestion.jsx';
 import ResultPage from './pages/ResultPage.jsx';
-import MyPage from './pages/MyPage.jsx'; // ✅ 추가
+import MyPage from './pages/MyPage.jsx';
+
+// ✅ 추천 페이지 import
+import FoodRecommendPage from './pages/recommend/FoodRecommendPage.jsx';
+import AlcoholRecommendPage from './pages/recommend/AlcoholRecommendPage.jsx';
+import LifestyleRecommendPage from './pages/recommend/LifestyleRecommendPage.jsx';
+import SportRecommendPage from './pages/recommend/SportRecommendPage.jsx';
 
 function App() {
   return (
@@ -28,7 +34,13 @@ function App() {
       <Route path="/test/qsc-survey" element={<><Header /><QsccSurvey /></>} />
       <Route path="/test/qsc-survey-questions" element={<><Header /><QsccQuestion /></>} />
       <Route path="/result" element={<ResultPage />} />
-      <Route path="/mypage" element={<><Header /><MyPage /></>} /> {/* ✅ 추가 */}
+      <Route path="/mypage" element={<><Header /><MyPage /></>} /> 
+
+      {/* ✅ 추천 페이지 라우트 */}
+      <Route path="/recommend/food" element={<FoodRecommendPage />} />
+      <Route path="/recommend/alcohol" element={<AlcoholRecommendPage />} />
+      <Route path="/recommend/lifestyle" element={<LifestyleRecommendPage />} />
+      <Route path="/recommend/sport" element={<SportRecommendPage />} />
     </Routes>
   );
 }

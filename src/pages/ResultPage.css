@@ -46,7 +46,7 @@
     position: absolute;
     background-color: #6a5acd; 
     color: white;
-    padding: 12px 18px; /* 조금 넉넉한 여백 */
+    padding: 12px 18px;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: bold;
@@ -59,24 +59,25 @@
     text-align: left;   
     line-height: 1.5;   
 
-    width: 220px;      /* ✅ 박스 너비 고정 */
-    min-height: 120px; /* ✅ 최소 높이 지정 */
-    display: flex;     /* ✅ 세로 정렬 */
+    width: 220px;
+    min-height: 120px;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
+
 /* 🔥 위치별 색상 다르게 적용 */
 .feature-tag.top-left {
-    background-color: #E2A16F; /* 좌측상단 */
+    background-color: #E2A16F;
 }
 .feature-tag.top-right {
-    background-color: #8FA31E; /* 우측상단 */
+    background-color: #8FA31E;
 }
 .feature-tag.bottom-left {
-    background-color: #6E8CFB; /* 좌측하단 */
+    background-color: #6E8CFB;
 }
 .feature-tag.bottom-right {
-    background-color: #9A3F3F; /* 우측하단 */
+    background-color: #9A3F3F;
 }
 
 .feature-tag:hover {
@@ -168,7 +169,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 70px; /* 🔥 버튼 그룹과 추천 카드 사이 간격 늘림 */
 }
 .measure-timestamp {
     font-size: 1rem;
@@ -183,14 +184,14 @@
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-top: 5px;
-    width: 400px; /* ✅ 버튼 전체 그룹 너비 고정 */
+    width: 400px;
 }
 
 .save-png-button, 
 .view-history-button-part {
-    flex: 1;                /* ✅ 두 버튼이 동일한 너비 */
-    text-align: center;     /* 텍스트 중앙 정렬 */
-    padding: 10px 0;        /* 좌우 패딩 제거하고 높이만 맞춤 */
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
     color: #fff;
     border: none;
     font-size: 1rem;
@@ -232,7 +233,7 @@
     margin-bottom: 40px; 
     width: 100%;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 20px; /* 🔥 버튼 그룹과의 간격 확보 */
 }
 .recommendation-sections {
     display: flex;
@@ -249,8 +250,8 @@
     height: 350px; 
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ✅ 그림자 추가 */
-    background-color: #f8f8f8; /* ✅ 일관성 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
 }
 
 /* 카드 공통 스타일 */
@@ -303,7 +304,7 @@
     width: 630px; 
     height: 350px; 
     z-index: 5;
-    background-color: #f8f8f8; /* ✅ 흰색/회색 배경 유지 */
+    background-color: #f8f8f8;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -320,7 +321,7 @@
     z-index: 3;
     box-sizing: border-box;
     padding: 30px;
-    background-color: #f8f8f8; /* ✅ 노란색 제거 */
+    background-color: #f8f8f8;
 }
 .recommendation-group.expanded .expanded-view {
     opacity: 1;
@@ -329,6 +330,7 @@
     opacity: 0;
     pointer-events: none;
 }
+
 /* 확장 카드 기본 */
 .expanded-view .expanded-card {
     background-color: #fff;
@@ -346,12 +348,12 @@
 
 /* 좌측 카드 */
 .expanded-view .food-card {
-    border-radius: 15px 0 0 15px;   /* 좌측 상단/하단 둥글게 */
+    border-radius: 15px 0 0 15px;
 }
 
 /* 우측 카드 */
 .expanded-view .alcohol-card {
-    border-radius: 0 15px 15px 0;   /* 우측 상단/하단 둥글게 */
+    border-radius: 0 15px 15px 0;
 }
 
 .expanded-view .expanded-card img {
@@ -377,8 +379,8 @@
 
 /* 측정한 user 이름 style */
 .username-highlight {
-    font-weight: 900;   /* 볼드 강조 */
-    font-size: 1.5em;   /* 주변 글자보다 크기 */
-    color: #000;        /* 필요하면 색상 강조 */
-    margin-right: 5px;  /* "님의 체질은"과 간격 */
+    font-weight: 900;
+    font-size: 1.5em;
+    color: #000;
+    margin-right: 5px;
 }

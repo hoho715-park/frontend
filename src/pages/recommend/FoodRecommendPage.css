@@ -1,0 +1,37 @@
+.food-page-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #f9fff7;
+  border-radius: 16px;
+  border: 2px solid #b8e994;
+  text-align: center;
+}
+
+.food-page-container h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #2d572c;
+}
+
+.food-list {
+  list-style: disc;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.food-list li {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.back-button {
+  margin-top: 30px;
+}
+
+.back-button a {
+  text-decoration: none;
+  color: #2d572c;
+  font-weight: bold;
+}

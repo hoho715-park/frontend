@@ -1,0 +1,37 @@
+.sport-page-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff0f5;
+  border-radius: 16px;
+  border: 2px solid #e66767;
+  text-align: center;
+}
+
+.sport-page-container h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #6d214f;
+}
+
+.sport-list {
+  list-style: disc;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.sport-list li {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #444;
+}
+
+.back-button {
+  margin-top: 30px;
+}
+
+.back-button a {
+  text-decoration: none;
+  color: #6d214f;
+  font-weight: bold;
+}

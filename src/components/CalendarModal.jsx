@@ -64,6 +64,7 @@ const CalendarModal = ({ onClose, userId }) => {
             locale="ko-KR"
             calendarType="gregory"
             tileClassName={tileClassName}
+            showNeighboringMonth={false} 
           />
         </div>
 

@@ -47,7 +47,6 @@
   align-items: center;
   gap: 80px;
 }
-.second-section .why-title { font-size: 3rem; font-weight: bold; margin-bottom: 50px; }
 .second-section .why-text-box { text-align: left; }
 .second-section .why-text-box p { font-size: 1.2rem; color: #555; line-height: 1.6; }
 .second-section .why-logo-box .why-logo-img { height: 200px; width: auto; }

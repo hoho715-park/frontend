@@ -217,6 +217,7 @@
   }
 }
 
+/*눈누에서 폰트 불러오기*/
 @font-face {
     font-family: 'GMarketSans';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');

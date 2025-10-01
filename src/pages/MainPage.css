@@ -224,18 +224,22 @@
     font-display: swap;
 }
 
+/* "이음, 나의 체질과 하루를 잇다" _ 텍스트 */
 .text1 {
   font-family: 'GMarketSans';
 }
 
+/*당신의 체질을 분석해 건강한 하루를 설계합니다. _ 텍스트*/
 .text2 {
   font-family: 'GMarketSans';
 }
 
+/*나의사상체질 알아보기! _ 텍스트*/
 #text3 {
   font-family: 'GMarketSans';
 }
 
+/*버튼 _ 텍스트*/
 .text4 {
   font-family: 'GMarketSans';
 }

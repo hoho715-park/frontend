@@ -216,3 +216,26 @@
     transform: translateY(-50%) translateX(0) scale(1);
   }
 }
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+.text1 {
+  font-family: 'GMarketSans';
+}
+
+.text2 {
+  font-family: 'GMarketSans';
+}
+
+#text3 {
+  font-family: 'GMarketSans';
+}
+
+.text4 {
+  font-family: 'GMarketSans';
+}

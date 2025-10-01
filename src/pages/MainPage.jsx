@@ -21,16 +21,16 @@ const MainPage = () => {
       <Header /> {/* 헤더 포함 */}
       <section className="main-page-hero">
         <div className="main-text-container">
-          <h1>“이음, 나의 체질과 하루를 잇다”</h1>
-          <p>당신의 체질을 분석해 건강한 하루를 설계합니다.</p>
-          <div className="expand-title">나의 사상체질 알아보기!</div>
+          <h1 className='text1'>“이음, 나의 체질과 하루를 잇다”</h1>
+          <p className='text2'>당신의 체질을 분석해 건강한 하루를 설계합니다.</p>
+          <div className="expand-title" id='text3'>나의 사상체질 알아보기!</div>
           <div
             className="test-button-wrapper"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <div className={`test-button-main ${isHovered ? 'hidden' : ''}`}>
-              테스트하기 <span className="arrow">→</span>
+              <span className='text4'>테스트하기</span><span className="arrow">→</span>
             </div>
             <div className={`test-button-expand ${isHovered ? 'visible' : ''}`}>
               <div className="expand-buttons">
@@ -40,7 +40,7 @@ const MainPage = () => {
                   onMouseEnter={() => handleMouseEnterButton('survey')}
                   onMouseLeave={handleMouseLeaveButton}
                 >
-                  <div className="button-text-wrapper">QSCC 설문으로 알아보기</div>
+                  <div className="button-text-wrapper"><span className='text4'>QSCC 설문으로 알아보기</span></div>
                 </Link>
                 <Link
                   to="/input"
@@ -48,7 +48,7 @@ const MainPage = () => {
                   onMouseEnter={() => handleMouseEnterButton('hand')}
                   onMouseLeave={handleMouseLeaveButton}
                 >
-                  <div className="button-text-wrapper">손바닥 장기 수치로 알아보기</div>
+                  <div className="button-text-wrapper"><span className='text4'>손바닥 장기 수치로 알아보기</span></div>
                 </Link>
               </div>
             </div>

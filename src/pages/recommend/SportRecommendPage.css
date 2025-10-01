@@ -1,37 +1,92 @@
+.sport-wrapper {
+  min-height: calc(100vh - 10px); /* 헤더 높이를 뺀 화면 높이 */
+  display: flex;
+  justify-content: center;  /* 가로 가운데 */
+  align-items: center;      /* 세로 가운데 */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .sport-page-container {
-  max-width: 700px;
-  margin: 40px auto;
+  max-width: 900px;
   padding: 30px;
   background: #fff0f5;
   border-radius: 16px;
   border: 2px solid #e66767;
-  text-align: center;
 }
 
 .sport-page-container h1 {
-  font-size: 26px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 30px;
   color: #6d214f;
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center;
+  gap: 8px;
 }
 
-.sport-list {
-  list-style: disc;
-  padding-left: 40px;
-  text-align: left;
+.sport-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  margin-top: 20px;
 }
 
-.sport-list li {
-  margin: 10px 0;
-  font-size: 18px;
-  color: #444;
+.sport-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.sport-card:hover {
+  transform: translateY(-5px);
+}
+
+.sport-card img {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 10px;
+}
+
+.sport-card hr {
+  margin: 12px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.sport-card .sport-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.sport-card .sport-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
 }
 
 .back-button {
-  margin-top: 30px;
+  margin-top: 40px;
+  text-align: center;
 }
 
 .back-button a {
   text-decoration: none;
   color: #6d214f;
   font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #6d214f;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.back-button a:hover {
+  background: #6d214f;
+  color: #fff;
 }

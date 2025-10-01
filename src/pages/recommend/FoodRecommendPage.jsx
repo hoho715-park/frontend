@@ -11,7 +11,7 @@ const FoodRecommendPage = () => {
   // 체질별 prefix 매핑
   const typePrefix = {
     '태양인': 'taeyang',
-    '태음인': 'taeum',
+    '태음인': 'taeeum',
     '소양인': 'soyang',
     '소음인': 'soeum',
   };

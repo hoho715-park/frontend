@@ -300,40 +300,52 @@ const ResultPage = () => {
                     <h2 className="recommendation-title">나에게 좋은 추천</h2>
                     <div className="recommendation-sections">
                         {/* 음식 */}
-                        <Link to="/recommend/food" state={{ bodyType, recommendationType: 'food' }} 
-                              className={`recommendation-card ${hoveredCard === 'food' ? 'img-hover' : ''}`}
-                              onMouseEnter={() => setHoveredCard('food')}
-                              onMouseLeave={() => setHoveredCard(null)}>
+                            <Link 
+                            to="/recommend/food" 
+                            state={{ bodyType, formData, measureTime, recommendationType: 'food' }}
+                            className={`recommendation-card ${hoveredCard === 'food' ? 'img-hover' : ''}`}
+                            onMouseEnter={() => setHoveredCard('food')}
+                            onMouseLeave={() => setHoveredCard(null)}
+                            >
                             <img src="/recommend_food.png" alt="음식 추천" className="recommendation-img" />
                             <h3>음식 추천</h3>
-                        </Link>
+                            </Link>
 
-                        {/* 주류 */}
-                        <Link to="/recommend/alcohol" state={{ bodyType, recommendationType: 'alcohol' }} 
-                              className={`recommendation-card ${hoveredCard === 'alcohol' ? 'img-hover' : ''}`}
-                              onMouseEnter={() => setHoveredCard('alcohol')}
-                              onMouseLeave={() => setHoveredCard(null)}>
+                            {/* 주류 */}
+                            <Link 
+                            to="/recommend/alcohol" 
+                            state={{ bodyType, formData, measureTime, recommendationType: 'alcohol' }}
+                            className={`recommendation-card ${hoveredCard === 'alcohol' ? 'img-hover' : ''}`}
+                            onMouseEnter={() => setHoveredCard('alcohol')}
+                            onMouseLeave={() => setHoveredCard(null)}
+                            >
                             <img src="/recommend_beer.png" alt="주류 추천" className="recommendation-img" />
                             <h3>주류 추천</h3>
-                        </Link>
+                            </Link>
 
-                        {/* 생활 습관 */}
-                        <Link to="/recommend/lifestyle" state={{ bodyType, recommendationType: 'lifestyle' }} 
-                              className={`recommendation-card ${hoveredCard === 'lifestyle' ? 'img-hover' : ''}`}
-                              onMouseEnter={() => setHoveredCard('lifestyle')}
-                              onMouseLeave={() => setHoveredCard(null)}>
+                            {/* 생활 습관 */}
+                            <Link 
+                            to="/recommend/lifestyle" 
+                            state={{ bodyType, formData, measureTime, recommendationType: 'lifestyle' }}
+                            className={`recommendation-card ${hoveredCard === 'lifestyle' ? 'img-hover' : ''}`}
+                            onMouseEnter={() => setHoveredCard('lifestyle')}
+                            onMouseLeave={() => setHoveredCard(null)}
+                            >
                             <img src="/recommend_life.png" alt="생활 습관" className="recommendation-img" />
                             <h3>생활 습관</h3>
-                        </Link>
+                            </Link>
 
-                        {/* 운동 */}
-                        <Link to="/recommend/sport" state={{ bodyType, recommendationType: 'sport' }} 
-                              className={`recommendation-card ${hoveredCard === 'sport' ? 'img-hover' : ''}`}
-                              onMouseEnter={() => setHoveredCard('sport')}
-                              onMouseLeave={() => setHoveredCard(null)}>
+                            {/* 운동 */}
+                            <Link 
+                            to="/recommend/sport" 
+                            state={{ bodyType, formData, measureTime, recommendationType: 'sport' }}
+                            className={`recommendation-card ${hoveredCard === 'sport' ? 'img-hover' : ''}`}
+                            onMouseEnter={() => setHoveredCard('sport')}
+                            onMouseLeave={() => setHoveredCard(null)}
+                            >
                             <img src="/recommend_sport.png" alt="운동 추천" className="recommendation-img" />
                             <h3>운동 추천</h3>
-                        </Link>
+                            </Link>
                     </div>
                 </div>
             </div>

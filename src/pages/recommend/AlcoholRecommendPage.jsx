@@ -27,7 +27,7 @@ const AlcoholRecommendPage = () => {
           ))}
         </ul>
         <div className="back-button">
-            <Link to="/result" state={{ bodyType }}>⬅ 결과 페이지로 돌아가기</Link>
+            <Link to="/result" state={{ bodyType, formData, measureTime }}>⬅ 결과 페이지로 돌아가기</Link>
         </div>
       </div>
     </>

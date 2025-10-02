@@ -954,7 +954,7 @@
           "label": "YES",
           "desc": ["빨리빨리 하는 게 좋아요."],
           "image": {
-            "src": "./qscc/images/28a.png",
+            "src": "/qscc/images/28a.png",
             "alt": "빨리빨리 하는 게 좋아요."
           },
           "scores": {}
@@ -964,7 +964,7 @@
           "label": "NO",
           "desc": ["여유를 가지고 천천히 하는 편이에요."],
           "image": {
-            "src": "./qscc/images/28b.png",
+            "src": "/qscc/images/28b.png",
             "alt": "여유를 가지고 천천히 하는 편이에요."
           },
           "scores": {}
@@ -982,7 +982,7 @@
           "label": "YES",
           "desc": ["처음 보는 사람 앞에서는 조금 수줍어하고 조심스러워요."],
           "image": {
-            "src": "./qscc/images/29a.png",
+            "src": "/qscc/images/29a.png",
             "alt": "처음 보는 사람 앞에서는 조금 수줍어하고 조심스러워요."
           },
           "scores": {}
@@ -992,7 +992,7 @@
           "label": "NO",
           "desc": ["처음 보는 사람 앞에서도 적극적으로 나서요."],
           "image": {
-            "src": "./qscc/images/29b.png",
+            "src": "/qscc/images/29b.png",
             "alt": "처음 보는 사람 앞에서도 적극적으로 나서요."
           },
           "scores": {}
@@ -1010,7 +1010,7 @@
           "label": "YES",
           "desc": ["작은 일에도 걱정이 많고 불안한 마음이 자주 들어요."],
           "image": {
-            "src": "./qscc/images/30aa.png",
+            "src": "/qscc/images/30a.png",
             "alt": "작은 일에도 걱정이 많고 불안한 마음이 자주 들어요."
           },
           "scores": {}
@@ -1020,7 +1020,7 @@
           "label": "NO",
           "desc": ["걱정이 많지 않고 마음이 편안한 편이에요."],
           "image": {
-            "src": "./qscc/images/30bb.png",
+            "src": "/qscc/images/30b.png",
             "alt": "걱정이 많지 않고 마음이 편안한 편이에요."
           },
           "scores": {}
@@ -1038,7 +1038,7 @@
           "label": "YES",
           "desc": ["작은 자극이나 변화에도 쉽게 신경이 쓰여요."],
           "image": {
-            "src": "./qscc/images/31a.png",
+            "src": "/qscc/images/31a.png",
             "alt": "작은 자극이나 변화에도 쉽게 신경이 쓰여요."
           },
           "scores": {}
@@ -1048,7 +1048,7 @@
           "label": "NO",
           "desc": ["조금의 변화나 자극에도 크게 개의치 않아요."],
           "image": {
-            "src": "./qscc/images/31b.png",
+            "src": "/qscc/images/31b.png",
             "alt": "조금의 변화나 자극에도 크게 개의치 않아요."
           },
           "scores": {}
@@ -1066,7 +1066,7 @@
           "label": "YES",
           "desc": ["어려운 상황이나 기다림에도 참을성을 발휘해요."],
           "image": {
-            "src": "./qscc/images/32a.png",
+            "src": "/qscc/images/32a.png",
             "alt": "어려운 상황이나 기다림에도 참을성을 발휘해요."
           },
           "scores": {}
@@ -1076,7 +1076,7 @@
           "label": "NO",
           "desc": ["조금도 참기 힘들고 쉽게 포기하거나 화를 내기도 해요."],
           "image": {
-            "src": "./qscc/images/32b.png",
+            "src": "/qscc/images/32b.png",
             "alt": "조금도 참기 힘들고 쉽게 포기하거나 화를 내기도 해요."
           },
           "scores": {}
@@ -1094,7 +1094,7 @@
           "label": "YES",
           "desc": ["생각보다 행동이 앞서고 조심성이 부족한 편이에요."],
           "image": {
-            "src": "./qscc/images/33a.png",
+            "src": "/qscc/images/33a.png",
             "alt": "생각보다 행동이 앞서고 조심성이 부족한 편이에요."
           },
           "scores": {}
@@ -1104,7 +1104,7 @@
           "label": "NO",
           "desc": ["조심스럽게 생각하고 신중하게 행동해요."],
           "image": {
-            "src": "./qscc/images/33b.png",
+            "src": "/qscc/images/33b.png",
             "alt": "조심스럽게 생각하고 신중하게 행동해요."
           },
           "scores": {}
@@ -1122,7 +1122,7 @@
           "label": "YES",
           "desc": ["작은 일에도 마음이 급하고 쉽게 불안해져요."],
           "image": {
-            "src": "./qscc/images/34a.png",
+            "src": "/qscc/images/34a.png",
             "alt": "작은 일에도 마음이 급하고 쉽게 불안해져요."
           },
           "scores": {}
@@ -1132,7 +1132,7 @@
           "label": "NO",
           "desc": ["대부분 침착하게 마음을 가라앉히고 차분해요."],
           "image": {
-            "src": "./qscc/images/34b.png",
+            "src": "/qscc/images/34b.png",
             "alt": "대부분 침착하게 마음을 가라앉히고 차분해요."
           },
           "scores": {}
@@ -1150,7 +1150,7 @@
           "label": "YES",
           "desc": ["강하고 단호한 편이에요."],
           "image": {
-            "src": "./qscc/images/35a.png",
+            "src": "/qscc/images/35a.png",
             "alt": "강하고 단호한 편이에요."
           },
           "scores": {}
@@ -1160,7 +1160,7 @@
           "label": "NO",
           "desc": ["부드럽고 섬세한 성향이 더 많아요."],
           "image": {
-            "src": "./qscc/images/35b.png",
+            "src": "/qscc/images/35b.png",
             "alt": "부드럽고 섬세한 성향이 더 많아요."
           },
           "scores": {}
@@ -1178,7 +1178,7 @@
           "label": "YES",
           "desc": ["작은 일에도 쉽게 짜증이 나고 신경이 거슬려요."],
           "image": {
-            "src": "./qscc/images/36a.png",
+            "src": "/qscc/images/36a.png",
             "alt": "작은 일에도 쉽게 짜증이 나고 신경이 거슬려요."
           },
           "scores": {}
@@ -1188,7 +1188,7 @@
           "label": "NO",
           "desc": ["짜증을 쉽게 내지 않고 마음을 차분하게 유지해요."],
           "image": {
-            "src": "./qscc/images/36b.png",
+            "src": "/qscc/images/36b.png",
             "alt": "짜증을 쉽게 내지 않고 마음을 차분하게 유지해요."
           },
           "scores": {}
@@ -1206,7 +1206,7 @@
           "label": "YES",
           "desc": ["사람들 앞에서 말하거나 발표할 때 긴장되고 어렵게 느껴져요."],
           "image": {
-            "src": "./qscc/images/37a.png",
+            "src": "/qscc/images/37a.png",
             "alt": "사람들 앞에서 말하거나 발표할 때 긴장되고 어렵게 느껴져요."
           },
           "scores": {}
@@ -1216,7 +1216,7 @@
           "label": "NO",
           "desc": ["사람들 앞에서 자연스럽게 말하고 발표할 수 있어요."],
           "image": {
-            "src": "./qscc/images/37b.png",
+            "src": "/qscc/images/37b.png",
             "alt": "사람들 앞에서 자연스럽게 말하고 발표할 수 있어요."
           },
           "scores": {}
@@ -1234,7 +1234,7 @@
           "label": "YES",
           "desc": ["평소에는 밝고 명랑하지만 기분이 쉽게 오르락 내리락 해요."],
           "image": {
-            "src": "./qscc/images/38a.png",
+            "src": "/qscc/images/38a.png",
             "alt": "평소에는 밝고 명랑하지만 기분이 쉽게 오르락 내리락 해요."
           },
           "scores": {}
@@ -1244,7 +1244,7 @@
           "label": "NO",
           "desc": ["평소에 감정이 안정적이고 크게 기복이 없어요."],
           "image": {
-            "src": "./qscc/images/30b.png",
+            "src": "/qscc/images/38b.png",
             "alt": "평소에 감정이 안정적이고 크게 기복이 없어요."
           },
           "scores": {}
@@ -1262,7 +1262,7 @@
           "label": "YES",
           "desc": ["마음이 상했더라도 겉으로는 괜찮은 듯 행동해요."],
           "image": {
-            "src": "./qscc/images/39a.png",
+            "src": "/qscc/images/39a.png",
             "alt": "마음이 상했더라도 겉으로는 괜찮은 듯 행동해요."
           },
           "scores": {}
@@ -1272,7 +1272,7 @@
           "label": "NO",
           "desc": ["마음이 상하면 솔직하게 드러내는 편이에요."],
           "image": {
-            "src": "./qscc/images/39b.png",
+            "src": "/qscc/images/39b.png",
             "alt": "마음이 상하면 솔직하게 드러내는 편이에요."
           },
           "scores": {}
@@ -1290,7 +1290,7 @@
           "label": "YES",
           "desc": ["무시당하거나 다른 사람들이 날 깔보면 화가 나서 참기 어려워요."],
           "image": {
-            "src": "./qscc/images/40a.png",
+            "src": "/qscc/images/40a.png",
             "alt": "무시당하거나 다른 사람들이 날 깔보면 화가 나서 참기 어려워요."
           },
           "scores": {}
@@ -1300,7 +1300,7 @@
           "label": "NO",
           "desc": ["무시당해도 침착하게 마음을 다스리는 편이에요."],
           "image": {
-            "src": "./qscc/images/40b.png",
+            "src": "/qscc/images/40b.png",
             "alt": "무시당해도 침착하게 마음을 다스리는 편이에요."
           },
           "scores": {}
@@ -1318,7 +1318,7 @@
           "label": "YES",
           "desc": ["생각이 확실해질 때까지 신중하게 행동해요."],
           "image": {
-            "src": "./qscc/images/41a.png",
+            "src": "/qscc/images/41a.png",
             "alt": "생각이 확실해질 때까지 신중하게 행동해요."
           },
           "scores": {}
@@ -1328,7 +1328,7 @@
           "label": "NO",
           "desc": ["확신이 없어도 내 의견을 바로 말하는 편이에요."],
           "image": {
-            "src": "./qscc/images/41b.png",
+            "src": "/qscc/images/41b.png",
             "alt": "확신이 없어도 내 의견을 바로 말하는 편이에요."
           },
           "scores": {}
@@ -1346,7 +1346,7 @@
           "label": "YES",
           "desc": ["내가 아는 것을 뽐내거나 돋보이려는 경향이 있어요."],
           "image": {
-            "src": "./qscc/images/42a.png",
+            "src": "/qscc/images/42a.png",
             "alt": "내가 아는 것을 뽐내거나 돋보이려는 경향이 있어요."
           },
           "scores": {}
@@ -1356,7 +1356,7 @@
           "label": "NO",
           "desc": ["잘 알더라도 겸손하게 행동하는 편이에요."],
           "image": {
-            "src": "./qscc/images/42b.png",
+            "src": "/qscc/images/42b.png",
             "alt": "잘 알더라도 겸손하게 행동하는 편이에요."
           },
           "scores": {}
@@ -1374,7 +1374,7 @@
           "label": "YES",
           "desc": ["나한테는 크게 신경 쓰지 않지만, 타인에게는 예의를 갖추고 배려해요."],
           "image": {
-            "src": "./qscc/images/43a.png",
+            "src": "/qscc/images/43a.png",
             "alt": "나한테는 크게 신경 쓰지 않지만, 타인에게는 예의를 갖추고 배려해요."
           },
           "scores": {}
@@ -1384,7 +1384,7 @@
           "label": "NO",
           "desc": ["타인에게 예의를 갖추고 배려하는 만큼 나에게도 신경 써요."],
           "image": {
-            "src": "./qscc/images/43b.png",
+            "src": "/qscc/images/43b.png",
             "alt": "타인에게 예의를 갖추고 배려하는 만큼 나에게도 신경 써요."
           },
           "scores": {}
@@ -1402,7 +1402,7 @@
           "label": "YES",
           "desc": ["사람들 앞에서는 조용히 있고 잘 나서지 않아요."],
           "image": {
-            "src": "./qscc/images/44a.png",
+            "src": "/qscc/images/44a.png",
             "alt": "사람들 앞에서는 조용히 있고 잘 나서지 않아요."
           },
           "scores": {}
@@ -1412,7 +1412,7 @@
           "label": "NO",
           "desc": ["사람들 앞에서도 적극적으로 나서는 편이에요."],
           "image": {
-            "src": "./qscc/images/44b.png",
+            "src": "/qscc/images/44b.png",
             "alt": "사람들 앞에서도 적극적으로 나서는 편이에요."
           },
           "scores": {}
@@ -1430,7 +1430,7 @@
           "label": "YES",
           "desc": ["다른 사람 시선을 신경 쓰지 않고 내가 하고 싶은 대로 행동해요."],
           "image": {
-            "src": "./qscc/images/45a.png",
+            "src": "/qscc/images/45a.png",
             "alt": "다른 사람 시선을 신경 쓰지 않고 내가 하고 싶은 대로 행동해요."
           },
           "scores": {}
@@ -1440,7 +1440,7 @@
           "label": "NO",
           "desc": ["다른 사람의 시선이나 반응을 신경 써요."],
           "image": {
-            "src": "./qscc/images/45b.png",
+            "src": "/qscc/images/45b.png",
             "alt": "다른 사람의 시선이나 반응을 신경 써요."
 
           },
@@ -1459,7 +1459,7 @@
           "label": "YES",
           "desc": ["작은 일에도 걱정이 많고 불안해요."],
           "image": {
-            "src": "./qscc/images/46a.png",
+            "src": "/qscc/images/46a.png",
             "alt": "작은 일에도 걱정이 많고 불안해요."
           },
           "scores": {}
@@ -1469,7 +1469,7 @@
           "label": "NO",
           "desc": ["걱정이 적고 마음이 안정되어 있어요."],
           "image": {
-            "src": "./qscc/images/46b.png",
+            "src": "/qscc/images/46b.png",
             "alt": "걱정이 적고 마음이 안정되어 있어요."
           },
           "scores": {}
@@ -1487,7 +1487,7 @@
           "label": "YES",
           "desc": ["부드럽고 섬세한 편이에요."],
           "image": {
-            "src": "./qscc/images/47a.png",
+            "src": "/qscc/images/47a.png",
             "alt": "부드럽고 섬세한 편이에요."
           },
           "scores": {}
@@ -1497,7 +1497,7 @@
           "label": "NO",
           "desc": ["강하고 단호한 편이에요."],
           "image": {
-            "src": "./qscc/images/47b.png",
+            "src": "/qscc/images/47b.png",
             "alt": "강하고 단호한 편이에요."
           },
           "scores": {}
@@ -1515,7 +1515,7 @@
           "label": "YES",
           "desc": ["일을 해내도 뭔가 아쉽고 더 잘하고 싶다는 생각이 들어요."],
           "image": {
-            "src": "./qscc/images/48aa.png",
+            "src": "/qscc/images/48a.png",
             "alt": "일을 해내도 뭔가 아쉽고 더 잘하고 싶다는 생각이 들어요."
           },
           "scores": {}
@@ -1525,7 +1525,7 @@
           "label": "NO",
           "desc": ["작은 일이라도 그 일을 해내면 스스로 만족감이 들고 뿌듯해요."],
           "image": {
-            "src": "./qscc/images/48bb.png", 
+            "src": "/qscc/images/48b.png", 
             "alt": "작은 일이라도 그 일을 해내면 스스로 만족감이 들고 뿌듯해요."
           },
           "scores": {}
@@ -1543,7 +1543,7 @@
           "label": "YES",
           "desc": ["가끔 특별한 이유 없이 음식을 토하거나 삼키기 힘들어요."],
           "image": {
-            "src": "./qscc/images/49a.png",
+            "src": "/qscc/images/49a.png",
             "alt": "가끔 특별한 이유 없이 음식을 토하거나 삼키기 힘들어요."
           },
           "scores": {}
@@ -1553,7 +1553,7 @@
           "label": "NO",
           "desc": ["음식을 토하거나 삼키기 힘들었던 적이 거의 없어요."],
           "image": {
-            "src": "./qscc/images/49b.png",
+            "src": "/qscc/images/49b.png",
             "alt": "음식을 토하거나 삼키기 힘들었던 적이 거의 없어요."
           },
           "scores": {}
@@ -1571,7 +1571,7 @@
           "label": "YES",
           "desc": ["몸이 안 좋을 때 땀을 빼고 나면 한결 개운해져요."],
           "image": {
-            "src": "./qscc/images/50a.png",
+            "src": "/qscc/images/50a.png",
             "alt": "몸이 안 좋을 때 땀을 빼고 나면 한결 개운해져요."
           },
           "scores": {}
@@ -1581,7 +1581,7 @@
           "label": "NO",
           "desc": ["몸이 안 좋을 때 땀을 내도 별로 개운하지 않아요."],
           "image": {
-            "src": "./qscc/images/50b.png",
+            "src": "/qscc/images/50b.png",
             "alt": "몸이 안 좋을 때 땀을 내도 별로 개운하지 않아요."
           },
           "scores": {}
@@ -1599,7 +1599,7 @@
           "label": "YES",
           "desc": ["컨디션이 안 좋으면 음식이 잘 안 내려가고 소화가 힘들어요."],
           "image": {
-            "src": "./qscc/images/51a.png",
+            "src": "/qscc/images/51a.png",
             "alt": "컨디션이 안 좋으면 음식이 잘 안 내려가고 소화가 힘들어요."
           },
           "scores": {}
@@ -1609,7 +1609,7 @@
           "label": "NO",
           "desc": ["컨디션이 안 좋아도 소화에는 큰 문제가 없어요."],
           "image": {
-            "src": "./qscc/images/51b.png",
+            "src": "/qscc/images/51b.png",
             "alt": "컨디션이 안 좋아도 소화에는 큰 문제가 없어요."
           },
           "scores": {}
@@ -1627,7 +1627,7 @@
           "label": "YES",
           "desc": ["힘이 없고 지치면 한숨을 자주 쉬어요."],
           "image": {
-            "src": "./qscc/images/52a.png",
+            "src": "/qscc/images/52a.png",
             "alt": "힘이 없고 지치면 한숨을 자주 쉬어요."
           },
           "scores": {}
@@ -1637,7 +1637,7 @@
           "label": "NO",
           "desc": ["기운이 없어서 한숨 쉬는 경우는 거의 없어요."],
           "image": {
-            "src": "./qscc/images/52b.png",
+            "src": "/qscc/images/52b.png",
             "alt": "기운이 없어서 한숨 쉬는 경우는 거의 없어요."
           },
           "scores": {}

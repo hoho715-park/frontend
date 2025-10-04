@@ -153,8 +153,8 @@ const ResultPage = () => {
     const [hoveredSection, setHoveredSection] = useState(null);
     const [hoveredCard, setHoveredCard] = useState(null);
     
-    // 로그인한 사용자 username 가져오기
-    const username = localStorage.getItem("username") || "사용자";
+    // 로그인한 사용자 userName 가져오기
+    const userName = localStorage.getItem("userName") || "사용자";
     
     const graphSectionRef = useRef(null);
 
@@ -209,10 +209,10 @@ const ResultPage = () => {
             <div className="result-page-container">
                 <div className="results-box">
                     <div className="result-header">
-                        {/* 🔥 username 강조 */}
+                        {/* 🔥 userName 강조 */}
                         <h1>
                             {BODY_TYPE_TITLES[bodyType]}
-                            <span className="username-highlight">"{username}"</span>
+                            <span className="userName-highlight">"{userName}"</span>
                         </h1>
                         <div className="body-type-image-wrapper">
                             <div className="feature-tag top-left">{BODY_TYPE_FEATURES[bodyType]?.['top-left']}</div>

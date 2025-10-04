@@ -5,19 +5,19 @@ import { useNavigate } from "react-router-dom";
 import "./MyPage.css";
 
 const MyPage = () => {
-  const username = localStorage.getItem("username") || "사용자";
+  const userName = localStorage.getItem("userName") || "사용자";
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("username");
+    localStorage.removeItem("userName");
     navigate("/");
     window.location.reload();
   };
 
   return (
     <div className="mypage-container">
-      <h1>{username}님 환영합니다 🎉</h1>
+      <h1>{userName}님 환영합니다 🎉</h1>
       <button className="logout-button" onClick={handleLogout}>
         로그아웃
       </button>

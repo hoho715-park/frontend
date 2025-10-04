@@ -6,36 +6,62 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaRegUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
+const API_URL = "http://localhost:8080/api/auth/login";
+
 const Login = () => {
-  const [userId, setUserId] = useState("");   // 로그인 아이디
+  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const togglePasswordVisibility = () => setShowPassword((v) => !v);
 
   const handleLogin = async () => {
+    const uid = userId.trim();
+    if (!uid || !password) {
+      alert("아이디와 비밀번호를 입력해 주세요.");
+      return;
+    }
+
     try {
-      const response = await axios.post("http://localhost:8080/api/users/login", {
-        userId,
-        password,
-      });
+      setSubmitting(true);
 
-      if (response.data.status === "success") {
-        // ✅ 로그인 성공 → localStorage 저장
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", response.data.username); // 사용자 이름
-        localStorage.setItem("userId", response.data.id);         // ✅ DB PK(id) 저장
+      const resp = await axios.post(
+        API_URL,
+        { userId: uid, password },
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-        navigate("/"); // 메인 페이지로 이동
-        window.location.reload();
-      } else {
-        alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
+      // 성공: HTTP 200 + 필수 키(userId, accessToken) 존재
+      const ok =
+        resp.status === 200 &&
+        resp.data &&
+        resp.data.userId &&
+        resp.data.accessToken;
+
+      if (!ok) {
+        alert("로그인 실패: 응답 형식이 올바르지 않습니다.");
+        return;
       }
-    } catch (error) {
-      alert("로그인 실패: " + (error.response?.data || "Network Error"));
+
+      // 필요한 최소 정보만 저장
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("token", resp.data.accessToken);
+      localStorage.setItem("userId", resp.data.userId);
+      localStorage.setItem("userName", resp.data.userId); // 실명 없으면 userId로 표시
+
+      // 새로고침 없이 라우팅만
+      navigate("/");
+    } catch (e) {
+      const msg =
+        e.response?.data?.message ??
+        (typeof e.response?.data === "string" ? e.response.data : "") ??
+        e.message ??
+        "Network Error";
+      alert("로그인 실패: " + msg);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -45,6 +71,7 @@ const Login = () => {
         <div className="logo-container">
           <img src="/ieum.png" alt="이음 로고" className="ieum-logo" />
         </div>
+
         <div className="input-group">
           <FaRegUser className="input-icon" />
           <input
@@ -52,8 +79,13 @@ const Login = () => {
             placeholder="ID"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
+            autoComplete="username"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleLogin();
+            }}
           />
         </div>
+
         <div className="input-group password-group">
           <FaLock className="input-icon" />
           <input
@@ -61,19 +93,22 @@ const Login = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleLogin();
+            }}
           />
           <span className="password-toggle" onClick={togglePasswordVisibility}>
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-        <button className="login-button" onClick={handleLogin}>
-          로그인
-        </button>
+
         <div className="link-group">
           <Link to="/find-id" className="find-link">아이디 찾기</Link>
           <span className="divider">|</span>
           <Link to="/find-password" className="find-link">비밀번호 찾기</Link>
         </div>
+
         <div className="register-group">
           <span>아직 회원이 아니신가요?</span>
           <Link to="/signup" className="register-link">회원가입</Link>

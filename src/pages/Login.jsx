@@ -108,7 +108,9 @@ const Login = () => {
           <span className="divider">|</span>
           <Link to="/find-password" className="find-link">비밀번호 찾기</Link>
         </div>
-
+        <button className="login-button" onClick={handleLogin}>
+          로그인
+        </button>
         <div className="register-group">
           <span>아직 회원이 아니신가요?</span>
           <Link to="/signup" className="register-link">회원가입</Link>

@@ -1,9 +1,7 @@
-// src/pages/QsccQuestion.jsx
-
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import Header from '../components/Header.jsx';
 import { useNavigate } from 'react-router-dom';
-import questionsData from '../../public/qscc/data/qsccii.json'; 
+import questionsData from '../../public/qscc/data/qsccii.json';
 import SurveyModal from '../components/SurveyModal.jsx';
 import './QsccQuestion.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -13,7 +11,7 @@ const QsccQuestion = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [modalType, setModalType] = useState(null); // 'incomplete' 또는 'complete'
-  const [isPatchingMode, setIsPatchingMode] = useState(false); // **[NEW] 패치 모드 상태**
+  const [isPatchingMode, setIsPatchingMode] = useState(false); // 패치 모드 상태
 
   // 데이터 로딩 및 검증
   if (!questionsData || !questionsData.questions || questionsData.questions.length === 0) {
@@ -29,107 +27,151 @@ const QsccQuestion = () => {
 
   const totalQuestions = questionsData.questions.length;
   const currentQuestion = questionsData.questions[currentQuestionIndex];
-  // 문제 ID는 number 타입으로 저장되어 있다고 가정
-  const allQuestionIds = questionsData.questions.map(q => q.id);
+  const allQuestionIds = questionsData.questions.map((q) => q.id);
   const answeredCount = Object.keys(answers).length;
 
-  // 팝업 관련 함수
+  // --- 미응답 문항 리스트 ---
   const getUnansweredList = (currentAnswers) => {
-    const answeredIds = new Set(Object.keys(currentAnswers).map(Number)); 
-    // 미응답 문항 ID (숫자)를 오름차순으로 정렬하여 반환
-    return allQuestionIds.filter(qId => !answeredIds.has(qId)).sort((a, b) => a - b);
+    const answeredIds = new Set(Object.keys(currentAnswers).map(Number));
+    return allQuestionIds.filter((qId) => !answeredIds.has(qId)).sort((a, b) => a - b);
   };
 
   const handleModalClose = () => {
     setModalType(null);
   };
-  
+
   const handleNavigateToQuestion = (qId) => {
-    const targetIndex = questionsData.questions.findIndex(q => q.id === qId);
-    
+    const targetIndex = questionsData.questions.findIndex((q) => q.id === qId);
     if (targetIndex !== -1) {
       setCurrentQuestionIndex(targetIndex);
       setModalType(null);
-      setIsPatchingMode(true); // **[NEW] 모달을 통해 이동하면 패치 모드 활성화**
+      setIsPatchingMode(true);
     }
   };
-  
+
+  // ✅ 결과보기 버튼 클릭 시 Fisher 판별식 적용
   const handleViewResults = () => {
     setModalType(null);
-    navigate('/results-qscc', { state: { answers: answers } }); 
+
+    // 1️⃣ 척도 합계 계산
+    const scaleTotals = {
+      '태양척도': 0,
+      '태음척도': 0,
+      '소양척도': 0,
+      '소음척도': 0,
+    };
+
+    Object.entries(answers).forEach(([qId, optionId]) => {
+      const question = questionsData.questions.find((q) => q.id === Number(qId));
+      const option = question?.options.find((opt) => opt.id === optionId);
+      if (option?.scores) {
+        scaleTotals['태양척도'] += option.scores['태양인'] || 0;
+        scaleTotals['태음척도'] += option.scores['태음인'] || 0;
+        scaleTotals['소양척도'] += option.scores['소양인'] || 0;
+        scaleTotals['소음척도'] += option.scores['소음인'] || 0;
+      }
+    });
+
+    // 2️⃣ Fisher 판별식 정의
+    const fisherFormulas = {
+      '태양인': (t, te, s, se) =>
+        0.828 * t - 0.07021 * s + 0.533 * te + 0.373 * se - 13.638,
+      '소양인': (t, te, s, se) =>
+        0.352 * t + 0.4101 * s + 0.5 * te + 0.449 * se - 11.809,
+      '태음인': (t, te, s, se) =>
+        0.361 * t + 0.03093 * s + 1.113 * te + 0.349 * se - 12.427,
+      '소음인': (t, te, s, se) =>
+        0.339 * t + 0.164 * s + 0.644 * te + 0.649 * se - 12.379,
+    };
+
+    const { 태양척도, 태음척도, 소양척도, 소음척도 } = scaleTotals;
+
+    // 3️⃣ 판별식 점수 계산
+    const fisherScores = {
+      '태양인': fisherFormulas['태양인'](태양척도, 태음척도, 소양척도, 소음척도),
+      '소양인': fisherFormulas['소양인'](태양척도, 태음척도, 소양척도, 소음척도),
+      '태음인': fisherFormulas['태음인'](태양척도, 태음척도, 소양척도, 소음척도),
+      '소음인': fisherFormulas['소음인'](태양척도, 태음척도, 소양척도, 소음척도),
+    };
+
+    // 4️⃣ 비율 계산
+    const total = Object.values(fisherScores).reduce((a, b) => a + b, 0);
+    const percentages = {};
+    Object.entries(fisherScores).forEach(([type, val]) => {
+      percentages[type] = ((val / total) * 100).toFixed(1);
+    });
+
+    // 5️⃣ 최고 점수 체질 판별
+    const dominantType = Object.entries(fisherScores).sort((a, b) => b[1] - a[1])[0][0];
+
+    // 6️⃣ 결과 페이지로 이동
+    navigate('/results-qscc', {
+      state: {
+        scaleTotals,
+        fisherScores,
+        percentages,
+        dominantType,
+      },
+    });
   };
 
-  // 답변 처리 로직 (핵심 수정 부분)
+  // --- 답변 선택 시 로직 ---
   const handleAnswer = (optionId) => {
     const currentQId = currentQuestion.id;
-    
-    // 1. 답변 저장
     const newAnswers = { ...answers, [currentQId]: optionId };
     setAnswers(newAnswers);
-    
-    // 2. 업데이트된 미응답 문항 리스트 및 완료 여부 확인
-    const unansweredAfterAnswer = getUnansweredList(newAnswers); 
+
+    const unansweredAfterAnswer = getUnansweredList(newAnswers);
     const isCompleted = unansweredAfterAnswer.length === 0;
 
+    // ✅ 모든 문항 완료 시 완료 모달
     if (isCompleted) {
-        // 모든 문항 완료 시: 즉시 결과보기 팝업 (이전 요청사항)
-        setTimeout(() => {
-            setModalType('complete');
-        }, 100);
-        setIsPatchingMode(false); // 완료되면 모드 해제
-        return; 
-    }
-    
-    // 3. 패치 모드 (미응답 문항 채우는 중) 로직
-    if (isPatchingMode) {
-        // 현재 답변한 문제 이후에 남아있는 미응답 문제 중 가장 첫 번째 문제 ID를 찾습니다.
-        const nextUnansweredId = unansweredAfterAnswer.find(qId => qId > currentQId);
-        
-        if (nextUnansweredId) {
-            // 미응답 문제(예: 29번)가 존재하면, 그 문제로 이동
-            const targetIndex = questionsData.questions.findIndex(q => q.id === nextUnansweredId);
-            if (targetIndex !== -1) {
-                 setTimeout(() => {
-                    setCurrentQuestionIndex(targetIndex);
-                    // isPatchingMode는 유지 (다음 미응답 문제로 계속 점프해야 하므로)
-                }, 300);
-                return;
-            }
-        } 
-        
-        // 다음 미응답 문제가 없거나 찾지 못했다면, 패치 모드를 해제합니다.
-        // (예: 29번을 풀었는데 더 이상 미응답 문항이 없는 경우)
-        setIsPatchingMode(false);
+      setTimeout(() => {
+        setModalType('complete');
+      }, 100);
+      setIsPatchingMode(false);
+      return;
     }
 
-    // 4. 일반적인 순차 이동 또는 54번 완료 처리
-    
-    if (currentQuestionIndex === totalQuestions - 1) {
-        // 54번을 풀었지만 아직 미응답 문항이 남아있다면, 미완료 팝업 표시
-        setTimeout(() => {
-            setModalType('incomplete');
-        }, 100);
-        return;
+    // ✅ 패치 모드 (미응답 문항 보충 중)
+    if (isPatchingMode) {
+      const nextUnansweredId = unansweredAfterAnswer.find((qId) => qId > currentQId);
+      if (nextUnansweredId) {
+        const targetIndex = questionsData.questions.findIndex((q) => q.id === nextUnansweredId);
+        if (targetIndex !== -1) {
+          setTimeout(() => {
+            setCurrentQuestionIndex(targetIndex);
+          }, 300);
+          return;
+        }
+      }
+      setIsPatchingMode(false);
     }
-    
-    // 순차 이동 (패치 모드가 아니거나, 패치 모드가 해제된 경우)
+
+    // ✅ 마지막 문항이지만 미응답 문항이 남은 경우
+    if (currentQuestionIndex === totalQuestions - 1) {
+      setTimeout(() => {
+        setModalType('incomplete');
+      }, 100);
+      return;
+    }
+
+    // ✅ 일반적인 순차 이동
     setTimeout(() => {
-        setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+      setCurrentQuestionIndex((prev) => prev + 1);
     }, 300);
   };
 
-  // Pager 클릭 시 완료 체크 로직 (유지)
   const handlePagerClick = (index) => {
-      setCurrentQuestionIndex(index);
-  }
+    setCurrentQuestionIndex(index);
+  };
 
-
-  // --- Pager 및 렌더링 로직 (유지) ---
+  // --- Pager ---
   const questionsPerPage = 10;
   const startQuestionIndex = Math.floor(currentQuestionIndex / questionsPerPage) * questionsPerPage;
   const endQuestionNumber = Math.min(startQuestionIndex + questionsPerPage, totalQuestions);
   const visibleQuestions = questionsData.questions.slice(startQuestionIndex, endQuestionNumber);
-  
+
   const handlePagerPrev = () => {
     if (startQuestionIndex > 0) {
       setCurrentQuestionIndex(startQuestionIndex - questionsPerPage);
@@ -146,7 +188,7 @@ const QsccQuestion = () => {
   const isFirstPage = startQuestionIndex === 0;
   const isLastPage = endQuestionNumber === totalQuestions;
 
-
+  // --- 렌더링 ---
   return (
     <>
       <Header />
@@ -158,9 +200,9 @@ const QsccQuestion = () => {
           </div>
 
           <div className="options-container">
-            {currentQuestion.options.map(option => (
-              <div 
-                key={option.id} 
+            {currentQuestion.options.map((option) => (
+              <div
+                key={option.id}
                 className={`option-card ${answers[currentQuestion.id] === option.id ? 'selected' : ''}`}
                 onClick={() => handleAnswer(option.id)}
               >
@@ -168,12 +210,10 @@ const QsccQuestion = () => {
                   <img src={option.image.src} alt={option.label} className="option-image" />
                 </div>
                 <div className="option-label">{option.label}</div>
-                
-                <div className="option-divider"></div> 
-                
+                <div className="option-divider"></div>
                 <div className="option-description">
                   {(Array.isArray(option.desc) ? option.desc : [option.desc]).map((desc, i) => (
-                      <p key={i}>{desc}</p>
+                    <p key={i}>{desc}</p>
                   ))}
                 </div>
               </div>
@@ -181,18 +221,13 @@ const QsccQuestion = () => {
           </div>
 
           <div className="navigation-footer">
-            
-            {/* 좌측 화살표 - 첫 페이지일 때 숨김 */}
             {!isFirstPage && (
-              <button 
-                className="nav-arrow prev-button" 
-                onClick={handlePagerPrev}
-              >
+              <button className="nav-arrow prev-button" onClick={handlePagerPrev}>
                 <FaChevronLeft />
               </button>
             )}
             {isFirstPage && <div className="nav-arrow-placeholder"></div>}
-            
+
             <div className="pager-wrapper">
               <div className="pager">
                 {visibleQuestions.map((q, index) => {
@@ -200,14 +235,11 @@ const QsccQuestion = () => {
                   const questionNumber = startQuestionIndex + index + 1;
                   const isAnswered = answers[questionId];
                   const isActive = currentQuestionIndex === startQuestionIndex + index;
-                  
+
                   let dotClass = '';
-                  if (isActive) {
-                      dotClass = 'active';
-                  } else if (isAnswered) {
-                      dotClass = 'answered';
-                  }
-                  
+                  if (isActive) dotClass = 'active';
+                  else if (isAnswered) dotClass = 'answered';
+
                   return (
                     <span
                       key={q.id}
@@ -220,20 +252,15 @@ const QsccQuestion = () => {
                 })}
               </div>
             </div>
-            
-            {/* 우측 화살표 - 마지막 페이지일 때 숨김 */}
+
             {!isLastPage && (
-              <button 
-                className="nav-arrow next-button" 
-                onClick={handlePagerNext}
-              >
+              <button className="nav-arrow next-button" onClick={handlePagerNext}>
                 <FaChevronRight />
               </button>
             )}
             {isLastPage && <div className="nav-arrow-placeholder"></div>}
-
           </div>
-          
+
           <div className="progress-counter-and-bar">
             <div className="progress-counter">
               {answeredCount} / {totalQuestions}
@@ -244,8 +271,8 @@ const QsccQuestion = () => {
           </div>
         </div>
       </div>
-      
-      {/* 모달 렌더링 */}
+
+      {/* ✅ 모달 (미응답 or 완료) */}
       {modalType && (
         <SurveyModal
           type={modalType}

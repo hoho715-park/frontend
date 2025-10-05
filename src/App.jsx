@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
@@ -21,6 +19,9 @@ import AlcoholRecommendPage from './pages/recommend/AlcoholRecommendPage.jsx';
 import LifestyleRecommendPage from './pages/recommend/LifestyleRecommendPage.jsx';
 import SportRecommendPage from './pages/recommend/SportRecommendPage.jsx';
 
+// ✅ QSCC 결과 페이지 import
+import ResultQsccPage from './pages/ResultQsccPage.jsx'; // ← 이 한 줄 추가!
+
 function App() {
   return (
     <Routes>
@@ -33,6 +34,10 @@ function App() {
       <Route path="/test/qsc-intro" element={<><Header /><QsccIntro /></>} />
       <Route path="/test/qsc-survey" element={<><Header /><QsccSurvey /></>} />
       <Route path="/test/qsc-survey-questions" element={<><Header /><QsccQuestion /></>} />
+
+      {/* ✅ QSCC 결과 페이지 라우트 추가 */}
+      <Route path="/results-qscc" element={<><Header /><ResultQsccPage /></>} />
+
       <Route path="/result" element={<ResultPage />} />
       <Route path="/mypage" element={<><Header /><MyPage /></>} /> 
 

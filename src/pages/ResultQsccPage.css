@@ -1,0 +1,38 @@
+.result-container {
+  text-align: center;
+  padding: 100px 20px 60px; /* ✅ 위쪽 여백 100px로 늘림 */
+  color: #333;
+}
+
+
+.result-container h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.highlight {
+  color: #7E57C2;
+  font-weight: 700;
+}
+
+.chart-wrapper {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto 40px;
+}
+
+.retry-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 32px;
+  background-color: #7E57C2;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.retry-btn:hover {
+  background-color: #5E35B1;
+}

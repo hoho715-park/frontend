@@ -5,11 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import './Header.css';
 
+// ✅ "AI Chat" 메뉴 제거됨
 const navItems = [
   { name: 'About Us', subItems: [{ name: '이음 소개', path: '/about/ieum' }, { name: '서비스 소개', path: '/about/service' }] },
   { name: 'Test', subItems: [{ name: 'QSCC-II 설문', path: '/test/qsc-survey' }, { name: 'QSCC-II 소개', path: '/test/qsc-intro' }] },
   { name: 'Input', path: '/input' },
-  { name: 'AI Chat', path: '/aichat' },
   { name: 'More', subItems: [{ name: '자료실', path: '/more/archive' }, { name: '커뮤니티', path: '/more/community' }, { name: '문의 사항', path: '/more/inquiry' }] },
 ];
 
@@ -46,6 +46,7 @@ const Header = () => {
           <img src="/ieum_가로.png" alt="ieum logo" />
         </Link>
       </div>
+
       <ul className="menubar-nav">
         {navItems.map((item) => (
           <li
@@ -54,7 +55,7 @@ const Header = () => {
             onMouseEnter={() => handleMouseEnter(item.name)}
             onMouseLeave={handleMouseLeave}
           >
-            <Link to={item.path} className="nav-link">{item.name}</Link>
+            <Link to={item.path || '#'} className="nav-link">{item.name}</Link>
             {item.subItems && (
               <ul className={`dropdown-menu ${activeMenu === item.name ? 'visible' : ''}`}>
                 {item.subItems.map((subItem) => (

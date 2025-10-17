@@ -1,4 +1,4 @@
-// src/pages/IntroIeum.jsx (수정)
+// src/pages/IntroIeum.jsx
 
 import React from 'react';
 import './IntroIeum.css';
@@ -21,29 +21,25 @@ const IntroIeum = () => {
         </div>
       </section>
 
-      {/* 두 번째 섹션 (연보라색 배경) */}
+      {/* 두 번째 섹션 (연보라색 배경, Why IEUM 수정됨) */}
       <section className="intro-section second-section">
-        <div className="section-content-why">
-          <div className="why-title">
+        <div className="section-content">
+          <div className="text-content why-ieum">
             <span className="section-title">Why<br/>IEUM?</span>
+            <p>
+              <b>I</b> - Insight (통찰) : 오장육부 데이터와 QSCC 설문을 분석해 깊은 통찰을 얻습니다.<br/>
+              <b>E</b> - Experience (경험) : 시각화와 웹 서비스를 통해 누구나 쉽게 체질을 체험할 수 있게 합니다.<br/>
+              <b>U</b> - Unity (연결) : 환자와 전문가, 전통의학과 최신기술을 연결합니다.<br/>
+              <b>M</b> - Medicine (치유) : 맞춤형 건강 관리와 예방법으로 삶의 질 향상을 돕습니다.
+            </p>
           </div>
-          <div className="why-content">
-            <div className="why-text-box">
-              <p>
-                <b>I</b> - Insight (통찰) : 오장육부 데이터와 QSCC 설문을 분석해 깊은 통찰을 얻습니다.<br/>
-                <b>E</b> - Experience (경험) : 시각화와 웹 서비스를 통해 누구나 쉽게 체질을 체험할 수 있게 합니다.<br/>
-                <b>U</b> - Unity (연결) : 환자와 전문가, 전통의학과 최신기술을 연결합니다.<br/>
-                <b>M</b> - Medicine (치유) : 맞춤형 건강 관리와 예방법으로 삶의 질 향상을 돕습니다.
-              </p>
-            </div>
-            <div className="why-logo-box">
-              <img src="/ieum_세로.png" alt="이음 로고" className="why-logo-img" />
-            </div>
+          <div className="why-logo-box">
+            <img src="/ieum_세로.png" alt="이음 로고" className="why-logo-img" />
           </div>
         </div>
       </section>
 
-      {/* 세 번째 섹션 (하얀색 배경) */}
+      {/* 세 번째 섹션 (Why Start) */}
       <section className="intro-section third-section">
         <div className="section-content">
             <div className="text-content">
@@ -62,7 +58,7 @@ const IntroIeum = () => {
         </div>
       </section>
 
-      {/* 네 번째 섹션 (아이콘 추가) */}
+      {/* 네 번째 섹션 (로고 설명) */}
       <section className="intro-section fourth-section">
         <div className="about-logo-container">
           <h1 className="about-logo-title">About LOGO</h1>

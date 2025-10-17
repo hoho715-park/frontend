@@ -1,5 +1,3 @@
-/* src/pages/IntroIeum.css (수정) */
-
 /* 전체 페이지 컨테이너 */
 .intro-page-container {
   display: flex;
@@ -7,7 +5,7 @@
   padding-top: 80px;
 }
 
-/* 모든 섹션의 공통 스타일 */
+/* 모든 섹션 공통 */
 .intro-section {
   display: flex;
   justify-content: center;
@@ -17,8 +15,8 @@
   box-sizing: border-box;
 }
 
-/* 섹션 콘텐츠 공통 스타일 */
-.section-content, .section-content-why {
+/* 공통 콘텐츠 레이아웃 */
+.section-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,33 +32,50 @@
 .first-section .section-title { font-size: 2.5rem; font-weight: bold; margin-bottom: 10px; }
 .first-section p { font-size: 1.2rem; color: #555; }
 
-/* 두 번째 섹션 */
+/* 두 번째 섹션 (Why IEUM) */
 .second-section { background-color: #DEE4FF; }
-.second-section .section-content-why {
-  flex-direction: column;
-  text-align: center;
-  gap: 20px; /* 제목과 내용 사이의 세로 간격을 좁힘 */
+.second-section .section-content { justify-content: space-between; gap: 80px; }
+.why-ieum { flex: 1; text-align: left; }
+.why-ieum .section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 25px;
 }
-.second-section .why-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
+.why-ieum p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
 }
-.second-section .why-text-box { text-align: left; }
-.second-section .why-text-box p { font-size: 1.2rem; color: #555; line-height: 1.6; }
-.second-section .why-logo-box .why-logo-img { height: 200px; width: auto; }
+.why-logo-box { flex: 1; display: flex; justify-content: center; align-items: center; }
+.why-logo-img { height: 220px; width: auto; }
 
-/* 세 번째 섹션 */
+/* 세 번째 섹션 (Why Start) */
 .third-section { background-color: #fff; }
 .third-section .section-content { justify-content: space-between; gap: 50px; }
 .third-section .text-content { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
-.third-section .text-content .section-title { font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 20px; }
-.third-section .text-content p { font-size: 1.2rem; color: #555; line-height: 1.6; }
+.third-section .text-content .section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+.third-section .text-content p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
 .third-section .image-content { flex: 1; display: flex; justify-content: center; align-items: center; }
-.third-section .section-image { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+.third-section .section-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* 네 번째 섹션 (수정된 디자인) */
+/* 네 번째 섹션 (About LOGO) */
 .fourth-section {
   background-color: #DEE4FF;
   display: flex;
@@ -80,13 +95,17 @@
   box-sizing: border-box;
 }
 
+/* ✅ About LOGO 제목 스타일 통일 */
 .about-logo-title {
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: 800;
   color: #333;
-  margin-bottom: 40px;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
+/* 로고 설명 */
 .logo-description-wrapper {
   display: grid;
   grid-template-areas:
@@ -100,76 +119,30 @@
   width: 100%;
 }
 
-.about-logo-image {
-  grid-area: logo;
-  width: 250px;
-  height: auto;
-}
+.about-logo-image { grid-area: logo; width: 250px; height: auto; }
 
-.logo-description {
-  text-align: center;
-  padding: 10px;
-}
-
-.logo-description.top-left {
-  grid-area: tl;
-  text-align: right;
-  padding-right: 20px;
-}
-
-.logo-description.top-right {
-  grid-area: tr;
-  text-align: left;
-  padding-left: 20px;
-}
-
-.logo-description.bottom-left {
-  grid-area: bl;
-  text-align: right;
-  padding-right: 20px;
-}
-
-.logo-description.bottom-right {
-  grid-area: br;
-  text-align: left;
-  padding-left: 20px;
-}
+.logo-description { text-align: center; padding: 10px; }
+.logo-description.top-left { grid-area: tl; text-align: right; padding-right: 20px; }
+.logo-description.top-right { grid-area: tr; text-align: left; padding-left: 20px; }
+.logo-description.bottom-left { grid-area: bl; text-align: right; padding-right: 20px; }
+.logo-description.bottom-right { grid-area: br; text-align: left; padding-left: 20px; }
 
 .icon-title-group {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* 아이콘을 제목 오른쪽에 배치 */
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
 }
 .logo-description.top-right .icon-title-group,
 .logo-description.bottom-right .icon-title-group {
-    justify-content: flex-start; /* 오른쪽 정렬 */
+  justify-content: flex-start;
 }
 
-.infinite-icon {
-  width: 30px;
-  height: 30px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: #000;
-  border-radius: 50%;
-}
-.color-box {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
+.infinite-icon { width: 30px; height: 30px; }
+.dot { width: 10px; height: 10px; background-color: #000; border-radius: 50%; }
+.color-box { width: 20px; height: 20px; border-radius: 50%; }
 .color-box.violet { background-color: #8a7acd; }
 .color-box.green { background-color: #03c75a; }
-.item-title { font-weight: bold; }
 
-.green_text {
-    color: #3A6F43;
-    font-weight: bold;
-}
-.purple_text {
-    color: #92338d;
-    font-weight: bold;
-}
+.green_text { color: #3A6F43; font-weight: bold; }
+.purple_text { color: #92338d; font-weight: bold; }

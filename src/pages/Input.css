@@ -1,5 +1,3 @@
-/* src/pages/Input.css */
-
 .input-page-container {
   display: flex;
   justify-content: center;
@@ -13,19 +11,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
-  max-width: 1200px;
+  gap: 60px;
+  max-width: 1300px;
   width: 100%;
 }
 
+/* ✅ 손 이미지 크기 확대 */
 .input-image-box {
-  width: 400px;
+  width: 700px; /* 기존 400px → 520px */
   height: auto;
+  transition: transform 0.3s ease;
 }
 
 .input-hand-img {
   max-width: 100%;
   height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* ✅ hover 시 살짝 커지는 부드러운 효과 */
+.input-image-box:hover .input-hand-img {
+  transform: scale(1.05);
 }
 
 .input-text-box {
@@ -52,12 +59,14 @@
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* ✅ 버튼 hover 시 색 변화 부드럽게 */
 .input-start-button:hover {
   background-color: #7a6ac0;
+  transform: translateY(-2px);
 }

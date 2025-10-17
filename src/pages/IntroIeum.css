@@ -1,18 +1,28 @@
-/* 전체 페이지 컨테이너 */
+/* ===============================
+   전체 페이지 컨테이너
+=============================== */
 .intro-page-container {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* 섹션별 스크롤 고정 */
+  scroll-behavior: smooth;
+  padding-top: 80px; /* Header 공간 유지 */
+  box-sizing: border-box;
 }
 
-/* 모든 섹션 공통 */
+/* ===============================
+   섹션 공통
+=============================== */
 .intro-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; /* 한 섹션이 화면 전체 차지 */
   padding: 40px;
   box-sizing: border-box;
+  scroll-snap-align: start; /* 스크롤 시 정렬 */
 }
 
 /* 공통 콘텐츠 레이아웃 */
@@ -25,17 +35,44 @@
   gap: 100px;
 }
 
-/* 첫 번째 섹션 */
-.first-section { background-color: #fff; }
-.first-section .section-content { flex-direction: column; text-align: center; gap: 20px; }
-.first-section .section-logo-img { height: 120px; }
-.first-section .section-title { font-size: 2.5rem; font-weight: bold; margin-bottom: 10px; }
-.first-section p { font-size: 1.2rem; color: #555; }
+/* ===============================
+   1️⃣ 첫 번째 섹션
+=============================== */
+.first-section {
+  background-color: #fff;
+}
+.first-section .section-content {
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+.first-section .section-logo-img {
+  height: 120px;
+}
+.first-section .section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.first-section p {
+  font-size: 1.2rem;
+  color: #555;
+}
 
-/* 두 번째 섹션 (Why IEUM) */
-.second-section { background-color: #DEE4FF; }
-.second-section .section-content { justify-content: space-between; gap: 80px; }
-.why-ieum { flex: 1; text-align: left; }
+/* ===============================
+   2️⃣ 두 번째 섹션 (Why IEUM)
+=============================== */
+.second-section {
+  background-color: #DEE4FF;
+}
+.second-section .section-content {
+  justify-content: space-between;
+  gap: 80px;
+}
+.why-ieum {
+  flex: 1;
+  text-align: left;
+}
 .why-ieum .section-title {
   font-size: 3rem;
   font-weight: 800;
@@ -48,13 +85,33 @@
   color: #555;
   line-height: 1.6;
 }
-.why-logo-box { flex: 1; display: flex; justify-content: center; align-items: center; }
-.why-logo-img { height: 220px; width: auto; }
+.why-logo-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-logo-img {
+  height: 220px;
+  width: auto;
+}
 
-/* 세 번째 섹션 (Why Start) */
-.third-section { background-color: #fff; }
-.third-section .section-content { justify-content: space-between; gap: 50px; }
-.third-section .text-content { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+/* ===============================
+   3️⃣ 세 번째 섹션 (Why Start)
+=============================== */
+.third-section {
+  background-color: #fff;
+}
+.third-section .section-content {
+  justify-content: space-between;
+  gap: 50px;
+}
+.third-section .text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .third-section .text-content .section-title {
   font-size: 3rem;
   font-weight: 800;
@@ -67,7 +124,12 @@
   color: #555;
   line-height: 1.6;
 }
-.third-section .image-content { flex: 1; display: flex; justify-content: center; align-items: center; }
+.third-section .image-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .third-section .section-image {
   max-width: 100%;
   height: auto;
@@ -75,7 +137,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 네 번째 섹션 (About LOGO) */
+/* ===============================
+   4️⃣ 네 번째 섹션 (About LOGO)
+=============================== */
 .fourth-section {
   background-color: #DEE4FF;
   display: flex;
@@ -95,7 +159,7 @@
   box-sizing: border-box;
 }
 
-/* ✅ About LOGO 제목 스타일 통일 */
+/* ✅ About LOGO 제목 스타일 */
 .about-logo-title {
   font-size: 3rem;
   font-weight: 800;
@@ -105,7 +169,9 @@
   margin-bottom: 60px;
 }
 
-/* 로고 설명 */
+/* ===============================
+   로고 설명
+=============================== */
 .logo-description-wrapper {
   display: grid;
   grid-template-areas:
@@ -119,13 +185,36 @@
   width: 100%;
 }
 
-.about-logo-image { grid-area: logo; width: 250px; height: auto; }
+.about-logo-image {
+  grid-area: logo;
+  width: 250px;
+  height: auto;
+}
 
-.logo-description { text-align: center; padding: 10px; }
-.logo-description.top-left { grid-area: tl; text-align: right; padding-right: 20px; }
-.logo-description.top-right { grid-area: tr; text-align: left; padding-left: 20px; }
-.logo-description.bottom-left { grid-area: bl; text-align: right; padding-right: 20px; }
-.logo-description.bottom-right { grid-area: br; text-align: left; padding-left: 20px; }
+.logo-description {
+  text-align: center;
+  padding: 10px;
+}
+.logo-description.top-left {
+  grid-area: tl;
+  text-align: right;
+  padding-right: 20px;
+}
+.logo-description.top-right {
+  grid-area: tr;
+  text-align: left;
+  padding-left: 20px;
+}
+.logo-description.bottom-left {
+  grid-area: bl;
+  text-align: right;
+  padding-right: 20px;
+}
+.logo-description.bottom-right {
+  grid-area: br;
+  text-align: left;
+  padding-left: 20px;
+}
 
 .icon-title-group {
   display: flex;
@@ -138,11 +227,33 @@
   justify-content: flex-start;
 }
 
-.infinite-icon { width: 30px; height: 30px; }
-.dot { width: 10px; height: 10px; background-color: #000; border-radius: 50%; }
-.color-box { width: 20px; height: 20px; border-radius: 50%; }
-.color-box.violet { background-color: #8a7acd; }
-.color-box.green { background-color: #03c75a; }
+.infinite-icon {
+  width: 30px;
+  height: 30px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+}
+.color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.color-box.violet {
+  background-color: #8a7acd;
+}
+.color-box.green {
+  background-color: #03c75a;
+}
 
-.green_text { color: #3A6F43; font-weight: bold; }
-.purple_text { color: #92338d; font-weight: bold; }
+.green_text {
+  color: #3A6F43;
+  font-weight: bold;
+}
+.purple_text {
+  color: #92338d;
+  font-weight: bold;
+}

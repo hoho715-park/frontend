@@ -1,16 +1,11 @@
-    /* src/pages/MyPage.css */
+/* src/pages/MyPage.css */
 
 .mypage-container {
   margin-top: 120px;
   text-align: center;
   font-family: "Arial", sans-serif;
 }
-
-.mypage-container h1 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
+.mypage-container h1 { font-size: 2rem; margin-bottom: 2rem; }
 .logout-button {
   padding: 10px 20px;
   font-size: 1.1rem;
@@ -20,9 +15,134 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color .3s;
+}
+.logout-button:hover { background-color: #3b2dcc; }
+
+/* ==== 레이아웃 / 사이드바 ==== */
+:root{
+  --header-h: 72px;
+  --sidebar-w: 260px;
+  --border: #e7e7ec;
+  --text: #222;
+  --muted: #6b7280;
+  --brand: #6366f1;
+  --bg: #ffffff;
+  --bg-soft: #f7f7fb;
+  --danger: #e11d48;
 }
 
-.logout-button:hover {
-  background-color: #3b2dcc;
+.mypage-wrap{
+  display:flex;
+  box-sizing:border-box;
+  width:100%;
+  min-height:calc(100vh - var(--header-h));
+  margin-top:var(--header-h);
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Arial", sans-serif;
+}
+
+/* 사이드바: 세로 전체 채우고 내부 스크롤 */
+.mypage-sidebar{
+  width:var(--sidebar-w);
+  box-sizing:border-box;
+  padding:18px;
+  border-right:1px solid var(--border);
+  background:#fff;
+
+  position:sticky;
+  top:var(--header-h);
+
+  height:calc(100vh - var(--header-h));
+  overflow:auto;
+
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.sidebar-title{ font-size:16px; font-weight:700; margin:2px 0 8px; }
+.sidebar-subtitle{ font-size:14px; font-weight:700; color:var(--muted); margin:2px 0 8px; }
+
+.user-card{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px;
+  background:var(--bg-soft);
+  line-height:1.6;
+}
+.user-line .label{ color:var(--muted); }
+
+.menu-list{ display:flex; flex-direction:column; gap:6px; }
+.menu-item{
+  display:block;
+  padding:10px 12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid transparent;
+  transition:background-color .2s, border-color .2s, color .2s;
+}
+.menu-item:hover{ background:var(--bg-soft); border-color:var(--border); }
+.menu-item.active{
+  background:rgba(99,102,241,.08);
+  border-color:rgba(99,102,241,.3);
+  color:var(--brand);
+  font-weight:700;
+}
+
+.sidebar-divider{
+  border:none;
+  border-top:1px solid var(--border);
+  margin:8px 0 0;
+}
+
+.sidebar-bottom{
+  margin-top:auto;
+  padding-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.mypage-sidebar .logout-button,
+.danger-button{
+  width:100%;
+  height:40px;
+  font-size:.95rem;
+  border-radius:8px;
+  padding:8px 10px;
+}
+
+/* 회원탈퇴 버튼 */
+.danger-button{
+  border:1px solid rgba(225,29,72,.3);
+  background:#fff;
+  color:var(--danger);
+  font-weight:bold;
+  cursor:pointer;
+  transition:background-color .2s, border-color .2s;
+}
+.danger-button:hover{ background:rgba(225,29,72,.06); }
+
+/* 콘텐츠 영역 */
+.mypage-content{
+  flex:1;
+  box-sizing:border-box;
+  padding:28px 40px 40px;
+}
+.content-welcome{ max-width:720px; }
+.content-title{ margin:0 0 8px; font-size:24px; font-weight:800; }
+.content-desc{ margin:0; color:var(--muted); font-size:14px; }
+
+/* 반응형 */
+@media (max-width: 980px){
+  .mypage-wrap{ flex-direction:column; }
+  .mypage-sidebar{
+    width:100%;
+    height:auto;
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
 }

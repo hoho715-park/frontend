@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "./AboutService.css";
 
 const AboutService = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalSections = 3;
+  const navigate = useNavigate(); // ✅ 페이지 이동용 hook
 
-  // 스크롤로 섹션 이동
+  // ✅ 스크롤 이동 제어
   useEffect(() => {
     const handleScroll = (e) => {
       e.preventDefault();
@@ -21,16 +23,19 @@ const AboutService = () => {
     return () => window.removeEventListener("wheel", handleScroll);
   }, [currentIndex]);
 
-  // 원 클릭 시 해당 섹션으로 이동
   const handleDotClick = (index) => {
     setCurrentIndex(index);
   };
+
+  // ✅ 버튼 클릭 시 페이지 이동
+  const goToQSCC = () => navigate("/test/qsc-survey"); 
+  const goToInput = () => navigate("/input");
 
   return (
     <>
       <Header />
       <div className="about-service-container">
-        {/* 진행도 원 표시 */}
+        {/* 왼쪽 진행도 표시 */}
         <div className="page-indicator">
           {[0, 1, 2].map((index) => (
             <div
@@ -48,7 +53,9 @@ const AboutService = () => {
           } section1`}
         >
           <h1 className="simple-title">01. 이음 서비스</h1>
-          <p className="simple-desc">이음 서비스는{"\n"}당신의 사상체질을{"\n"}예측해줍니다.</p>
+          <p className="simple-desc">
+            이음 서비스는{"\n"}당신의 사상체질을{"\n"}예측해줍니다.
+          </p>
         </section>
 
         {/* 02. 추천 서비스 */}
@@ -74,8 +81,12 @@ const AboutService = () => {
             저희 이음 서비스는 두 가지 방법으로{"\n"}사상체질을 예측해줍니다.
           </p>
           <div className="action-button-group">
-            <button className="action-btn qscc-btn">QSCC 설문을 통한 사상체질 알아보기</button>
-            <button className="action-btn bio-btn">생체전류를 통한 사상체질 알아보기</button>
+            <button className="action-btn qscc-btn" onClick={goToQSCC}>
+              QSCC 설문을 통한 사상체질 알아보기
+            </button>
+            <button className="action-btn bio-btn" onClick={goToInput}>
+              생체전류를 통한 사상체질 알아보기
+            </button>
           </div>
         </section>
       </div>

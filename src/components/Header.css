@@ -1,5 +1,6 @@
-/* src/components/Header.css */
-
+/* ================================
+   공통 헤더 스타일
+================================ */
 .menubar-container {
   display: flex;
   justify-content: space-between;
@@ -17,10 +18,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* 로고 */
 .menubar-logo img {
   height: 50px;
 }
 
+/* 네비게이션 */
 .menubar-nav {
   display: flex;
   list-style: none;
@@ -29,6 +32,7 @@
   gap: 100px;
 }
 
+/* 메뉴 아이템 */
 .nav-item {
   position: relative;
   cursor: pointer;
@@ -48,6 +52,7 @@
   color: #000;
 }
 
+/* 로그인 버튼 */
 .menubar-login a {
   font-size: 1.2rem;
   font-weight: 600;
@@ -65,6 +70,18 @@
   color: #fff;
 }
 
+/* 프로필 아이콘 */
+.profile-icon {
+  color: #A376A2;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.profile-icon:hover {
+  color: #6B3F69;
+}
+
+/* 드롭다운 메뉴 */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -102,6 +119,7 @@
   background-color: #f4f4f4;
 }
 
+/* 밑줄 */
 .underline {
   position: absolute;
   bottom: 0;
@@ -112,13 +130,108 @@
   background-color: #3388ff;
 }
 
-/* ✅ 프로필 아이콘 */
-.profile-icon {
-  color: #A376A2; /* 보라색 계열 */
+/* 햄버거 아이콘 (PC에서는 숨김) */
+.hamburger-icon {
+  display: none;
   cursor: pointer;
-  transition: color 0.3s;
+  color: #333;
 }
 
-.profile-icon:hover {
-  color: #6B3F69;
+/* 모바일용 프로필/로그인 (기본 숨김) */
+.mobile-login-item {
+  display: none;
+}
+
+/* ================================
+   반응형 (1024px 이하)
+================================ */
+@media (max-width: 1024px) {
+  .menubar-container {
+    padding: 0 2rem;
+  }
+
+  /* 햄버거 버튼 표시 */
+  .hamburger-icon {
+    display: block;
+    z-index: 1001;
+  }
+
+  /* 네비게이션 기본 숨김 */
+  .menubar-nav {
+    display: none;
+  }
+
+  /* 메뉴가 열렸을 때 */
+  .menubar-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    gap: 20px;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  /* 드롭다운 메뉴 모바일에 맞춤 */
+  .menubar-nav.open .dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 5px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropdown-item a {
+    padding: 8px 0;
+  }
+
+  /* ✅ PC 프로필 아이콘 숨기기 */
+  .menubar-login {
+    display: none;
+  }
+
+  /* ✅ 모바일에서만 보이게 */
+  .mobile-login-item {
+    display: block;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+  }
+
+  /* 모바일용 로그인 버튼 */
+  .mobile-login-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: 1px solid #333;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .mobile-login-btn:hover {
+    background: #333;
+    color: #fff;
+  }
+
+  /* 모바일용 프로필 */
+  .mobile-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: #555;
+  }
+
+  .mobile-profile span {
+    font-size: 1rem;
+    margin-top: 5px;
+  }
 }

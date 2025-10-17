@@ -1,113 +1,83 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import "./AboutService.css";
 
 const AboutService = () => {
-  const [currentSection, setCurrentSection] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalSections = 3;
 
-  const sections = [
-    {
-      id: 1,
-      type: "simple",
-      title: "01. 이음 서비스",
-      desc: "이음 서비스는 당신의 사상체질을 예측해줍니다.",
-      bg: "#e9e3ff",
-    },
-    {
-      id: 2,
-      type: "simple",
-      title: "02. 추천 서비스",
-      desc: "예측된 체질을 바탕으로\n당신에게 딱 맞는 모든 것을\n추천해줍니다.",
-      bg: "#f0f8ff",
-    },
-    {
-      id: 3,
-      type: "action",
-      title: "03. 예측 서비스",
-      desc: "저희 이음 서비스는 두 가지 방법으로 사상체질을 예측해줍니다.",
-      bg: "#fff0f6",
-    },
-  ];
-
+  // 스크롤로 섹션 이동
   useEffect(() => {
-    let isScrolling = false;
-    const handleWheel = (e) => {
-      if (isScrolling) return;
-      isScrolling = true;
-
-      if (e.deltaY > 0 && currentSection < sections.length - 1) {
-        setCurrentSection((prev) => prev + 1);
-      } else if (e.deltaY < 0 && currentSection > 0) {
-        setCurrentSection((prev) => prev - 1);
+    const handleScroll = (e) => {
+      e.preventDefault();
+      if (e.deltaY > 0 && currentIndex < totalSections - 1) {
+        setCurrentIndex((prev) => prev + 1);
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        setCurrentIndex((prev) => prev - 1);
       }
-
-      setTimeout(() => {
-        isScrolling = false;
-      }, 900);
     };
 
-    window.addEventListener("wheel", handleWheel);
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentSection]);
+    window.addEventListener("wheel", handleScroll, { passive: false });
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [currentIndex]);
 
-  const handleNavigate = (path) => {
-    window.location.href = path;
+  // 원 클릭 시 해당 섹션으로 이동
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
   };
 
   return (
     <>
       <Header />
       <div className="about-service-container">
-        {sections.map((section, index) => (
-          <div
-            key={section.id}
-            className={`about-service-section ${
-              index === currentSection
-                ? "active"
-                : index < currentSection
-                ? "above"
-                : "below"
-            }`}
-            style={{ backgroundColor: section.bg }}
-          >
-            {/* ✅ 기본 텍스트 섹션 */}
-            {section.type === "simple" && (
-              <div className="simple-section">
-                <h1 className="simple-title">{section.title}</h1>
-                <p className="simple-desc">
-                  {section.desc.split("\n").map((line, i) => (
-                    <span key={i}>
-                      {line}
-                      <br />
-                    </span>
-                  ))}
-                </p>
-              </div>
-            )}
+        {/* 진행도 원 표시 */}
+        <div className="page-indicator">
+          {[0, 1, 2].map((index) => (
+            <div
+              key={index}
+              className={`dot ${currentIndex === index ? "active" : ""}`}
+              onClick={() => handleDotClick(index)}
+            ></div>
+          ))}
+        </div>
 
-            {/* ✅ 액션 버튼 섹션 */}
-            {section.type === "action" && (
-              <div className="action-section">
-                <h1 className="simple-title">{section.title}</h1>
-                <p className="simple-desc">{section.desc}</p>
-                <div className="action-button-group">
-                  <button
-                    className="action-btn qscc-btn"
-                    onClick={() => handleNavigate("/test/qsc-survey")}
-                  >
-                    QSCC 설문을 통한 사상체질 알아보기
-                  </button>
-                  <button
-                    className="action-btn bio-btn"
-                    onClick={() => handleNavigate("/input")}
-                  >
-                    생체전류를 통한 사상체질 알아보기
-                  </button>
-                </div>
-              </div>
-            )}
+        {/* 01. 이음 서비스 */}
+        <section
+          className={`about-service-section ${
+            currentIndex === 0 ? "active" : currentIndex > 0 ? "above" : "below"
+          } section1`}
+        >
+          <h1 className="simple-title">01. 이음 서비스</h1>
+          <p className="simple-desc">이음 서비스는{"\n"}당신의 사상체질을{"\n"}예측해줍니다.</p>
+        </section>
+
+        {/* 02. 추천 서비스 */}
+        <section
+          className={`about-service-section ${
+            currentIndex === 1 ? "active" : currentIndex > 1 ? "above" : "below"
+          } section2`}
+        >
+          <h1 className="simple-title">02. 추천 서비스</h1>
+          <p className="simple-desc">
+            예측된 체질을 바탕으로{"\n"}당신에게 딱 맞는 모든 것을{"\n"}추천해줍니다.
+          </p>
+        </section>
+
+        {/* 03. 예측 서비스 */}
+        <section
+          className={`about-service-section ${
+            currentIndex === 2 ? "active" : "below"
+          } section3`}
+        >
+          <h1 className="simple-title">03. 예측 서비스</h1>
+          <p className="simple-desc">
+            저희 이음 서비스는 두 가지 방법으로{"\n"}사상체질을 예측해줍니다.
+          </p>
+          <div className="action-button-group">
+            <button className="action-btn qscc-btn">QSCC 설문을 통한 사상체질 알아보기</button>
+            <button className="action-btn bio-btn">생체전류를 통한 사상체질 알아보기</button>
           </div>
-        ))}
+        </section>
       </div>
     </>
   );

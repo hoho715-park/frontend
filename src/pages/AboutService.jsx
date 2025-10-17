@@ -1,4 +1,3 @@
-// src/pages/AboutService.jsx
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import "./AboutService.css";
@@ -9,34 +8,29 @@ const AboutService = () => {
   const sections = [
     {
       id: 1,
-      title: "01. 이음 서비스 소개",
-      desc: "건강한 하루를 위한 맞춤형 체질 분석 서비스",
+      type: "simple",
+      title: "01. 이음 서비스",
+      desc: "이음 서비스는 당신의 사상체질을 예측해줍니다.",
       bg: "#e9e3ff",
     },
     {
       id: 2,
-      title: "02. 손바닥 측정",
-      desc: "손바닥 5포인트 데이터를 기반으로 체질을 시각화합니다.",
+      type: "simple",
+      title: "02. 추천 서비스",
+      desc: "예측된 체질을 바탕으로\n당신에게 딱 맞는 모든 것을\n추천해줍니다.",
       bg: "#f0f8ff",
     },
     {
       id: 3,
-      title: "03. 설문 기반 분석",
-      desc: "QSCC-II 설문을 통해 체질적 성향을 정확히 파악합니다.",
+      type: "action",
+      title: "03. 예측 서비스",
+      desc: "저희 이음 서비스는 두 가지 방법으로 사상체질을 예측해줍니다.",
       bg: "#fff0f6",
-    },
-    {
-      id: 4,
-      title: "04. 개인 맞춤 제안",
-      desc: "당신의 체질에 맞는 식단, 운동, 생활 루틴을 추천합니다.",
-      bg: "#f6fff0",
     },
   ];
 
-  // ✅ 스크롤 이벤트로 섹션 전환
   useEffect(() => {
     let isScrolling = false;
-
     const handleWheel = (e) => {
       if (isScrolling) return;
       isScrolling = true;
@@ -49,12 +43,16 @@ const AboutService = () => {
 
       setTimeout(() => {
         isScrolling = false;
-      }, 900); // 전환 속도와 맞춰 조절
+      }, 900);
     };
 
     window.addEventListener("wheel", handleWheel);
     return () => window.removeEventListener("wheel", handleWheel);
   }, [currentSection]);
+
+  const handleNavigate = (path) => {
+    window.location.href = path;
+  };
 
   return (
     <>
@@ -72,8 +70,42 @@ const AboutService = () => {
             }`}
             style={{ backgroundColor: section.bg }}
           >
-            <h1>{section.title}</h1>
-            <p>{section.desc}</p>
+            {/* ✅ 기본 텍스트 섹션 */}
+            {section.type === "simple" && (
+              <div className="simple-section">
+                <h1 className="simple-title">{section.title}</h1>
+                <p className="simple-desc">
+                  {section.desc.split("\n").map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              </div>
+            )}
+
+            {/* ✅ 액션 버튼 섹션 */}
+            {section.type === "action" && (
+              <div className="action-section">
+                <h1 className="simple-title">{section.title}</h1>
+                <p className="simple-desc">{section.desc}</p>
+                <div className="action-button-group">
+                  <button
+                    className="action-btn qscc-btn"
+                    onClick={() => handleNavigate("/test/qsc-survey")}
+                  >
+                    QSCC 설문을 통한 사상체질 알아보기
+                  </button>
+                  <button
+                    className="action-btn bio-btn"
+                    onClick={() => handleNavigate("/input")}
+                  >
+                    생체전류를 통한 사상체질 알아보기
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

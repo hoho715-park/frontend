@@ -1,80 +1,151 @@
 /* ============================
-   전체 페이지 컨테이너
+   기본 설정
 ============================ */
 .about-service-container {
-  position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden; /* 스크롤바 제거 */
+  overflow: hidden;
+  position: relative;
   font-family: 'GMarketSans', sans-serif;
 }
 
-/* ============================
-   각 섹션 공통
-============================ */
 .about-service-section {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   text-align: center;
-  padding: 2rem;
-  box-sizing: border-box;
-
   transition: transform 0.9s ease, opacity 0.9s ease;
   opacity: 0;
   transform: translateY(100%);
 }
 
-/* 현재 보이는 섹션 */
 .about-service-section.active {
   opacity: 1;
   transform: translateY(0);
-  z-index: 3;
 }
 
-/* 위로 지나간 섹션 */
 .about-service-section.above {
-  opacity: 0;
   transform: translateY(-100%);
+}
+
+.about-service-section.below {
+  transform: translateY(100%);
+}
+
+/* ============================
+   텍스트 섹션 (01~03 공통)
+============================ */
+.simple-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem; /* ✅ 기존 2rem → 줄임 */
+}
+
+.simple-title {
+  font-family: 'GMarketSans';
+  font-size: 3rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 0; /* ✅ 아래 여백 제거 */
+  line-height: 1.3; /* ✅ 제목과 본문 시각적 간격 줄이기 */
+}
+
+.simple-desc {
+  font-family: 'GMarketSans';
+  font-size: 1.5rem;
+  color: #555;
+  line-height: 1.8;
+  white-space: pre-line;
+  margin-top: 0.3rem; /* ✅ 본문 위 여백 약간만 */
+}
+
+/* ============================
+   액션 섹션 (버튼 포함)
+============================ */
+.action-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* ✅ 섹션 내부 간격 살짝 줄임 */
+  text-align: center;
   z-index: 2;
 }
 
-/* 아직 아래 있는 섹션 */
-.about-service-section.below {
-  opacity: 0;
-  transform: translateY(100%);
-  z-index: 1;
+.action-section .simple-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
-/* ============================
-   텍스트 스타일
-============================ */
-.about-service-section h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.about-service-section p {
-  font-size: 1.2rem;
+.action-section .simple-desc {
+  font-size: 1.5rem;
   color: #555;
+  margin-top: 0.3rem;
+  margin-bottom: 1.2rem; /* ✅ 버튼과의 거리 살짝 조정 */
+}
+
+/* 버튼 그룹 */
+.action-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* 버튼 스타일 */
+.action-btn {
+  padding: 1.4rem 3.5rem;
+  font-size: 1.3rem;
+  font-family: 'GMarketSans';
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 버튼 색상 (서로 다르게) */
+.qscc-btn {
+  background-color: #e4dcff;
+  color: #4a3a85;
+}
+.qscc-btn:hover {
+  background-color: #cfc2ff;
+  transform: translateY(-3px);
+}
+
+.bio-btn {
+  background-color: #d6efff;
+  color: #0f5f89;
+}
+.bio-btn:hover {
+  background-color: #bde6ff;
+  transform: translateY(-3px);
 }
 
 /* ============================
-   반응형 대응
+   반응형
 ============================ */
 @media (max-width: 768px) {
-  .about-service-section h1 {
-    font-size: 1.8rem;
+  .simple-title {
+    font-size: 2.2rem;
   }
-  .about-service-section p {
-    font-size: 1rem;
+
+  .simple-desc {
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  .action-btn {
+    width: 85%;
+    font-size: 1.1rem;
   }
 }

@@ -1,3 +1,4 @@
+// src/pages/QsccQuestion.jsx
 import React, { useState } from 'react';
 import Header from '../components/Header.jsx';
 import { useNavigate } from 'react-router-dom';
@@ -72,7 +73,7 @@ const QsccQuestion = () => {
 
     const { 태양척도, 소양척도, 태음척도, 소음척도 } = scaleTotals;
 
-    // 2️⃣ Fisher 판별식 정의 (순서 수정 완료)
+    // 2️⃣ Fisher 판별식 정의
     const fisherFormulas = {
       '태양인': (t, s, te, se) =>
         0.828 * t + (-0.07021) * s + 0.533 * te + 0.373 * se - 13.638,
@@ -92,7 +93,7 @@ const QsccQuestion = () => {
       '소음인': fisherFormulas['소음인'](태양척도, 소양척도, 태음척도, 소음척도),
     };
 
-    // ✅ 디버깅용 로그 (원하면 삭제 가능)
+    // ✅ 디버깅용 로그
     console.log('척도 합계:', scaleTotals);
     console.log('Fisher 결과:', fisherScores);
 
@@ -108,8 +109,8 @@ const QsccQuestion = () => {
       fisherScores[a[0]] > fisherScores[b[0]] ? a : b
     )[0];
 
-    // 6️⃣ 결과 페이지로 이동
-    navigate('/results-qscc', {
+    // 6️⃣ 결과 페이지로 이동 (✅ 수정됨)
+    navigate('/result-qscc', {
       state: {
         scaleTotals,
         fisherScores,

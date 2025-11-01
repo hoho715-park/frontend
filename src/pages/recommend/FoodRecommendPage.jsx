@@ -6,7 +6,15 @@ import './FoodRecommendPage.css';
 
 const FoodRecommendPage = () => {
   const location = useLocation();
-  const { bodyType = '태양인', formData, measureTime } = location.state || {};
+  const {
+    bodyType = '태양인',
+    formData,
+    measureTime,
+    source, // ✅ 어디서 왔는지 구분 (qscc or input)
+    fisherScores,
+    percentages,
+    dominantType,
+  } = location.state || {};
 
   // 체질별 prefix 매핑
   const typePrefix = {
@@ -16,7 +24,7 @@ const FoodRecommendPage = () => {
     '소음인': 'soeum',
   };
 
-  // 체질별 음식 데이터 (굵은 제목 + 설명)
+  // 체질별 음식 데이터
   const FOOD_DATA = {
     '태양인': {
       good: [
@@ -71,6 +79,9 @@ const FoodRecommendPage = () => {
   const prefix = typePrefix[bodyType];
   const data = FOOD_DATA[bodyType];
 
+  // ✅ "결과 페이지로 돌아가기" 링크 경로 설정
+  const backLinkPath = source === 'qscc' ? '/result-qscc' : '/result';
+
   return (
     <>
       <Header />
@@ -113,11 +124,19 @@ const FoodRecommendPage = () => {
           </div>
         </div>
 
-        {/* 돌아가기 버튼 */}
+        {/* ✅ 결과 페이지로 돌아가기 버튼 */}
         <div className="back-button">
           <Link
-            to="/result"
-            state={{ bodyType, formData, measureTime }}
+            to={backLinkPath}
+            state={{
+              bodyType,
+              formData,
+              measureTime,
+              fisherScores,
+              percentages,
+              dominantType,
+              source,
+            }}
           >
             ⬅ 결과 페이지로 돌아가기
           </Link>

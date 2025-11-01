@@ -1,7 +1,7 @@
 /* ✅ 전체 컨테이너 */
 .result-container {
   text-align: center;
-  padding: 100px 20px 60px; /* header와의 간격 확보 */
+  padding: 100px 20px 60px;
   color: #333;
   font-family: "Pretendard", "Noto Sans KR", sans-serif;
 }
@@ -89,7 +89,7 @@
 /* ✅ 다시 검사하기 버튼 */
 .retry-btn {
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 0px;
   padding: 12px 36px;
   background-color: #7E57C2;
   color: #fff;
@@ -107,7 +107,91 @@
   box-shadow: 0 6px 14px rgba(94, 53, 177, 0.3);
 }
 
-/* ✅ 반응형 (모바일 최적화) */
+/* ✅ 추천 섹션 (Input 페이지와 동일한 스타일) */
+.recommendation-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40px;
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+}
+
+/* ✅ 4개 카드 한 줄 배치 */
+.recommendation-sections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  flex-wrap: nowrap; /* 한 줄로 고정 */
+}
+
+/* ✅ 추천 카드 스타일 */
+.recommendation-card {
+  width: 250px;
+  height: 300px;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.recommendation-img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease-out;
+}
+
+.recommendation-card:hover .recommendation-img {
+  transform: scale(1.1);
+}
+
+.recommendation-card h3 {
+  font-size: 1.4rem;
+  color: #6a5acd;
+  margin: 0;
+}
+
+/* ✅ 반응형 (태블릿 이하에서는 2줄로) */
+@media (max-width: 1024px) {
+  .recommendation-sections {
+    flex-wrap: wrap; /* 줄바꿈 허용 */
+    gap: 25px;
+  }
+
+  .recommendation-card {
+    width: 45%;
+    height: 260px;
+  }
+}
+
+/* ✅ 모바일 (1줄 1개씩 중앙 정렬) */
+@media (max-width: 600px) {
+  .recommendation-card {
+    width: 80%;
+    height: 240px;
+  }
+}
+
+/* ✅ 반응형 (기존 내용 유지) */
 @media (max-width: 768px) {
   .result-container {
     padding: 80px 15px 50px;

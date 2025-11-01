@@ -49,7 +49,8 @@ const ResultQsccPage = () => {
   const location = useLocation();
   const { fisherScores, percentages, dominantType } = location.state || {};
 
-  if (!fisherScores) {
+  // ✅ 결과 데이터가 없을 경우
+  if (!fisherScores || !dominantType) {
     return (
       <>
         <Header />
@@ -79,6 +80,7 @@ const ResultQsccPage = () => {
           당신은 <span className="highlight">{dominantType}</span> 입니다 🧭
         </h1>
 
+        {/* ✅ 그래프 */}
         <div className="chart-wrapper">
           <ResponsiveContainer width="100%" height={320}>
             <PieChart>
@@ -106,7 +108,7 @@ const ResultQsccPage = () => {
           <h2 className="bingo-title">{dominantType} 빙고판</h2>
           <div className="bingo-grid">
             {bingoWords.slice(0, 25).map((word, i) => {
-              const isCenter = i === 12; // 중앙 칸 (5x5 중 가운데)
+              const isCenter = i === 12;
               return (
                 <div
                   key={i}
@@ -119,6 +121,75 @@ const ResultQsccPage = () => {
           </div>
         </div>
 
+        {/* ✅ 추천 섹션 */}
+        <h2 className="recommendation-title">나에게 좋은 추천</h2>
+        <div className="recommendation-sections">
+          {/* 음식 추천 */}
+          <Link
+            to="/recommend/food"
+            state={{
+              bodyType: dominantType,
+              source: "qscc",
+              fisherScores,
+              percentages,
+              dominantType,
+            }}
+            className="recommendation-card"
+          >
+            <img src="/recommend_food.png" alt="음식 추천" className="recommendation-img" />
+            <h3>음식 추천</h3>
+          </Link>
+
+          {/* 주류 추천 */}
+          <Link
+            to="/recommend/alcohol"
+            state={{
+              bodyType: dominantType,
+              source: "qscc",
+              fisherScores,
+              percentages,
+              dominantType,
+            }}
+            className="recommendation-card"
+          >
+            <img src="/recommend_beer.png" alt="주류 추천" className="recommendation-img" />
+            <h3>주류 추천</h3>
+          </Link>
+
+          {/* 생활 습관 */}
+          <Link
+            to="/recommend/lifestyle"
+            state={{
+              bodyType: dominantType,
+              source: "qscc",
+              fisherScores,
+              percentages,
+              dominantType,
+            }}
+            className="recommendation-card"
+          >
+            <img src="/recommend_life.png" alt="생활 습관" className="recommendation-img" />
+            <h3>생활 습관</h3>
+          </Link>
+
+          {/* 운동 추천 */}
+          <Link
+            to="/recommend/sport"
+            state={{
+              bodyType: dominantType,
+              source: "qscc",
+              fisherScores,
+              percentages,
+              dominantType,
+            }}
+            className="recommendation-card"
+          >
+            <img src="/recommend_sport.png" alt="운동 추천" className="recommendation-img" />
+            <h3>운동 추천</h3>
+          </Link>
+        </div>
+
+        {/* 다시 검사하기 버튼 */}
         <Link to="/test/qsc-survey-questions" className="retry-btn">
           다시 검사하기
         </Link>

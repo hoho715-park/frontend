@@ -50,6 +50,9 @@
   color: #fff;
   margin-bottom: 10px;
   font-weight: bold;
+
+  /* 추가: 위쪽 텍스트와의 간격 띄우기 */
+  margin-top: 20px;
 }
 
 .test-button-wrapper {

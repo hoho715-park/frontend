@@ -6,7 +6,11 @@ import './SportRecommendPage.css';
 
 const SportRecommendPage = () => {
   const location = useLocation();
-  const { bodyType = '태양인', formData, measureTime } = location.state || {};
+  const { bodyType = '태양인', formData, measureTime, source, fisherScores, percentages, dominantType } =
+    location.state || {};
+
+  // ✅ 돌아가기 경로 결정
+  const backLink = source === 'qscc' ? '/result-qscc' : '/result';
 
   // 체질별 prefix 매핑
   const typePrefix = {
@@ -37,7 +41,7 @@ const SportRecommendPage = () => {
       { title: '요가', desc: '몸을 따뜻하게 하고 유연성 증진' },
       { title: '걷기', desc: '적당한 강도의 유산소 운동, 소화 촉진' },
       { title: '웨이트 트레이닝', desc: '상체와 하체 근력 강화' },
-    ]
+    ],
   };
 
   const prefix = typePrefix[bodyType];
@@ -47,33 +51,41 @@ const SportRecommendPage = () => {
     <>
       <Header />
       <div className="sport-wrapper">
-      <div className="sport-page-container">
-        <h1>{bodyType} 운동 추천 🏃</h1>
+        <div className="sport-page-container">
+          <h1>{bodyType} 운동 추천 🏃</h1>
 
-        <div className="sport-grid">
-          {data.map((item, i) => (
-            <div key={`sport-${i}`} className="sport-card">
-              <img
-                src={`/recommend/sport/${prefix}_good_sport_${i + 1}.png`}
-                alt={`${bodyType} 운동 ${i + 1}`}
-              />
-              <hr />
-              <p className="sport-title">{item.title}</p>
-              <p className="sport-desc">{item.desc}</p>
-            </div>
-          ))}
-        </div>
+          <div className="sport-grid">
+            {data.map((item, i) => (
+              <div key={`sport-${i}`} className="sport-card">
+                <img
+                  src={`/recommend/sport/${prefix}_good_sport_${i + 1}.png`}
+                  alt={`${bodyType} 운동 ${i + 1}`}
+                />
+                <hr />
+                <p className="sport-title">{item.title}</p>
+                <p className="sport-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
 
-        <div className="back-button">
-          <Link
-            to="/result"
-            state={{ bodyType, formData, measureTime }}
-          >
-            ⬅ 결과 페이지로 돌아가기
-          </Link>
+          {/* ✅ 결과 페이지로 돌아가기 (출처별 분기 처리) */}
+          <div className="back-button">
+            <Link
+              to={backLink}
+              state={{
+                bodyType,
+                formData,
+                measureTime,
+                fisherScores,
+                percentages,
+                dominantType,
+              }}
+            >
+              ⬅ 결과 페이지로 돌아가기
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

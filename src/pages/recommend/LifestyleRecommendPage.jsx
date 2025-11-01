@@ -6,7 +6,11 @@ import './LifestyleRecommendPage.css';
 
 const LifestyleRecommendPage = () => {
   const location = useLocation();
-  const { bodyType = '태양인', formData, measureTime } = location.state || {};
+  const { bodyType = '태양인', formData, measureTime, source, fisherScores, percentages, dominantType } =
+    location.state || {};
+
+  // ✅ 돌아가기 경로 결정
+  const backLink = source === 'qscc' ? '/result-qscc' : '/result';
 
   // 체질별 prefix 매핑
   const typePrefix = {
@@ -16,7 +20,7 @@ const LifestyleRecommendPage = () => {
     '소음인': 'soeum',
   };
 
-  // 체질별 생활 습관 데이터 (제목 + 설명)
+  // 체질별 생활 습관 데이터
   const LIFESTYLE_DATA = {
     '태양인': [
       { title: '과로·야식·음주 피하기', desc: '무리한 과로 방지 · 야식·술 절제' },
@@ -32,14 +36,12 @@ const LifestyleRecommendPage = () => {
       { title: '식습관 관리', desc: '급하게 먹지 않기 · 물 자주 마시기' },
       { title: '하체 운동 습관', desc: '걷기 · 스쿼트 등 하체 중심 운동' },
       { title: '협동심 강화', desc: '단체 활동 참여 · 끈기 훈련' },
-
     ],
     '소음인': [
       { title: '햇볕 산책', desc: '햇볕 쬐며 산책 · 걷기 습관' },
       { title: '체온 관리', desc: '요가 · 근력 운동으로 몸 따뜻하게' },
       { title: '규칙적 생활', desc: '충분한 수분 섭취 · 소식·휴식 습관' },
-
-    ]
+    ],
   };
 
   const prefix = typePrefix[bodyType];
@@ -49,33 +51,41 @@ const LifestyleRecommendPage = () => {
     <>
       <Header />
       <div className="lifestyle-wrapper">
-      <div className="lifestyle-page-container">
-        <h1>{bodyType} 생활 습관 🧘</h1>
+        <div className="lifestyle-page-container">
+          <h1>{bodyType} 생활 습관 🧘</h1>
 
-        <div className="lifestyle-grid">
-          {data.map((item, i) => (
-            <div key={`lifestyle-${i}`} className="lifestyle-card">
-              <img
-                src={`/recommend/lifestyle/${prefix}_good_lifestyle_${i + 1}.png`}
-                alt={`${bodyType} 생활 습관 ${i + 1}`}
-              />
-              <hr />
-              <p className="lifestyle-title">{item.title}</p>
-              <p className="lifestyle-desc">{item.desc}</p>
-            </div>
-          ))}
-        </div>
+          <div className="lifestyle-grid">
+            {data.map((item, i) => (
+              <div key={`lifestyle-${i}`} className="lifestyle-card">
+                <img
+                  src={`/recommend/lifestyle/${prefix}_good_lifestyle_${i + 1}.png`}
+                  alt={`${bodyType} 생활 습관 ${i + 1}`}
+                />
+                <hr />
+                <p className="lifestyle-title">{item.title}</p>
+                <p className="lifestyle-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
 
-        <div className="back-button">
-          <Link
-            to="/result"
-            state={{ bodyType, formData, measureTime }}
-          >
-            ⬅ 결과 페이지로 돌아가기
-          </Link>
+          {/* ✅ 결과 페이지로 돌아가기 (출처별 분기 처리) */}
+          <div className="back-button">
+            <Link
+              to={backLink}
+              state={{
+                bodyType,
+                formData,
+                measureTime,
+                fisherScores,
+                percentages,
+                dominantType,
+              }}
+            >
+              ⬅ 결과 페이지로 돌아가기
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

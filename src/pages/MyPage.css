@@ -1,28 +1,147 @@
-    /* src/pages/MyPage.css */
+/* src/pages/MyPage.css */
 
-.mypage-container {
-  margin-top: 120px;
+/* 최상위 Wrapper */
+.mypage-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 80px;
+  background-color: #fafafa;
+}
+
+/* 좌측 사이드 */
+.mypage-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 280px;
+}
+
+/* 프로필 카드 */
+.mypage-profile-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
-  font-family: "Arial", sans-serif;
+  padding: 30px 20px;
 }
 
-.mypage-container h1 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.mypage-profile-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
 }
 
-.logout-button {
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: #5a4fff;
+.mypage-profile-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 기능 버튼 */
+.mypage-section {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.mypage-btn {
+  border: none;
+  background: #f0f0ff;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #4b4b9b;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mypage-btn:hover {
+  background: #dcdcff;
+}
+
+.mypage-delete {
+  color: #e74c3c;
+  background: #ffeaea;
+}
+
+.mypage-delete:hover {
+  background: #ffdbdb;
+}
+
+/* 오른쪽 캐릭터 섹션 */
+.mypage-main {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mypage-bodytype-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* 캐릭터 */
+.mypage-character-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mypage-character-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mypage-character-image {
+  width: 250px;
+  height: auto;
+  border-radius: 20px;
+}
+
+.mypage-gauge-bar {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  writing-mode: vertical-rl;
+  color: #333;
+}
+
+/* 미션 버튼 */
+.mypage-mission-btn {
+  margin-top: 30px;
+  background-color: #6b4eff;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.2s ease;
 }
 
-.logout-button:hover {
-  background-color: #3b2dcc;
+.mypage-mission-btn:hover {
+  background-color: #573bdb;
 }

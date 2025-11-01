@@ -1,6 +1,6 @@
 .food-page-container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 120px auto 40px; /* 상단 여백 120px로 변경 (기존 40px) */
   padding: 30px;
   background: #f9fff7;
   border-radius: 16px;

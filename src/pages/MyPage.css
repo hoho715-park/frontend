@@ -215,3 +215,144 @@
 .mypage-character-placeholder.fade {
   opacity: 0;
 }
+
+
+/* ✅ fade 전환 */
+.mypage-character-placeholder {
+  transition: opacity 0.7s ease-in-out;
+  opacity: 1;
+}
+
+.mypage-character-placeholder.fade {
+  opacity: 0;
+}
+
+/* ✅ 버튼 나란히 배치 */
+.mypage-button-row {
+  display: flex;
+  gap: 10px;
+}
+
+.mypage-badge-btn {
+  background-color: #ffd166;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.mypage-badge-btn:hover {
+  background-color: #ffca3a;
+}
+
+/* ✅ 배지 획득 애니메이션 */
+.badge-popup {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: slideUpFade 0.8s forwards;
+  z-index: 9999;
+}
+
+.badge-popup-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.badge-popup-text {
+  font-weight: bold;
+  color: #333;
+}
+
+@keyframes slideUpFade {
+  from {
+    transform: translateX(-50%) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ✅ 전체 화면 배지 축하 연출 */
+.badge-popup-fullscreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out;
+  z-index: 9999;
+}
+
+.badge-popup-content {
+  text-align: center;
+  animation: popIn 1s ease-out;
+}
+
+.badge-popup-img-big {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  animation: floatUp 1.2s ease-out;
+}
+
+.badge-popup-text-big {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  animation: fadeInText 1.2s ease-in-out;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

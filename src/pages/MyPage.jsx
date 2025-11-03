@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import CalendarModal from "../components/CalendarModal.jsx";
 import MissionModal from "../components/MissionModal.jsx";
+import BadgeModal from "../components/BadgeModal.jsx";
 import "./MyPage.css";
 
 const MyPage = () => {
@@ -22,6 +23,7 @@ const MyPage = () => {
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isMissionOpen, setIsMissionOpen] = useState(false);
+  const [isBadgeOpen, setIsBadgeOpen] = useState(false); // ✅ 뱃지 도감 모달 상태
 
   // ✅ 미션 진행 상태
   const [missionProgress, setMissionProgress] = useState(
@@ -33,7 +35,11 @@ const MyPage = () => {
   const [plantImage, setPlantImage] = useState(`/mypage/level_${level}.png`);
   const [fade, setFade] = useState(false);
 
-  // ✅ 체질 데이터 가져오기 (백엔드에서 계산)
+  // ✅ 배지 획득 연출 상태
+  const [badgeEarned, setBadgeEarned] = useState(false);
+  const [earnedBadgeInfo, setEarnedBadgeInfo] = useState(null);
+
+  // ✅ 체질 데이터 가져오기
   useEffect(() => {
     if (!userId) return;
 
@@ -53,7 +59,7 @@ const MyPage = () => {
       });
   }, [userId]);
 
-  // ✅ 프로필 색상 복원
+  // ✅ 색상 복원
   useEffect(() => {
     const savedColor = localStorage.getItem("profileColor");
     if (savedColor) setIconColor(savedColor);
@@ -65,25 +71,51 @@ const MyPage = () => {
     const timeout = setTimeout(() => {
       setPlantImage(`/mypage/level_${level}.png`);
       setFade(false);
-    }, 700); // 0.7초 동안 부드럽게 전환
+    }, 700);
     return () => clearTimeout(timeout);
   }, [level]);
 
-  // ✅ 미션 진행도 저장 및 애니메이션 반영
+  // ✅ 미션 완료 시 배지 수여
   const handleMissionProgress = (count) => {
     setMissionProgress(count);
     localStorage.setItem("missionProgress", count);
 
-    // ✅ 팝업 닫히고 0.5초 후에 레벨 업 적용
+    // ✅ 팝업 닫히고 0.5초 후 성장
     setTimeout(() => {
       setLevel(count);
     }, 500);
+
+    // ✅ 모든 미션 완료 시 배지 수여
+    if (count === 4) {
+      const today = new Date().toISOString().split("T")[0];
+      const newBadge = {
+        id: 1,
+        image: "/mypage/badge/badge_1.png",
+        date: today,
+      };
+
+      const badges = JSON.parse(localStorage.getItem("badges") || "[]");
+      const alreadyEarned = badges.find((b) => b.date === today);
+
+      if (!alreadyEarned) {
+        badges.push(newBadge);
+        localStorage.setItem("badges", JSON.stringify(badges));
+
+        // ✅ alert 제거하고 직접 애니메이션 표시
+        setEarnedBadgeInfo(newBadge);
+        setBadgeEarned(true);
+
+        // 4초 후 사라짐
+        setTimeout(() => {
+          setBadgeEarned(false);
+        }, 4000);
+      }
+    }
   };
 
   const handleLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       localStorage.clear();
-      alert("로그아웃 되었습니다.");
       navigate("/login");
     }
   };
@@ -92,9 +124,6 @@ const MyPage = () => {
     const newColor = e.target.value;
     setIconColor(newColor);
     localStorage.setItem("profileColor", newColor);
-    window.dispatchEvent(
-      new StorageEvent("storage", { key: "profileColor", newValue: newColor })
-    );
   };
 
   const handleOpenCalendar = () => {
@@ -160,7 +189,6 @@ const MyPage = () => {
           <h1 className="mypage-bodytype-title">{bodyType}</h1>
 
           <div className="mypage-character-box">
-            {/* ✅ 캐릭터 이미지 표시 (fade 전환 포함) */}
             <div
               className={`mypage-character-placeholder ${fade ? "fade" : ""}`}
             >
@@ -171,7 +199,6 @@ const MyPage = () => {
               />
             </div>
 
-            {/* ✅ 진행도 게이지 */}
             <div className="mypage-gauge-bar">
               <div
                 className="mypage-gauge-fill"
@@ -179,18 +206,25 @@ const MyPage = () => {
               ></div>
             </div>
 
-            {/* ✅ 오늘의 미션 버튼 */}
-            <button
-              className="mypage-mission-btn"
-              onClick={() => setIsMissionOpen(true)}
-            >
-              오늘의 미션 확인하기
-            </button>
+            <div className="mypage-button-row">
+              <button
+                className="mypage-mission-btn"
+                onClick={() => setIsMissionOpen(true)}
+              >
+                오늘의 미션 확인하기
+              </button>
+              <button
+                className="mypage-badge-btn"
+                onClick={() => setIsBadgeOpen(true)}
+              >
+                뱃지 도감 보기
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ✅ 모달 표시 */}
+      {/* ✅ 모달 */}
       {isCalendarOpen && (
         <CalendarModal
           onClose={() => setIsCalendarOpen(false)}
@@ -204,6 +238,24 @@ const MyPage = () => {
           onClose={() => setIsMissionOpen(false)}
           onProgressChange={handleMissionProgress}
         />
+      )}
+
+      {isBadgeOpen && <BadgeModal onClose={() => setIsBadgeOpen(false)} />}
+
+      {/* ✅ 배지 획득 연출 */}
+      {badgeEarned && earnedBadgeInfo && (
+        <div className="badge-popup-fullscreen">
+          <div className="badge-popup-content">
+            <img
+              src={earnedBadgeInfo.image}
+              alt="획득한 배지"
+              className="badge-popup-img-big"
+            />
+            <p className="badge-popup-text-big">
+              🎉 뱃지 획득! ({earnedBadgeInfo.date})
+            </p>
+          </div>
+        </div>
       )}
     </>
   );

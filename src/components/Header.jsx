@@ -14,7 +14,7 @@ const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [iconColor, setIconColor] = useState(localStorage.getItem("profileColor") || "#9c89ff"); // ✅ 프로필 색상
+  const [iconColor, setIconColor] = useState(localStorage.getItem("profileColor") || "#9c89ff");
   const timeoutRef = useRef(null);
   const navigate = useNavigate();
 
@@ -24,20 +24,30 @@ const Header = () => {
     setIsLoggedIn(loggedIn);
   }, []);
 
-  // ✅ 프로필 색상 실시간 반영
+  // ✅ 프로필 색상 실시간 반영 (storage + customEvent 모두 감지)
   useEffect(() => {
     const savedColor = localStorage.getItem("profileColor") || "#9c89ff";
     setIconColor(savedColor);
 
-    // 다른 탭 or 페이지에서 변경될 때 자동 갱신
+    // 다른 탭에서 변경될 때 자동 갱신
     const handleStorageChange = (event) => {
       if (event.key === "profileColor") {
         setIconColor(event.newValue);
       }
     };
-    window.addEventListener("storage", handleStorageChange);
 
-    return () => window.removeEventListener("storage", handleStorageChange);
+    // ✅ 같은 탭 내 MyPage 변경 실시간 반영
+    const handleCustomColorChange = (event) => {
+      if (event.detail) setIconColor(event.detail);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    window.addEventListener("profileColorChange", handleCustomColorChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("profileColorChange", handleCustomColorChange);
+    };
   }, []);
 
   const handleMouseEnter = (menuName) => {
@@ -109,7 +119,7 @@ const Header = () => {
         <li className="mobile-login-item">
           {isLoggedIn ? (
             <div className="mobile-profile" onClick={handleProfileClick}>
-              <FaUserCircle size={38} color={iconColor} className="profile-icon" /> {/* ✅ 색상 반영 */}
+              <FaUserCircle size={38} color={iconColor} className="profile-icon" />
               <span>My Page</span>
             </div>
           ) : (
@@ -125,7 +135,7 @@ const Header = () => {
         {isLoggedIn ? (
           <FaUserCircle
             size={38}
-            color={iconColor} // ✅ 색상 반영됨
+            color={iconColor}
             className="profile-icon"
             onClick={handleProfileClick}
           />

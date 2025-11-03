@@ -23,7 +23,7 @@ const MyPage = () => {
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isMissionOpen, setIsMissionOpen] = useState(false);
-  const [isBadgeOpen, setIsBadgeOpen] = useState(false); // ✅ 뱃지 도감 모달 상태
+  const [isBadgeOpen, setIsBadgeOpen] = useState(false);
 
   // ✅ 미션 진행 상태
   const [missionProgress, setMissionProgress] = useState(
@@ -80,12 +80,10 @@ const MyPage = () => {
     setMissionProgress(count);
     localStorage.setItem("missionProgress", count);
 
-    // ✅ 팝업 닫히고 0.5초 후 성장
     setTimeout(() => {
       setLevel(count);
     }, 500);
 
-    // ✅ 모든 미션 완료 시 배지 수여
     if (count === 4) {
       const today = new Date().toISOString().split("T")[0];
       const newBadge = {
@@ -101,11 +99,9 @@ const MyPage = () => {
         badges.push(newBadge);
         localStorage.setItem("badges", JSON.stringify(badges));
 
-        // ✅ alert 제거하고 직접 애니메이션 표시
         setEarnedBadgeInfo(newBadge);
         setBadgeEarned(true);
 
-        // 4초 후 사라짐
         setTimeout(() => {
           setBadgeEarned(false);
         }, 4000);
@@ -120,10 +116,14 @@ const MyPage = () => {
     }
   };
 
+  // ✅ 프로필 색상 변경 → Header에도 즉시 반영
   const handleColorChange = (e) => {
     const newColor = e.target.value;
     setIconColor(newColor);
     localStorage.setItem("profileColor", newColor);
+
+    // ✅ 커스텀 이벤트를 통해 Header에 즉시 반영
+    window.dispatchEvent(new CustomEvent("profileColorChange", { detail: newColor }));
   };
 
   const handleOpenCalendar = () => {

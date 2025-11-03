@@ -22,6 +22,8 @@
   width: 420px;
   max-width: 95%;
   text-align: center;
+  max-height: 90vh;
+  overflow: hidden;
 }
 
 .modal-title {
@@ -62,7 +64,7 @@
   padding: 15px;
 }
 
-/* 네비게이션 (월/년 전환) */
+/* 네비게이션 */
 .react-calendar__navigation {
   display: flex;
   justify-content: space-between;
@@ -75,7 +77,6 @@
   border: none;
   cursor: pointer;
   font-size: 1rem;
-  transition: color 0.2s;
 }
 .react-calendar__navigation button:hover {
   color: #4b3fb1;
@@ -91,9 +92,9 @@
   margin-bottom: 5px;
 }
 
-/* 날짜 타일 (네모 스타일) */
+/* 날짜 타일 */
 .react-calendar__tile {
-  border-radius: 6px;   /* ✅ 동그라미 → 네모 */
+  border-radius: 6px;
   padding: 10px;
   transition: all 0.2s;
   border: 1px solid #ddd;
@@ -102,42 +103,62 @@
   background: #f0f0ff;
   transform: scale(1.05);
 }
-
-/* 오늘 날짜 */
 .react-calendar__tile--now {
   background: #e6e0ff;
-  border-radius: 6px;   /* ✅ 네모 */
   color: #4b3fb1;
   font-weight: bold;
 }
-
-/* 기록이 있는 날짜 표시 */
 .react-calendar__tile.has-record {
   background-color: #6a5acd;
   color: #fff !important;
   font-weight: bold;
   border: 2px solid #4b3fb1;
-  border-radius: 6px;   /* ✅ 네모 */
 }
 .react-calendar__tile.has-record:hover {
   background-color: #4b3fb1;
-  color: #fff;
-  transform: scale(1.05);
+}
+
+/* ✅ 시간 버튼 페이징 섹션 */
+.time-pagination-container {
+  margin-top: 20px;
+}
+
+.time-pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.arrow-button {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #6a5acd;
+  transition: color 0.2s;
+}
+.arrow-button:hover {
+  color: #4b3fb1;
+}
+.arrow-button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
 }
 
 /* 시간 버튼 리스트 */
 .time-button-list {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ✅ 한 줄에 3개 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
-  justify-items: center;
 }
 
 /* 시간 버튼 */
 .time-button {
-  width: 100px;          /* ✅ 고정된 너비 */
-  height: 45px;          /* ✅ 고정된 높이 */
+  width: 100px;
+  height: 45px;
   background: #f8f8ff;
   color: #333;
   border: 1px solid #d1c4e9;
@@ -147,13 +168,11 @@
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hover 효과 */
 .time-button:hover {
   background: #6a5acd;
   color: #fff;
@@ -162,18 +181,8 @@
   box-shadow: 0 6px 15px rgba(106, 90, 205, 0.3);
 }
 
-/* 클릭(활성화) 상태 */
-.time-button:active {
-  transform: scale(0.96);
-  box-shadow: 0 3px 8px rgba(106, 90, 205, 0.2);
-}
-
-/* 제목 스타일 (날짜 기록) */
-.time-button-list h4 {
-  grid-column: span 3; /* ✅ 제목은 전체 3칸 차지 */
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
+.page-indicator {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
 }

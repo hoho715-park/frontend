@@ -205,3 +205,13 @@
 .mypage-mission-btn:hover {
   background-color: #8f83ff;
 }
+
+/* ✅ 식물 이미지 전환 애니메이션 */
+.mypage-character-placeholder {
+  transition: opacity 0.7s ease-in-out;
+  opacity: 1;
+}
+
+.mypage-character-placeholder.fade {
+  opacity: 0;
+}

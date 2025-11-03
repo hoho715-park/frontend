@@ -1,10 +1,8 @@
-// src/pages/InputMeasure.jsx
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import { FaCheckCircle, FaCheck } from 'react-icons/fa'; // 체크 아이콘 import
-import axios from 'axios'; // ✅ axios 추가
+import { FaCheckCircle, FaCheck } from 'react-icons/fa';
+import axios from 'axios';
 import './InputMeasure.css';
 
 const organs = [
@@ -22,7 +20,7 @@ const InputMeasure = () => {
   const [formData, setFormData] = useState({});
   const [leftHandValue, setLeftHandValue] = useState('');
   const [rightHandValue, setRightHandValue] = useState('');
-  
+
   const currentOrgan = organs[currentOrganIndex];
   const isLeftCompleted = !!(formData[currentOrgan.id] && formData[currentOrgan.id].left);
   const isRightCompleted = !!(formData[currentOrgan.id] && formData[currentOrgan.id].right);
@@ -37,7 +35,7 @@ const InputMeasure = () => {
     setIsTransitioning(false);
   }, [currentOrganIndex]);
 
-  // 🔥 체질 판별 로직 (임시)
+  // ✅ 체질 판별 로직
   const determineBodyType = (data) => {
     const getValue = (organId, hand) => parseInt(data[organId]?.[hand] || 0);
 
@@ -48,7 +46,6 @@ const InputMeasure = () => {
     
     const lungLiverDiff = sumLung - sumLiver;
     const spleenKidneyDiff = sumSpleen - sumKidney;
-    
     const diffThreshold = 10;
 
     if (lungLiverDiff > diffThreshold) {
@@ -68,18 +65,12 @@ const InputMeasure = () => {
     const value = e.target.value;
     if (value < 0 || value > 50) {
       alert('0에서 50 사이의 정수만 입력 가능합니다.');
-      if (hand === 'left') {
-        setLeftHandValue('');
-      } else {
-        setRightHandValue('');
-      }
+      if (hand === 'left') setLeftHandValue('');
+      else setRightHandValue('');
       return;
     }
-    if (hand === 'left') {
-      setLeftHandValue(value);
-    } else {
-      setRightHandValue(value);
-    }
+    if (hand === 'left') setLeftHandValue(value);
+    else setRightHandValue(value);
   };
 
   const handleLeftHandSubmit = () => {
@@ -91,18 +82,18 @@ const InputMeasure = () => {
       if (!newFormData[currentOrgan.id]) newFormData[currentOrgan.id] = {};
       newFormData[currentOrgan.id].left = leftHandValue;
       setFormData(newFormData);
-      
+
       setLeftHandValue('');
     }
   };
 
   const handleRightHandSubmit = async () => {
     if (rightHandValue !== '') {
-      if (!isLeftCompleted) { 
+      if (!isLeftCompleted) {
         alert('왼손 수치를 먼저 입력해 주세요.');
         return;
       }
-      
+
       setIsRightHandShaking(true);
       setTimeout(() => setIsRightHandShaking(false), 500);
 
@@ -110,7 +101,6 @@ const InputMeasure = () => {
       if (!newFormData[currentOrgan.id]) newFormData[currentOrgan.id] = {};
       newFormData[currentOrgan.id].right = rightHandValue;
       setFormData(newFormData);
-      
       setRightHandValue('');
 
       if (currentOrganIndex < organs.length - 1) {
@@ -119,11 +109,15 @@ const InputMeasure = () => {
           setCurrentOrganIndex(prevIndex => prevIndex + 1);
         }, 500);
       } else {
-        // ✅ 마지막 장기 입력 완료 시 DB 저장
-        const userId = localStorage.getItem("userId"); // 로그인 시 저장했다고 가정
+        // ✅ 마지막 장기 입력 완료 시 저장
+        const userId = localStorage.getItem("userId");
+        const result = determineBodyType(newFormData);
+        const { bodyType } = result;
+        const measureTime = new Date();
+
         try {
           await axios.post("http://localhost:8080/api/measurements", {
-            userId: userId,
+            userId,
             leftKidney: parseInt(newFormData.kidney?.left || 0),
             rightKidney: parseInt(newFormData.kidney?.right || 0),
             leftSpleen: parseInt(newFormData.spleen?.left || 0),
@@ -135,18 +129,16 @@ const InputMeasure = () => {
             leftLiver: parseInt(newFormData.liver?.left || 0),
             rightLiver: parseInt(newFormData.liver?.right || 0),
             leftBladder: parseInt(newFormData.bladder?.left || 0),
-            rightBladder: parseInt(newFormData.bladder?.right || 0)
+            rightBladder: parseInt(newFormData.bladder?.right || 0),
+            constitution: bodyType, // ✅ 체질 정보 저장
           });
-          console.log("측정값 저장 성공!");
+          console.log("측정값 + 체질 저장 성공!");
         } catch (error) {
-  console.error("측정값 저장 실패:", error.response?.data || error.message);
-  alert("DB 저장 중 오류: " + (error.response?.data?.message || error.message));
-}
+          console.error("DB 저장 실패:", error.response?.data || error.message);
+        }
 
-        // 🔥 결과 페이지 이동
-        const result = determineBodyType(newFormData);
-        const measureTime = new Date();
-        navigate('/result', { state: { ...result, formData: newFormData, measureTime: measureTime } });
+        // ✅ 결과 페이지 이동 (저장은 이미 끝남)
+        navigate('/result', { state: { ...result, formData: newFormData, measureTime } });
       }
     }
   };
@@ -169,50 +161,35 @@ const InputMeasure = () => {
             </button>
           ))}
         </nav>
+
         <div className="organ-input-container">
           <div className="input-field-group">
             <h3>왼손</h3>
             <div className={`hand-image-wrapper ${isLeftCompleted ? 'completed' : ''}`}>
-              <img 
-                src="/input_left_hand.png" 
-                alt="Left Hand" 
-                className={`hand-input-img ${isLeftHandShaking ? 'shaking' : ''}`} 
-              />
+              <img src="/input_left_hand.png" alt="Left Hand" className={`hand-input-img ${isLeftHandShaking ? 'shaking' : ''}`} />
               {isLeftCompleted && <FaCheckCircle className="check-icon" />}
             </div>
             <div className="input-with-button">
-              <input 
-                type="number" 
-                placeholder="수치를 입력해 주세요" 
-                value={leftHandValue}
-                onChange={(e) => handleValueChange(e, 'left')}
-                disabled={isLeftCompleted}
-              />
+              <input type="number" placeholder="수치를 입력해 주세요" value={leftHandValue}
+                onChange={(e) => handleValueChange(e, 'left')} disabled={isLeftCompleted} />
               <button onClick={handleLeftHandSubmit} className="submit-button" disabled={isLeftCompleted}>입력</button>
             </div>
           </div>
+
           <div className="organ-display-box">
             <img src={`/${currentOrgan.id}.png`} alt={`${currentOrgan.name} Image`} className="organ-image" />
             <p className="organ-name-text">{currentOrgan.name}</p>
           </div>
+
           <div className="input-field-group">
             <h3>오른손</h3>
             <div className={`hand-image-wrapper ${isRightCompleted ? 'completed' : ''}`}>
-              <img 
-                src="/input_right_hand.png" 
-                alt="Right Hand" 
-                className={`hand-input-img ${isRightHandShaking ? 'shaking' : ''}`} 
-              />
+              <img src="/input_right_hand.png" alt="Right Hand" className={`hand-input-img ${isRightHandShaking ? 'shaking' : ''}`} />
               {isRightCompleted && <FaCheckCircle className="check-icon" />}
             </div>
             <div className="input-with-button">
-              <input 
-                type="number" 
-                placeholder="수치를 입력해 주세요" 
-                value={rightHandValue}
-                onChange={(e) => handleValueChange(e, 'right')}
-                disabled={isRightCompleted}
-              />
+              <input type="number" placeholder="수치를 입력해 주세요" value={rightHandValue}
+                onChange={(e) => handleValueChange(e, 'right')} disabled={isRightCompleted} />
               <button onClick={handleRightHandSubmit} className="submit-button" disabled={isRightCompleted}>입력</button>
             </div>
           </div>

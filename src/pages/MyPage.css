@@ -44,13 +44,14 @@
   background: #fafafa;
 }
 
+/* ✅ 프로필 카드 */
 .mypage-profile-card {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px; /* 🔥 기존 8px → 4px로 줄여서 간격 축소 */
 }
 
 .mypage-profile-icon {
@@ -62,12 +63,13 @@
 .mypage-username {
   font-size: 1.3rem;
   font-weight: bold;
+  margin-bottom: 2px; /* 🔥 추가: 프로필 변경 텍스트와 간격 최소화 */
 }
 
 .mypage-change-profile {
   color: #666;
   font-size: 14px;
-  margin-top: 8px;
+  margin-top: 2px; /* 🔥 기존보다 간격 줄임 */
   cursor: pointer;
   text-decoration: underline;
   transition: 0.2s;
@@ -89,7 +91,7 @@
   width: 90%;
 }
 
-/* ✅ 버튼별 색상 구분 */
+/* 버튼별 색상 구분 */
 .mypage-btn:nth-of-type(1) {
   background-color: #a79bff;
 }
@@ -132,6 +134,7 @@
   background-color: #4b4b4b;
 }
 
+/* 메인 콘텐츠 */
 .mypage-main {
   flex: 1;
   background: white;
@@ -181,6 +184,7 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
 .mypage-gauge-fill {
   width: 50%;
   height: 100%;

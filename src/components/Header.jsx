@@ -14,12 +14,30 @@ const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [iconColor, setIconColor] = useState(localStorage.getItem("profileColor") || "#9c89ff"); // ✅ 프로필 색상
   const timeoutRef = useRef(null);
   const navigate = useNavigate();
 
+  // ✅ 로그인 상태 불러오기
   useEffect(() => {
     const loggedIn = localStorage.getItem("isLoggedIn") === "true";
     setIsLoggedIn(loggedIn);
+  }, []);
+
+  // ✅ 프로필 색상 실시간 반영
+  useEffect(() => {
+    const savedColor = localStorage.getItem("profileColor") || "#9c89ff";
+    setIconColor(savedColor);
+
+    // 다른 탭 or 페이지에서 변경될 때 자동 갱신
+    const handleStorageChange = (event) => {
+      if (event.key === "profileColor") {
+        setIconColor(event.newValue);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   const handleMouseEnter = (menuName) => {
@@ -87,11 +105,11 @@ const Header = () => {
           </li>
         ))}
 
-        {/* ✅ 모바일용 로그인/프로필 (햄버거 메뉴 안쪽에 추가됨) */}
+        {/* ✅ 모바일용 로그인/프로필 */}
         <li className="mobile-login-item">
           {isLoggedIn ? (
             <div className="mobile-profile" onClick={handleProfileClick}>
-              <FaUserCircle size={38} className="profile-icon" />
+              <FaUserCircle size={38} color={iconColor} className="profile-icon" /> {/* ✅ 색상 반영 */}
               <span>My Page</span>
             </div>
           ) : (
@@ -107,6 +125,7 @@ const Header = () => {
         {isLoggedIn ? (
           <FaUserCircle
             size={38}
+            color={iconColor} // ✅ 색상 반영됨
             className="profile-icon"
             onClick={handleProfileClick}
           />

@@ -1,5 +1,8 @@
-/* MyPage 전용 스타일 */
+/* ============================= */
+/* 📄 MyPage 전용 스타일 전체 코드 */
+/* ============================= */
 
+/* ===== 레이아웃 ===== */
 .mypage-container {
   display: flex;
   align-items: stretch;
@@ -19,7 +22,7 @@
   height: 100%;
 }
 
-/* 섹션 공통 */
+/* ===== 섹션 공통 ===== */
 .mypage-section {
   position: relative;
   background: white;
@@ -33,7 +36,7 @@
   gap: 10px;
 }
 
-/* 섹션 제목 */
+/* ===== 섹션 제목 ===== */
 .mypage-section-title {
   position: absolute;
   top: -14px;
@@ -42,7 +45,7 @@
   font-weight: bold;
   font-size: 15px;
   padding: 0 4px;
-  background: none;
+  background: #fafafa; /* 배경 통일 */
 }
 
 /* ===== 프로필 카드 ===== */
@@ -55,26 +58,34 @@
   gap: 8px;
 }
 
-.mypage-profile-image-wrapper {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* ✅ 프로필 아이콘 (FaUserCircle) */
+.mypage-profile-icon {
+  transition: color 0.3s ease;
+  width: 110px;
+  height: 110px;
 }
 
-.mypage-profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+/* 사용자 이름 */
 .mypage-username {
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-/* ===== 버튼 ===== */
+/* ✅ 프로필 색상 변경 텍스트 */
+.mypage-change-profile {
+  color: #666;
+  font-size: 14px;
+  margin-top: 8px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.mypage-change-profile:hover {
+  color: #8f83ff;
+}
+
+/* ===== 버튼 공통 ===== */
 .mypage-btn {
   background-color: #a79bff;
   color: white;
@@ -101,9 +112,9 @@
   background-color: #ff7070;
 }
 
-/* ✅ 로그아웃 버튼 (색상 복원) */
+/* ✅ 로그아웃 버튼 (회색 복원) */
 .mypage-btn.logout {
-  background-color: #666; /* 이전 회색 복원 */
+  background-color: #666;
   color: #fff;
   width: 90%;
 }
@@ -112,7 +123,7 @@
   background-color: #4b4b4b;
 }
 
-/* ===== Main Section ===== */
+/* ===== 메인 콘텐츠 ===== */
 .mypage-main {
   flex: 1;
   background: white;
@@ -124,6 +135,7 @@
   justify-content: center;
 }
 
+/* 체질 제목 */
 .mypage-bodytype-title {
   text-align: center;
   font-size: 1.8rem;
@@ -132,6 +144,7 @@
   margin-bottom: 25px;
 }
 
+/* 캐릭터 영역 */
 .mypage-character-box {
   display: flex;
   flex-direction: column;
@@ -139,6 +152,7 @@
   gap: 18px;
 }
 
+/* 캐릭터 박스 */
 .mypage-character-placeholder {
   width: 280px;
   height: 280px;
@@ -150,11 +164,13 @@
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
+/* 캐릭터 라벨 */
 .mypage-character-label {
   font-size: 1.2rem;
   color: #888;
 }
 
+/* 게이지 바 */
 .mypage-gauge-bar {
   width: 80%;
   height: 12px;
@@ -170,6 +186,7 @@
   transition: width 0.3s ease-in-out;
 }
 
+/* 오늘의 미션 버튼 */
 .mypage-mission-btn {
   background-color: #a79bff;
   color: white;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import CalendarModal from "../components/CalendarModal.jsx"; // ✅ 추가
 import "./MyPage.css";
 
 const MyPage = () => {
@@ -10,11 +11,15 @@ const MyPage = () => {
   // ✅ 사용자 정보 불러오기
   const username = localStorage.getItem("username") || "사용자";
   const bodyType = localStorage.getItem("bodyType") || "태양인";
+  const userId = localStorage.getItem("userId") || null;
 
   // ✅ 프로필 색상 상태
   const [iconColor, setIconColor] = useState(
     localStorage.getItem("profileColor") || "#9c89ff"
   );
+
+  // ✅ 모달 상태
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   // ✅ 로그아웃 기능
   const handleLogout = () => {
@@ -31,7 +36,7 @@ const MyPage = () => {
     setIconColor(newColor);
     localStorage.setItem("profileColor", newColor);
 
-    // ✅ Header에 실시간 반영 (같은 탭에서도 즉시 반영)
+    // ✅ Header에 실시간 반영
     window.dispatchEvent(
       new StorageEvent("storage", {
         key: "profileColor",
@@ -46,13 +51,22 @@ const MyPage = () => {
     if (savedColor) setIconColor(savedColor);
   }, []);
 
+  // ✅ 장기 수치 조회 버튼 클릭 시
+  const handleOpenCalendar = () => {
+    if (!userId) {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login");
+      return;
+    }
+    setIsCalendarOpen(true);
+  };
+
   return (
     <>
       <Header />
       <div className="mypage-container">
         {/* ===== 왼쪽 사이드바 ===== */}
         <div className="mypage-sidebar">
-
           {/* 프로필 카드 */}
           <div className="mypage-section">
             <div className="mypage-section-title">프로필</div>
@@ -80,7 +94,12 @@ const MyPage = () => {
           {/* 조회하기 섹션 */}
           <div className="mypage-section">
             <div className="mypage-section-title">조회하기</div>
-            <button className="mypage-btn">장기수치 기록 조회하기</button>
+            <button
+              className="mypage-btn"
+              onClick={handleOpenCalendar} // ✅ 클릭 시 캘린더 모달 열기
+            >
+              장기수치 기록 조회하기
+            </button>
             <button className="mypage-btn">QSCC 설문 결과 확인하기</button>
           </div>
 
@@ -115,6 +134,14 @@ const MyPage = () => {
           </div>
         </div>
       </div>
+
+      {/* ✅ 캘린더 모달 표시 */}
+      {isCalendarOpen && (
+        <CalendarModal
+          onClose={() => setIsCalendarOpen(false)}
+          userId={userId}
+        />
+      )}
     </>
   );
 };

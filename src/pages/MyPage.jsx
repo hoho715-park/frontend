@@ -27,35 +27,45 @@ const MyPage = () => {
       <div className="mypage-container">
         {/* ===== 왼쪽 사이드바 ===== */}
         <div className="mypage-sidebar">
-          <div className="mypage-profile-card">
-            <div className="mypage-profile-image-wrapper">
-              <img
-                src={profileImage}
-                alt="프로필 이미지"
-                className="mypage-profile-image"
-              />
+          {/* ✅ 프로필 섹션 */}
+          <div className="mypage-section">
+            <div className="mypage-section-title">프로필</div>
+            <div className="mypage-profile-card">
+              <div className="mypage-profile-image-wrapper">
+                <img
+                  src={profileImage}
+                  alt="프로필 이미지"
+                  className="mypage-profile-image"
+                />
+              </div>
+              <h2 className="mypage-username">{username}</h2>
             </div>
-            <h2 className="mypage-username">{username}</h2>
           </div>
 
+          {/* ✅ 조회하기 섹션 */}
           <div className="mypage-section">
+            <div className="mypage-section-title">조회하기</div>
             <button className="mypage-btn">장기수치 기록 조회하기</button>
             <button className="mypage-btn">QSCC 설문 결과 확인하기</button>
           </div>
 
+          {/* ✅ 설정하기 섹션 */}
           <div className="mypage-section">
+            <div className="mypage-section-title">설정하기</div>
             <button className="mypage-btn">회원정보 수정하기</button>
             <button className="mypage-btn delete">회원 탈퇴하기</button>
           </div>
 
+          {/* ✅ 로그아웃 섹션 */}
           <div className="mypage-section logout-box">
+            <div className="mypage-section-title">로그아웃</div>
             <button className="mypage-btn logout" onClick={handleLogout}>
               로그아웃
             </button>
           </div>
         </div>
 
-        {/* ===== 오른쪽 캐릭터 영역 ===== */}
+        {/* ===== 오른쪽 메인 박스 (MY 제목 제거됨) ===== */}
         <div className="mypage-main">
           <h1 className="mypage-bodytype-title">{bodyType}</h1>
 

@@ -2,9 +2,9 @@
 
 .mypage-container {
   display: flex;
-  align-items: stretch; /* ✅ 양쪽 상단·하단 높이 동일 */
+  align-items: stretch;
   gap: 32px;
-  padding: 40px 80px;
+  padding: 30px 60px;
   background-color: #fafafa;
   min-height: calc(100vh - 80px);
   margin-top: 80px;
@@ -15,32 +15,51 @@
   width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 24px; /* ✅ 섹션 간 간격 복원 */
+  gap: 20px;
   height: 100%;
 }
 
-/* 프로필 카드 */
-.mypage-profile-card {
+/* 섹션 공통 */
+.mypage-section {
+  position: relative;
   background: white;
   border-radius: 16px;
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 섹션 제목 */
+.mypage-section-title {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  color: #000;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 0 4px;
+  background: none;
+}
+
+/* ===== 프로필 카드 ===== */
+.mypage-profile-card {
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 180px;
-  width: 260px;
-  transition: all 0.3s ease;
+  gap: 8px;
 }
 
 .mypage-profile-image-wrapper {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -51,20 +70,8 @@
 }
 
 .mypage-username {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-top: 8px;
-}
-
-/* 섹션 공통 */
-.mypage-section {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 /* ===== 버튼 ===== */
@@ -73,11 +80,12 @@
   color: white;
   border: none;
   border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 15px;
+  padding: 10px 12px;
+  font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  width: 90%;
 }
 
 .mypage-btn:hover {
@@ -93,15 +101,9 @@
   background-color: #ff7070;
 }
 
-/* 로그아웃 버튼 */
-.logout-box {
-  margin-top: 125px; /* ✅ 항상 하단 정렬 */
-  display: flex;
-  justify-content: center;
-}
-
+/* ✅ 로그아웃 버튼 (색상 복원) */
 .mypage-btn.logout {
-  background-color: #666;
+  background-color: #666; /* 이전 회색 복원 */
   color: #fff;
   width: 90%;
 }
@@ -115,7 +117,7 @@
   flex: 1;
   background: white;
   border-radius: 16px;
-  padding: 40px;
+  padding: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -124,21 +126,22 @@
 
 .mypage-bodytype-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 .mypage-character-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .mypage-character-placeholder {
-  width: 300px;
-  height: 400px;
+  width: 280px;
+  height: 280px;
   border-radius: 20px;
   background-color: #f5f5f5;
   display: flex;
@@ -148,13 +151,13 @@
 }
 
 .mypage-character-label {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #888;
 }
 
 .mypage-gauge-bar {
   width: 80%;
-  height: 14px;
+  height: 12px;
   background-color: #eee;
   border-radius: 10px;
   overflow: hidden;
@@ -172,8 +175,8 @@
   color: white;
   border: none;
   border-radius: 10px;
-  padding: 12px 18px;
-  font-size: 15px;
+  padding: 10px 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
 }

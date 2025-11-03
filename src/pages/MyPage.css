@@ -1,15 +1,13 @@
 /* MyPage 전용 스타일 */
-/* 🚫 절대 전역 스타일 지정 금지 (body, input, button 등) */
 
 .mypage-container {
   display: flex;
+  align-items: stretch; /* ✅ 양쪽 상단·하단 높이 동일 */
   gap: 32px;
   padding: 40px 80px;
   background-color: #fafafa;
-  min-height: 90vh;
-
-  /* ✅ Header와의 간격 확보 */
-  margin-top: 80px; /* 헤더 높이에 맞춰 적절히 조정 가능 (60~100px) */
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
 }
 
 /* ===== Sidebar ===== */
@@ -17,7 +15,8 @@
   width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 24px; /* ✅ 섹션 간 간격 복원 */
+  height: 100%;
 }
 
 /* 프로필 카드 */
@@ -27,16 +26,12 @@
   padding: 20px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* ✅ 크기 줄이기 */
   height: 180px;
   width: 260px;
-
   transition: all 0.3s ease;
 }
 
@@ -61,7 +56,7 @@
   margin-top: 8px;
 }
 
-/* 사이드 섹션 */
+/* 섹션 공통 */
 .mypage-section {
   background: white;
   border-radius: 16px;
@@ -72,9 +67,9 @@
   gap: 12px;
 }
 
-/* ===== 버튼 스타일 ===== */
+/* ===== 버튼 ===== */
 .mypage-btn {
-  background-color: #a79bff; /* 💜 부드러운 라벤더톤 */
+  background-color: #a79bff;
   color: white;
   border: none;
   border-radius: 10px;
@@ -86,10 +81,10 @@
 }
 
 .mypage-btn:hover {
-  background-color: #8f83ff; /* hover 시 살짝 진한 톤 */
+  background-color: #8f83ff;
 }
 
-/* 탈퇴 버튼 (붉은 톤 완화) */
+/* 탈퇴 버튼 */
 .mypage-btn.delete {
   background-color: #ff8b8b;
 }
@@ -100,7 +95,7 @@
 
 /* 로그아웃 버튼 */
 .logout-box {
-  margin-top: 40px; /* ✅ 살짝 위로 올려서 시각적 균형 */
+  margin-top: 125px; /* ✅ 항상 하단 정렬 */
   display: flex;
   justify-content: center;
 }
@@ -108,7 +103,7 @@
 .mypage-btn.logout {
   background-color: #666;
   color: #fff;
-  width: 90%; /* ✅ 여백 균형 맞춤 */
+  width: 90%;
 }
 
 .mypage-btn.logout:hover {
@@ -122,9 +117,9 @@
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  /* ✅ 메인 콘텐츠도 약간 띄워서 여백 균형 */
-  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .mypage-bodytype-title {

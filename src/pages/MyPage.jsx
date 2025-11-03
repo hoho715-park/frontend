@@ -2,26 +2,21 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
-import CalendarModal from "../components/CalendarModal.jsx"; // ✅ 추가
+import CalendarModal from "../components/CalendarModal.jsx";
 import "./MyPage.css";
 
 const MyPage = () => {
   const navigate = useNavigate();
 
-  // ✅ 사용자 정보 불러오기
   const username = localStorage.getItem("username") || "사용자";
   const bodyType = localStorage.getItem("bodyType") || "태양인";
   const userId = localStorage.getItem("userId") || null;
 
-  // ✅ 프로필 색상 상태
   const [iconColor, setIconColor] = useState(
     localStorage.getItem("profileColor") || "#9c89ff"
   );
-
-  // ✅ 모달 상태
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-  // ✅ 로그아웃 기능
   const handleLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       localStorage.clear();
@@ -30,28 +25,20 @@ const MyPage = () => {
     }
   };
 
-  // ✅ 색상 변경 핸들러
   const handleColorChange = (e) => {
     const newColor = e.target.value;
     setIconColor(newColor);
     localStorage.setItem("profileColor", newColor);
-
-    // ✅ Header에 실시간 반영
     window.dispatchEvent(
-      new StorageEvent("storage", {
-        key: "profileColor",
-        newValue: newColor,
-      })
+      new StorageEvent("storage", { key: "profileColor", newValue: newColor })
     );
   };
 
-  // ✅ 새로고침 시 localStorage에서 색상 복원
   useEffect(() => {
     const savedColor = localStorage.getItem("profileColor");
     if (savedColor) setIconColor(savedColor);
   }, []);
 
-  // ✅ 장기 수치 조회 버튼 클릭 시
   const handleOpenCalendar = () => {
     if (!userId) {
       alert("로그인이 필요한 서비스입니다.");
@@ -65,9 +52,7 @@ const MyPage = () => {
     <>
       <Header />
       <div className="mypage-container">
-        {/* ===== 왼쪽 사이드바 ===== */}
         <div className="mypage-sidebar">
-          {/* 프로필 카드 */}
           <div className="mypage-section">
             <div className="mypage-section-title">프로필</div>
             <div className="mypage-profile-card">
@@ -77,8 +62,6 @@ const MyPage = () => {
                 size={110}
               />
               <h2 className="mypage-username">{username}</h2>
-
-              {/* ✅ 색상 변경 버튼 */}
               <label className="mypage-change-profile">
                 프로필 색상 변경하기
                 <input
@@ -91,26 +74,20 @@ const MyPage = () => {
             </div>
           </div>
 
-          {/* 조회하기 섹션 */}
           <div className="mypage-section">
             <div className="mypage-section-title">조회하기</div>
-            <button
-              className="mypage-btn"
-              onClick={handleOpenCalendar} // ✅ 클릭 시 캘린더 모달 열기
-            >
+            <button className="mypage-btn" onClick={handleOpenCalendar}>
               장기수치 기록 조회하기
             </button>
             <button className="mypage-btn">QSCC 설문 결과 확인하기</button>
           </div>
 
-          {/* 설정하기 섹션 */}
           <div className="mypage-section">
             <div className="mypage-section-title">설정하기</div>
-            <button className="mypage-btn">회원정보 수정하기</button>
+            <button className="mypage-btn edit">회원정보 수정하기</button>
             <button className="mypage-btn delete">회원 탈퇴하기</button>
           </div>
 
-          {/* 로그아웃 섹션 */}
           <div className="mypage-section">
             <div className="mypage-section-title">로그아웃</div>
             <button className="mypage-btn logout" onClick={handleLogout}>
@@ -119,7 +96,6 @@ const MyPage = () => {
           </div>
         </div>
 
-        {/* ===== 오른쪽 콘텐츠 영역 ===== */}
         <div className="mypage-main">
           <h1 className="mypage-bodytype-title">{bodyType}</h1>
 
@@ -135,7 +111,6 @@ const MyPage = () => {
         </div>
       </div>
 
-      {/* ✅ 캘린더 모달 표시 */}
       {isCalendarOpen && (
         <CalendarModal
           onClose={() => setIsCalendarOpen(false)}

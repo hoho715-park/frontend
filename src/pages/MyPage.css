@@ -2,7 +2,6 @@
 /* 📄 MyPage 전용 스타일 전체 코드 */
 /* ============================= */
 
-/* ===== 레이아웃 ===== */
 .mypage-container {
   display: flex;
   align-items: stretch;
@@ -13,7 +12,6 @@
   margin-top: 80px;
 }
 
-/* ===== Sidebar ===== */
 .mypage-sidebar {
   width: 300px;
   display: flex;
@@ -22,7 +20,6 @@
   height: 100%;
 }
 
-/* ===== 섹션 공통 ===== */
 .mypage-section {
   position: relative;
   background: white;
@@ -36,7 +33,6 @@
   gap: 10px;
 }
 
-/* ===== 섹션 제목 ===== */
 .mypage-section-title {
   position: absolute;
   top: -14px;
@@ -45,10 +41,9 @@
   font-weight: bold;
   font-size: 15px;
   padding: 0 4px;
-  background: #fafafa; /* 배경 통일 */
+  background: #fafafa;
 }
 
-/* ===== 프로필 카드 ===== */
 .mypage-profile-card {
   text-align: center;
   display: flex;
@@ -58,20 +53,17 @@
   gap: 8px;
 }
 
-/* ✅ 프로필 아이콘 (FaUserCircle) */
 .mypage-profile-icon {
   transition: color 0.3s ease;
   width: 110px;
   height: 110px;
 }
 
-/* 사용자 이름 */
 .mypage-username {
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-/* ✅ 프로필 색상 변경 텍스트 */
 .mypage-change-profile {
   color: #666;
   font-size: 14px;
@@ -80,14 +72,12 @@
   text-decoration: underline;
   transition: 0.2s;
 }
-
 .mypage-change-profile:hover {
   color: #8f83ff;
 }
 
 /* ===== 버튼 공통 ===== */
 .mypage-btn {
-  background-color: #a79bff;
   color: white;
   border: none;
   border-radius: 10px;
@@ -99,31 +89,49 @@
   width: 90%;
 }
 
-.mypage-btn:hover {
+/* ✅ 버튼별 색상 구분 */
+.mypage-btn:nth-of-type(1) {
+  background-color: #a79bff;
+}
+.mypage-btn:nth-of-type(1):hover {
   background-color: #8f83ff;
+}
+
+.mypage-btn:nth-of-type(2) {
+  background-color: #81d4fa;
+}
+.mypage-btn:nth-of-type(2):hover {
+  background-color: #4fc3f7;
+}
+
+/* ✅ 회원정보 수정 전용 클래스 */
+.mypage-btn.edit {
+  background-color: #b2f296; /* 연두색 */
+  color: #1b3a0f;
+}
+.mypage-btn.edit:hover {
+  background-color: #9ae47e;
+  color: white;
 }
 
 /* 탈퇴 버튼 */
 .mypage-btn.delete {
   background-color: #ff8b8b;
 }
-
 .mypage-btn.delete:hover {
   background-color: #ff7070;
 }
 
-/* ✅ 로그아웃 버튼 (회색 복원) */
+/* 로그아웃 버튼 */
 .mypage-btn.logout {
   background-color: #666;
   color: #fff;
   width: 90%;
 }
-
 .mypage-btn.logout:hover {
   background-color: #4b4b4b;
 }
 
-/* ===== 메인 콘텐츠 ===== */
 .mypage-main {
   flex: 1;
   background: white;
@@ -135,7 +143,6 @@
   justify-content: center;
 }
 
-/* 체질 제목 */
 .mypage-bodytype-title {
   text-align: center;
   font-size: 1.8rem;
@@ -144,7 +151,6 @@
   margin-bottom: 25px;
 }
 
-/* 캐릭터 영역 */
 .mypage-character-box {
   display: flex;
   flex-direction: column;
@@ -152,7 +158,6 @@
   gap: 18px;
 }
 
-/* 캐릭터 박스 */
 .mypage-character-placeholder {
   width: 280px;
   height: 280px;
@@ -164,13 +169,11 @@
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* 캐릭터 라벨 */
 .mypage-character-label {
   font-size: 1.2rem;
   color: #888;
 }
 
-/* 게이지 바 */
 .mypage-gauge-bar {
   width: 80%;
   height: 12px;
@@ -178,7 +181,6 @@
   border-radius: 10px;
   overflow: hidden;
 }
-
 .mypage-gauge-fill {
   width: 50%;
   height: 100%;
@@ -186,7 +188,6 @@
   transition: width 0.3s ease-in-out;
 }
 
-/* 오늘의 미션 버튼 */
 .mypage-mission-btn {
   background-color: #a79bff;
   color: white;
@@ -197,7 +198,6 @@
   cursor: pointer;
   transition: 0.2s;
 }
-
 .mypage-mission-btn:hover {
   background-color: #8f83ff;
 }

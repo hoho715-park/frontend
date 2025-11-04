@@ -190,13 +190,13 @@ const MyPage = () => {
 
           <div className="mypage-character-box">
             <div
-              className={`mypage-character-placeholder ${fade ? "fade" : ""}`}
-            >
-              <img
-                src={plantImage}
-                alt={`level ${level}`}
-                style={{ width: "240px", height: "240px" }}
-              />
+                  className={`mypage-character-placeholder ${fade ? "fade" : ""}`}
+                >
+                  <img
+                    src={plantImage}
+                    alt={`level ${level}`}
+                    className="mypage-plant-image"
+                  />
             </div>
 
             <div className="mypage-gauge-bar">

@@ -51,7 +51,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px; /* 🔥 기존 8px → 4px로 줄여서 간격 축소 */
+  gap: 4px;
 }
 
 .mypage-profile-icon {
@@ -63,13 +63,13 @@
 .mypage-username {
   font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 2px; /* 🔥 추가: 프로필 변경 텍스트와 간격 최소화 */
+  margin-bottom: 2px;
 }
 
 .mypage-change-profile {
   color: #666;
   font-size: 14px;
-  margin-top: 2px; /* 🔥 기존보다 간격 줄임 */
+  margin-top: 2px;
   cursor: pointer;
   text-decoration: underline;
   transition: 0.2s;
@@ -108,7 +108,7 @@
 
 /* ✅ 회원정보 수정 전용 클래스 */
 .mypage-btn.edit {
-  background-color: #b2f296; /* 연두색 */
+  background-color: #b2f296;
   color: #1b3a0f;
 }
 .mypage-btn.edit:hover {
@@ -162,14 +162,51 @@
 }
 
 .mypage-character-placeholder {
-  width: 280px;
-  height: 280px;
+  width: 380px; /* 🔥 기존 280 → 380으로 확대 */
+  height: 380px;
   border-radius: 20px;
   background-color: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ✅ 새로 추가된 식물 이미지 스타일 */
+.mypage-plant-image {
+  width: 340px; /* 🔥 기존 240 → 340으로 확대 */
+  height: 340px;
+  object-fit: contain;
+  transition: transform 0.4s ease, opacity 0.6s ease;
+}
+
+.mypage-plant-image:hover {
+  transform: scale(1.05);
+}
+
+/* 반응형 대응 */
+@media (max-width: 900px) {
+  .mypage-character-placeholder {
+    width: 300px;
+    height: 300px;
+  }
+
+  .mypage-plant-image {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mypage-character-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+
+  .mypage-plant-image {
+    width: 230px;
+    height: 230px;
+  }
 }
 
 .mypage-character-label {
@@ -207,17 +244,6 @@
 }
 
 /* ✅ 식물 이미지 전환 애니메이션 */
-.mypage-character-placeholder {
-  transition: opacity 0.7s ease-in-out;
-  opacity: 1;
-}
-
-.mypage-character-placeholder.fade {
-  opacity: 0;
-}
-
-
-/* ✅ fade 전환 */
 .mypage-character-placeholder {
   transition: opacity 0.7s ease-in-out;
   opacity: 1;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./MissionModal.css";
 
 const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
-  // ✅ 로그인한 사용자 이름 불러오기
   const username = localStorage.getItem("username") || "사용자";
 
   // ✅ 체질별 미션 목록
@@ -34,11 +33,9 @@ const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
   };
 
   const userMissions = missions[bodyType] || [];
-
-  // ✅ 날짜 기반 key (예: "mission_2025-11-03")
   const todayKey = `mission_${new Date().toISOString().split("T")[0]}`;
 
-  // ✅ 오늘 날짜 미션 상태 불러오기
+  // ✅ 오늘 미션 체크 상태
   const [checked, setChecked] = useState([false, false, false, false]);
 
   useEffect(() => {
@@ -48,30 +45,39 @@ const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
     }
   }, [todayKey]);
 
-  // ✅ 체크 변경 핸들러
+  // ✅ 미션 체크 핸들러
   const handleCheck = (index) => {
     const updated = [...checked];
     updated[index] = !updated[index];
     setChecked(updated);
 
-    // ✅ localStorage에 저장 (오늘 날짜 기준)
+    // ✅ 로컬스토리지에 저장
     localStorage.setItem(todayKey, JSON.stringify(updated));
 
+    // ✅ 체크 개수 계산
     const completed = updated.filter(Boolean).length;
+
+    // ✅ ✅ 여기에 핵심 추가 (미션 진행도 저장)
+    localStorage.setItem("missionProgress", completed);
+
+    // ✅ 상위(MainPage)에 상태 전달
     onProgressChange(completed);
 
-    // ✅ 하나라도 체크 시 팝업 닫기
+    // ✅ 팝업 닫기 (체크 시 바로 닫히도록)
     onClose();
   };
 
   return (
     <div className="mission-overlay">
       <div className="mission-modal">
+        {/* ✅ 타이틀 영역 */}
         <h2 className="mission-title">
           🌿 <span className="mission-username">{username}</span>님의 오늘의 미션
         </h2>
+
+        {/* ✅ 미션 리스트 */}
         <ul className="mission-list">
-          {userMissions.map((m, i) => (
+          {userMissions.map((mission, i) => (
             <li key={i} className={checked[i] ? "checked" : ""}>
               <label>
                 <input
@@ -79,11 +85,13 @@ const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
                   checked={checked[i]}
                   onChange={() => handleCheck(i)}
                 />
-                {m}
+                {mission}
               </label>
             </li>
           ))}
         </ul>
+
+        {/* ✅ 닫기 버튼 */}
         <button className="mission-close" onClick={onClose}>
           닫기
         </button>

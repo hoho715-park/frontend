@@ -30,16 +30,16 @@ const MyPage = () => {
     Number(localStorage.getItem("missionProgress")) || 0
   );
 
-  // ✅ 식물 성장 상태 (fade 전환 포함)
+  // ✅ 식물 성장 상태
   const [level, setLevel] = useState(missionProgress);
   const [plantImage, setPlantImage] = useState(`/mypage/level_${level}.png`);
   const [fade, setFade] = useState(false);
 
-  // ✅ 배지 획득 연출 상태
+  // ✅ 배지 관련
   const [badgeEarned, setBadgeEarned] = useState(false);
   const [earnedBadgeInfo, setEarnedBadgeInfo] = useState(null);
 
-  // ✅ 체질 데이터 가져오기
+  // ✅ 체질 정보 불러오기
   useEffect(() => {
     if (!userId) return;
 
@@ -59,31 +59,59 @@ const MyPage = () => {
       });
   }, [userId]);
 
+  // ✅ 페이지 진입 시 미션 진행도 반영
+  useEffect(() => {
+    const savedProgress = Number(localStorage.getItem("missionProgress")) || 0;
+    setMissionProgress(savedProgress);
+    setLevel(savedProgress);
+  }, []);
+
+  // ✅ localStorage 변경 감지
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const updatedProgress =
+        Number(localStorage.getItem("missionProgress")) || 0;
+      setMissionProgress(updatedProgress);
+      setLevel(updatedProgress);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    handleStorageChange();
+
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
   // ✅ 색상 복원
   useEffect(() => {
     const savedColor = localStorage.getItem("profileColor");
     if (savedColor) setIconColor(savedColor);
   }, []);
 
-  // ✅ fade 전환 애니메이션
+  // ✅ 식물 성장 애니메이션 (버그 수정 완성 버전)
   useEffect(() => {
-    setFade(true);
-    const timeout = setTimeout(() => {
-      setPlantImage(`/mypage/level_${level}.png`);
-      setFade(false);
-    }, 700);
-    return () => clearTimeout(timeout);
-  }, [level]);
+    const prevLevel = Number(localStorage.getItem("prevLevel")) || 0;
 
-  // ✅ 미션 완료 시 배지 수여 (alert 완전 제거)
+    // 🔹 MyPage 첫 진입 시 이전 단계와 현재 단계 다르면 애니메이션 강제 실행
+    if (prevLevel !== level) {
+      setFade(true);
+
+      const timeout = setTimeout(() => {
+        setPlantImage(`/mypage/level_${level}.png`);
+        setFade(false);
+        localStorage.setItem("prevLevel", level);
+      }, 700);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [level]); // missionProgress 제거
+
+  // ✅ 미션 진행 업데이트
   const handleMissionProgress = (count) => {
     setMissionProgress(count);
+    setLevel(count);
     localStorage.setItem("missionProgress", count);
 
-    setTimeout(() => {
-      setLevel(count);
-    }, 500);
-
+    // ✅ 배지 지급 처리
     if (count === 4) {
       const today = new Date().toISOString().split("T")[0];
       const newBadge = {
@@ -99,17 +127,14 @@ const MyPage = () => {
         badges.push(newBadge);
         localStorage.setItem("badges", JSON.stringify(badges));
 
-        // ✅ alert 제거 → 배지 전체화면 연출만 표시
         setEarnedBadgeInfo(newBadge);
         setBadgeEarned(true);
-
-        setTimeout(() => {
-          setBadgeEarned(false);
-        }, 4000);
+        setTimeout(() => setBadgeEarned(false), 4000);
       }
     }
   };
 
+  // ✅ 로그아웃
   const handleLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       localStorage.clear();
@@ -117,16 +142,17 @@ const MyPage = () => {
     }
   };
 
-  // ✅ 프로필 색상 변경 → Header에도 즉시 반영
+  // ✅ 색상 변경
   const handleColorChange = (e) => {
     const newColor = e.target.value;
     setIconColor(newColor);
     localStorage.setItem("profileColor", newColor);
-
-    // ✅ 커스텀 이벤트를 통해 Header에 즉시 반영
-    window.dispatchEvent(new CustomEvent("profileColorChange", { detail: newColor }));
+    window.dispatchEvent(
+      new CustomEvent("profileColorChange", { detail: newColor })
+    );
   };
 
+  // ✅ 캘린더
   const handleOpenCalendar = () => {
     if (!userId) {
       alert("로그인이 필요한 서비스입니다.");
@@ -190,11 +216,13 @@ const MyPage = () => {
           <h1 className="mypage-bodytype-title">{bodyType}</h1>
 
           <div className="mypage-character-box">
-            <div className={`mypage-character-placeholder ${fade ? "fade" : ""}`}>
+            <div
+              className={`mypage-character-placeholder ${fade ? "fade" : ""}`}
+            >
               <img
                 src={plantImage}
                 alt={`level ${level}`}
-                className="mypage-plant-image"
+                style={{ width: "300px", height: "300px" }}
               />
             </div>
 
@@ -241,7 +269,7 @@ const MyPage = () => {
 
       {isBadgeOpen && <BadgeModal onClose={() => setIsBadgeOpen(false)} />}
 
-      {/* ✅ 배지 획득 전체화면 연출 */}
+      {/* ✅ 배지 획득 연출 */}
       {badgeEarned && earnedBadgeInfo && (
         <div className="badge-popup-fullscreen">
           <div className="badge-popup-content">

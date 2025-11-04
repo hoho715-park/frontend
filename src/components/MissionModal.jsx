@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./MissionModal.css";
 
 const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
+  // ✅ 로그인한 사용자 이름 불러오기
+  const username = localStorage.getItem("username") || "사용자";
+
   // ✅ 체질별 미션 목록
   const missions = {
     태양인: [
@@ -57,21 +60,16 @@ const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
     const completed = updated.filter(Boolean).length;
     onProgressChange(completed);
 
-    // ✅ 하나라도 체크하면 팝업 닫기 (식물 성장 애니메이션용)
+    // ✅ 하나라도 체크 시 팝업 닫기
     onClose();
-
-    // ✅ 모든 미션 완료 시 (alert 제거)
-    if (completed === 4) {
-      // ⛔ alert 완전히 제거됨
-      // 🎉 MyPage.jsx에서 배지 연출이 자동 실행됨
-      setTimeout(() => onClose(), 500);
-    }
   };
 
   return (
     <div className="mission-overlay">
       <div className="mission-modal">
-        <h2 className="mission-title">🌿 {bodyType}의 오늘의 미션</h2>
+        <h2 className="mission-title">
+          🌿 <span className="mission-username">{username}</span>님의 오늘의 미션
+        </h2>
         <ul className="mission-list">
           {userMissions.map((m, i) => (
             <li key={i} className={checked[i] ? "checked" : ""}>

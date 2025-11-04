@@ -92,3 +92,19 @@
 .mission-close:hover {
   background-color: #8f83ff;
 }
+
+/* ✅ 제목 영역 */
+.mission-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ✅ 사용자 이름 강조 */
+.mission-username {
+  font-size: 22px; /* 🔥 이름 크기 더 큼 */
+  font-weight: 800; /* 굵게 강조 */
+  color: #6f5cff; /* 포인트 컬러 */
+  margin-right: 3px;
+}

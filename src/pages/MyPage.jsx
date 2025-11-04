@@ -75,7 +75,7 @@ const MyPage = () => {
     return () => clearTimeout(timeout);
   }, [level]);
 
-  // ✅ 미션 완료 시 배지 수여
+  // ✅ 미션 완료 시 배지 수여 (alert 완전 제거)
   const handleMissionProgress = (count) => {
     setMissionProgress(count);
     localStorage.setItem("missionProgress", count);
@@ -99,6 +99,7 @@ const MyPage = () => {
         badges.push(newBadge);
         localStorage.setItem("badges", JSON.stringify(badges));
 
+        // ✅ alert 제거 → 배지 전체화면 연출만 표시
         setEarnedBadgeInfo(newBadge);
         setBadgeEarned(true);
 
@@ -189,14 +190,12 @@ const MyPage = () => {
           <h1 className="mypage-bodytype-title">{bodyType}</h1>
 
           <div className="mypage-character-box">
-            <div
-                  className={`mypage-character-placeholder ${fade ? "fade" : ""}`}
-                >
-                  <img
-                    src={plantImage}
-                    alt={`level ${level}`}
-                    className="mypage-plant-image"
-                  />
+            <div className={`mypage-character-placeholder ${fade ? "fade" : ""}`}>
+              <img
+                src={plantImage}
+                alt={`level ${level}`}
+                className="mypage-plant-image"
+              />
             </div>
 
             <div className="mypage-gauge-bar">
@@ -242,7 +241,7 @@ const MyPage = () => {
 
       {isBadgeOpen && <BadgeModal onClose={() => setIsBadgeOpen(false)} />}
 
-      {/* ✅ 배지 획득 연출 */}
+      {/* ✅ 배지 획득 전체화면 연출 */}
       {badgeEarned && earnedBadgeInfo && (
         <div className="badge-popup-fullscreen">
           <div className="badge-popup-content">

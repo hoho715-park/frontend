@@ -57,12 +57,14 @@ const MissionModal = ({ bodyType, onClose, onProgressChange }) => {
     const completed = updated.filter(Boolean).length;
     onProgressChange(completed);
 
-    // ✅ 하나라도 체크 시 팝업 닫기
+    // ✅ 하나라도 체크하면 팝업 닫기 (식물 성장 애니메이션용)
     onClose();
 
-    // ✅ 모든 미션 완료 시 알림
+    // ✅ 모든 미션 완료 시 (alert 제거)
     if (completed === 4) {
-      alert("🎉 오늘의 미션을 모두 완료했습니다! 배지가 지급되었습니다!");
+      // ⛔ alert 완전히 제거됨
+      // 🎉 MyPage.jsx에서 배지 연출이 자동 실행됨
+      setTimeout(() => onClose(), 500);
     }
   };
 

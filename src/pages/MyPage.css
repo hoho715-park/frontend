@@ -148,11 +148,13 @@
 
 .mypage-bodytype-title {
   text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 3rem; /* 🔥 기존 1.8rem → 2.2rem로 확대 */
+  font-weight: 800; /* 🔥 더 두껍게 */
   margin-top: 20px;
   margin-bottom: 25px;
+  color: #222; /* 🔥 명도 살짝 올려서 선명하게 */
 }
+
 
 .mypage-character-box {
   display: flex;

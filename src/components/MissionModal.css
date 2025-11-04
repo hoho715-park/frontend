@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Isamanru';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
 /* ✅ MissionModal 전체 배경 */
 .mission-overlay {
   position: fixed;
@@ -25,6 +32,7 @@
 
 /* ✅ 제목 */
 .mission-title {
+  font-family: 'Isamanru';
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -32,6 +40,7 @@
 
 /* ✅ 리스트 전체 정렬 */
 .mission-list {
+  font-family: 'Isamanru';
   list-style: none;
   padding: 0;
   margin: 0 auto;
@@ -79,6 +88,7 @@
 
 /* ✅ 닫기 버튼 */
 .mission-close {
+  font-family: 'Isamanru';
   background-color: #a79bff;
   border: none;
   color: white;

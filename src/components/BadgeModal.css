@@ -21,6 +21,7 @@
 }
 
 .badge-title {
+  font-family: 'Isamanru';
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 20px;
@@ -45,12 +46,14 @@
 }
 
 .badge-item p {
+  font-family: 'Isamanru';
   font-size: 13px;
   color: #555;
   margin-top: 5px;
 }
 
 .badge-close {
+  font-family: 'Isamanru';
   margin-top: 20px;
   background-color: #a79bff;
   color: white;

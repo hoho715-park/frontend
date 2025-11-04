@@ -2,6 +2,20 @@
 /* 📄 MyPage 전용 스타일 전체 코드 */
 /* ============================= */
 
+/* .mypage-bodytype-title 폰트 설정 */
+@font-face {
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+    font-family: 'Isamanru';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
 .mypage-container {
   display: flex;
   align-items: stretch;
@@ -147,8 +161,9 @@
 }
 
 .mypage-bodytype-title {
+  font-family: 'Isamanru';
   text-align: center;
-  font-size: 3rem; /* 🔥 기존 1.8rem → 2.2rem로 확대 */
+  font-size: 4rem; /* 🔥 기존 1.8rem → 2.2rem로 확대 */
   font-weight: 800; /* 🔥 더 두껍게 */
   margin-top: 20px;
   margin-bottom: 25px;
@@ -383,4 +398,9 @@
   100% {
     opacity: 1;
   }
+}
+
+
+.btn_text {
+  font-family: 'Isamanru';
 }

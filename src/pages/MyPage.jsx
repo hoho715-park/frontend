@@ -238,13 +238,13 @@ const MyPage = () => {
                 className="mypage-mission-btn"
                 onClick={() => setIsMissionOpen(true)}
               >
-                오늘의 미션 확인하기
+                <span className="btn_text">오늘의 미션 확인하기</span>
               </button>
               <button
                 className="mypage-badge-btn"
                 onClick={() => setIsBadgeOpen(true)}
               >
-                뱃지 도감 보기
+                <span className="btn_text">뱃지 도감 보기</span>
               </button>
             </div>
           </div>

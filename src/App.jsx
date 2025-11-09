@@ -25,6 +25,9 @@ import ResultQsccPage from './pages/ResultQsccPage.jsx';
 // ✅ 서비스 소개 페이지 import
 import AboutService from './pages/AboutService.jsx';
 
+// ✅ 문의사항(FAQ) 페이지 import
+import FAQ from './pages/FAQ.jsx';
+
 function App() {
   return (
     <Routes>
@@ -37,7 +40,7 @@ function App() {
 
       {/* 소개 페이지 */}
       <Route path="/about/ieum" element={<><Header /><IntroIeum /></>} />
-      <Route path="/about/service" element={<><Header /><AboutService /></>} /> {/* ✅ 추가됨 */}
+      <Route path="/about/service" element={<><Header /><AboutService /></>} />
 
       {/* 입력 페이지 */}
       <Route path="/input" element={<InputStart />} />
@@ -48,7 +51,7 @@ function App() {
       <Route path="/test/qsc-survey" element={<><Header /><QsccSurvey /></>} />
       <Route path="/test/qsc-survey-questions" element={<><Header /><QsccQuestion /></>} />
 
-      {/* ✅ QSCC 결과 페이지 (경로 수정됨) */}
+      {/* ✅ QSCC 결과 페이지 */}
       <Route path="/result-qscc" element={<><Header /><ResultQsccPage /></>} />
 
       {/* 결과 / 마이페이지 */}
@@ -60,6 +63,9 @@ function App() {
       <Route path="/recommend/alcohol" element={<AlcoholRecommendPage />} />
       <Route path="/recommend/lifestyle" element={<LifestyleRecommendPage />} />
       <Route path="/recommend/sport" element={<SportRecommendPage />} />
+
+      {/* ✅ 문의사항 페이지 (FAQ) */}
+      <Route path="/more/inquiry" element={<><Header /><FAQ /></>} />
     </Routes>
   );
 }

@@ -30,6 +30,7 @@ const FoodRecommendPage = () => {
     return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   };
 
+  // ✅ 원본 그대로 복원된 전체 FOOD_DATA
   const FOOD_DATA = {
     '태양인': {
       good: [
@@ -269,10 +270,7 @@ const FoodRecommendPage = () => {
                 );
               })}
             </div>
-            <button
-              className="back-btn"
-              onClick={() => setSelectedIngredient(null)}
-            >
+            <button className="back-btn" onClick={() => setSelectedIngredient(null)}>
               ← 재료 목록으로 돌아가기
             </button>
           </div>
@@ -287,8 +285,6 @@ const FoodRecommendPage = () => {
               className="recipe-image"
               onError={(e) => (e.target.style.display = 'none')}
             />
-
-            {/* ✅ 여기 부분 수정됨 — 자동 번호 출력 */}
             <ol className="recipe-list">
               {selectedDish.recipe.map((step, i) => (
                 <li key={i}>{step}</li>
@@ -315,10 +311,7 @@ const FoodRecommendPage = () => {
               </div>
             )}
 
-            <button
-              className="back-btn"
-              onClick={() => setSelectedDish(null)}
-            >
+            <button className="back-btn" onClick={() => setSelectedDish(null)}>
               ← 음식 목록으로 돌아가기
             </button>
           </div>
@@ -346,4 +339,3 @@ const FoodRecommendPage = () => {
 };
 
 export default FoodRecommendPage;
-  

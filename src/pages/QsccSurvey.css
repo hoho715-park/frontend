@@ -1,5 +1,6 @@
-/* src/pages/QsccSurvey.css */
-
+/* ===============================
+   QSCC Survey Page Layout
+=============================== */
 .qsc-survey-container {
   display: flex;
   flex-direction: column;
@@ -10,23 +11,28 @@
   background-color: #f0f2f5;
 }
 
+/* 메인 히어로 영역 */
 .qsc-main-hero {
   position: relative;
   width: 987px;
-  height: 554px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  text-align: center;
 }
 
+/* 히어로 이미지 */
 .qsc-hero-img {
   width: 100%;
   height: auto;
   border-radius: 20px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* 시작 버튼 */
 .start-test-button {
   padding: 15px 120px;
   background-color: #8a7acd;
@@ -37,24 +43,109 @@
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .start-test-button:hover {
   background-color: #7a6ac0;
+  transform: scale(1.05);
 }
 
+/* 안내 텍스트 (QSCCII 설명 링크) */
 .intro-link-text {
-  color: #888;
+  color: #777;
   text-decoration: none;
   font-size: 0.9rem;
   cursor: pointer;
   transition: color 0.2s;
-  margin-top: -15px;
+  margin-top: -10px;
 }
 
 .intro-link-text:hover {
   color: #6a5acd;
   text-decoration: underline;
+}
+
+/* ===============================
+   💻 반응형 스타일
+=============================== */
+
+/* 태블릿 (1024px 이하) */
+@media (max-width: 1024px) {
+  .qsc-main-hero {
+    width: 80%;
+    gap: 18px;
+  }
+
+  .start-test-button {
+    padding: 15px 80px;
+    font-size: 1.1rem;
+  }
+
+  .intro-link-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .qsc-survey-container {
+    padding-top: 20px;
+  }
+
+  .qsc-main-hero {
+    width: 90%;
+    gap: 15px;
+  }
+
+  .qsc-hero-img {
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .start-test-button {
+    padding: 12px 60px;
+    font-size: 1rem;
+    border-radius: 25px;
+  }
+
+  .intro-link-text {
+    font-size: 0.85rem;
+    margin-top: -5px;
+  }
+}
+
+/* 작은 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .qsc-main-hero {
+    width: 95%;
+    gap: 12px;
+  }
+
+  .qsc-hero-img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .start-test-button {
+    padding: 12px 40px;
+    font-size: 0.95rem;
+  }
+
+  .intro-link-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* 초소형 (375px 이하) */
+@media (max-width: 375px) {
+  .start-test-button {
+    padding: 10px 30px;
+    font-size: 0.9rem;
+  }
+
+  .intro-link-text {
+    font-size: 0.75rem;
+  }
 }

@@ -6,9 +6,9 @@
   flex-direction: column;
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory; /* 섹션별 스크롤 고정 */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  padding-top: 80px; /* Header 공간 유지 */
+  padding-top: 80px;
   box-sizing: border-box;
 }
 
@@ -19,13 +19,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* 한 섹션이 화면 전체 차지 */
+  min-height: 100vh;
   padding: 40px;
   box-sizing: border-box;
-  scroll-snap-align: start; /* 스크롤 시 정렬 */
+  scroll-snap-align: start;
 }
 
-/* 공통 콘텐츠 레이아웃 */
 .section-content {
   display: flex;
   justify-content: center;
@@ -36,7 +35,7 @@
 }
 
 /* ===============================
-   1️⃣ 첫 번째 섹션
+   첫 번째 섹션
 =============================== */
 .first-section {
   background-color: #fff;
@@ -60,7 +59,7 @@
 }
 
 /* ===============================
-   2️⃣ 두 번째 섹션 (Why IEUM)
+   두 번째 섹션 (Why IEUM)
 =============================== */
 .second-section {
   background-color: #DEE4FF;
@@ -97,7 +96,7 @@
 }
 
 /* ===============================
-   3️⃣ 세 번째 섹션 (Why Start)
+   세 번째 섹션 (Why Start)
 =============================== */
 .third-section {
   background-color: #fff;
@@ -138,7 +137,7 @@
 }
 
 /* ===============================
-   4️⃣ 네 번째 섹션 (About LOGO)
+   네 번째 섹션 (About LOGO)
 =============================== */
 .fourth-section {
   background-color: #DEE4FF;
@@ -159,26 +158,21 @@
   box-sizing: border-box;
 }
 
-/* ✅ About LOGO 제목 스타일 */
 .about-logo-title {
   font-size: 3rem;
   font-weight: 800;
   color: #333;
-  line-height: 1.2;
   text-align: center;
   margin-bottom: 60px;
 }
 
-/* ===============================
-   로고 설명
-=============================== */
+/* 로고 설명 */
 .logo-description-wrapper {
   display: grid;
   grid-template-areas:
     "tl logo tr"
     "bl logo br";
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 1fr 1fr;
   align-items: center;
   justify-items: center;
   gap: 20px;
@@ -195,26 +189,10 @@
   text-align: center;
   padding: 10px;
 }
-.logo-description.top-left {
-  grid-area: tl;
-  text-align: right;
-  padding-right: 20px;
-}
-.logo-description.top-right {
-  grid-area: tr;
-  text-align: left;
-  padding-left: 20px;
-}
-.logo-description.bottom-left {
-  grid-area: bl;
-  text-align: right;
-  padding-right: 20px;
-}
-.logo-description.bottom-right {
-  grid-area: br;
-  text-align: left;
-  padding-left: 20px;
-}
+.logo-description.top-left { grid-area: tl; text-align: right; padding-right: 20px; }
+.logo-description.top-right { grid-area: tr; text-align: left; padding-left: 20px; }
+.logo-description.bottom-left { grid-area: bl; text-align: right; padding-right: 20px; }
+.logo-description.bottom-right { grid-area: br; text-align: left; padding-left: 20px; }
 
 .icon-title-group {
   display: flex;
@@ -227,33 +205,145 @@
   justify-content: flex-start;
 }
 
-.infinite-icon {
-  width: 30px;
-  height: 30px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: #000;
-  border-radius: 50%;
-}
-.color-box {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-.color-box.violet {
-  background-color: #8a7acd;
-}
-.color-box.green {
-  background-color: #03c75a;
+.infinite-icon { width: 30px; height: 30px; }
+.dot { width: 10px; height: 10px; background-color: #000; border-radius: 50%; }
+.color-box { width: 20px; height: 20px; border-radius: 50%; }
+.color-box.violet { background-color: #8a7acd; }
+.color-box.green { background-color: #03c75a; }
+
+.green_text { color: #3A6F43; font-weight: bold; }
+.purple_text { color: #92338d; font-weight: bold; }
+
+/* ===============================
+   💡 반응형 디자인
+=============================== */
+
+/* 💻 태블릿 (1024px 이하) */
+@media (max-width: 1024px) {
+  .section-content {
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .why-ieum .section-title,
+  .third-section .text-content .section-title,
+  .about-logo-title {
+    font-size: 2.4rem;
+  }
+
+  .why-ieum p,
+  .third-section .text-content p {
+    font-size: 1rem;
+  }
+
+  .why-logo-img {
+    height: 180px;
+  }
+
+  .about-logo-image {
+    width: 200px;
+  }
 }
 
-.green_text {
-  color: #3A6F43;
-  font-weight: bold;
+/* 📱 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 60px 20px;
+    min-height: auto;
+  }
+
+  .section-content {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .why-logo-box,
+  .image-content {
+    order: -1;
+  }
+
+  .why-ieum,
+  .third-section .text-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .why-ieum .section-title,
+  .third-section .text-content .section-title {
+    font-size: 2rem;
+  }
+
+  .why-ieum p,
+  .third-section .text-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .first-section .section-logo-img {
+    height: 90px;
+  }
+
+  .about-logo-title {
+    font-size: 2rem;
+  }
+
+  /* LOGO 섹션 — 세로 정렬로 */
+  .logo-description-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .about-logo-image {
+    width: 180px;
+    margin: 20px 0;
+  }
+
+  .logo-description {
+    text-align: center !important;
+    padding: 10px 0;
+  }
+
+  .icon-title-group {
+    justify-content: center !important;
+  }
 }
-.purple_text {
-  color: #92338d;
-  font-weight: bold;
+
+/* 📞 작은 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .intro-section {
+    padding: 40px 10px;
+  }
+
+  .first-section .section-title {
+    font-size: 1.8rem;
+  }
+
+  .first-section p {
+    font-size: 1rem;
+  }
+
+  .why-ieum .section-title,
+  .third-section .text-content .section-title {
+    font-size: 1.6rem;
+  }
+
+  .why-ieum p,
+  .third-section .text-content p {
+    font-size: 0.9rem;
+  }
+
+  .about-logo-title {
+    font-size: 1.6rem;
+  }
+
+  .about-logo-image {
+    width: 140px;
+  }
+
+  .infinite-icon, .dot, .color-box {
+    transform: scale(0.8);
+  }
 }
